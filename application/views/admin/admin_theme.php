@@ -38,7 +38,7 @@ folder instead of downloading all of them to reduce the load. -->
 
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap-dialog.min.css">
-
+<link rel="stylesheet" href="<?php echo base_url('assets/plugins/select2/select2.min.css'); ?>">
 
     
     <!-- jQuery 2.1.4 -->
@@ -59,6 +59,10 @@ folder instead of downloading all of them to reduce the load. -->
     <script src="<?php echo base_url('assets/dist/js/demo.js'); ?>"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrapValidator.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap-dialog.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 
 
@@ -92,7 +96,7 @@ folder instead of downloading all of them to reduce the load. -->
 				  	<ul class="dropdown-menu">
 					  <li class="user-header">
 							<p><?php echo $userdata['nama'] ?>
-						  	<small><?php echo $userdata['no_hp'] ?></small>
+						  	<small><?php echo $userdata['email'] ?></small>
 								</p>
 								<p><h2 style="color: white;">Admin</h2></p>
 						</li>	
@@ -142,22 +146,14 @@ folder instead of downloading all of them to reduce the load. -->
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-user"></i> <span>User</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-user"></i> <span>Data Master</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo site_url('admin_add_pengepul'); ?>"><i class="fa fa-circle-o"></i> Pengepul</a></li>
+                <li><a href="<?php echo site_url('admin_add_penduduk'); ?>"><i class="fa fa-circle-o"></i> Penduduk</a></li>
                  
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>Data Master</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo site_url('m_jenis'); ?>"><i class="fa fa-circle-o"></i> Jenis</a></li>
-                 <li><a href="<?php echo site_url('m_sub_jenis'); ?>"><i class="fa fa-circle-o"></i> Sub Jenis</a></li>
-              </ul>
-            </li>
+
           </ul>
         </section>
         <!-- /.sidebar -->

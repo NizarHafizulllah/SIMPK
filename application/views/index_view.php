@@ -37,7 +37,7 @@
   <body class="hold-transition skin-blue layout-top-nav">
   
     
-      <img id="gambar" src="<?php echo base_url('assets/img/pendidikan.jpeg'); ?>" width="1500" height="300" border="9">
+      <img id="gambar" src="<?php echo base_url('assets/img/pendidikan.jpeg'); ?>" width="1400" height="100px" border="9">
          <header>
         <div class="cd-dropdown-wrapper">
       <a class="cd-dropdown-trigger" href="#0">Menu</a>
@@ -133,7 +133,11 @@
       </nav> <!-- .cd-dropdown -->
     </div> <!-- .cd-dropdown-wrapper -->
   </header>
-
+  <div class="col-md-12">
+    <div class="jumbotron">
+    <?php echo $content ?>
+    </div>
+  </div>
 
     <!-- dropdown -->
 

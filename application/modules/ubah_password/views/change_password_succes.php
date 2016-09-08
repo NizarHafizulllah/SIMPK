@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pemulihan Akun</title>
+<title>Password Terganti</title>
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
@@ -22,9 +22,9 @@
 <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1 class="merah">Pemulihan Akun</h1>
+        <h1 class="merah">Password Berhasil Di Ubah</h1>
       </div>
-      <p class="lead">Kami Telah Mengirimkan Email Pemulihan Akun Anda.<br /> </p>
+      <p class="lead">Sekarang anda dapat login dengan password baru anda.<br /> Silahkan <?php echo anchor("login","login"); ?></p>
       
     </div>
 

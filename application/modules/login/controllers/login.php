@@ -28,37 +28,6 @@ class Login extends CI_Controller {
 	}
 	
 
-	
-function cek_email($email) {
-	$this->db->where("email",$email);
-	$jumlah = $this->db->get("members")->num_rows();
-	if($jumlah > 0) {
-		$this->form_validation->set_message('cek_email', "Email $email sudah terdaftar  ");
-		return false;
-	}
-}
-	
-
-
-
-
-function cek_password($password) {
-	 $password2 = $_POST['password2'];
-
-	 if($password == "" or $password2=="") {
-	 	$this->form_validation->set_message('cek_password', 'Password harus diisi dengan benar ');
-		return false;
-	 }
-
-	 if($password <> $password2 ) {
-	 	$this->form_validation->set_message('cek_password', 'Password Harus sama');
-		return false;
-	 }
-
-
-}
-
-
 
 	function ceklogin(){
 
@@ -66,70 +35,35 @@ function cek_password($password) {
 		 $username = $data['form-username'];
 		 $password = $data['mask'];
 
-		 
 		 $this->db->where("username",$username);
 		 $this->db->where("password",$password);
-		 $res = $this->db->get('super_admin');
+		 $res = $this->db->get("admin");
+		 // echo $this->db->last_query(); exit;
 
-		 if($res->num_rows()==1) {
-
-		 	$member = $res->row_array();
-		 	// show_array($member);
-		 	// exit;
-
-		 	$member['login'] = true;
-		 	if($member['level'] == 1) {
-		 		
-				
-
-				$this->session->set_userdata('admin_login', $member);
-		 		$datalogin = $this->session->userdata("admin_login");
-		 		redirect('admin');
-
-		 		
-				
-
-
-		 	}
-		 	else if ($member['level'] == 2) {
-		 		
-		 		$this->session->set_userdata('pengepul_login', $member);
-		 		$datalogin = $this->session->userdata("pengepul_login");
-		 		redirect('pengepul');
-		 	}
-
-		 	else {
-		 		$ret = array("error"=>true,"message"=>"NOT An Option");
-		 	}
-
-
-
-
-		 	
-
-		 		
-		 	// $ret = array("error"=>true,"message"=>"Kombinasi Email Dan Password Tidak Dikenali");
+		 if($res->num_rows()==0) {
+		 	$ret = array("error"=>true,"message"=>"Email Atau Password Salah, Silahkan Coba Lagi");
 
 		 }
 		 else {
 
-		 	$this->db->where("username",$username);
-		 	$this->db->where("password",$password);
-		 	$nasabah = $this->db->get('nasabah');
+		 	$member = $res->row();
 
-		 	if ($nasabah->num_rows()==0) {
-		 		redirect('login');
-		 	}else{
-
-		 		$member = $nasabah->row_array();
 		 	
+		 		
+				$jj = array (
+					'login' => true,
+					'id_user' => $member->id,
+					'nama' => $member->nama,
+					'email' => $member->email,
+					);
 
-		 		$member['login'] = true;
+		 		$this->session->set_userdata('admin_login', $jj);
 
-		 		$this->session->set_userdata('nasabah_login', $member);
-		 		$datalogin = $this->session->userdata("nasabah_login");
-		 		redirect('nasabah');
-		 	}
+		 		$datalogin = $this->session->userdata("login");
+
+		 		//show_array($datalogin); exit;
+
+		 		$ret = array("error"=>false,"message"=>"Login sukses.Klik Oke untuk melanjutkan");
 
 		 }
 

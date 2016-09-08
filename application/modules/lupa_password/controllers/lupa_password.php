@@ -19,7 +19,7 @@ class lupa_password extends coba_controller {
 		$email = $this->input->post('email');
 		$valid = true;
 		$this->db->where('email', $email);
-		$jumlah = $this->db->get("members")->num_rows();	
+		$jumlah = $this->db->get("admin")->num_rows();	
 		if($jumlah == 0) {
 			$valid = false;
 		}
@@ -32,22 +32,22 @@ class lupa_password extends coba_controller {
 		$post = $this->input->post();
 		$email = $post['email'];
 		$this->db->where("email",$email)	;
-		$rs = $this->db->get("members"); 
+		$rs = $this->db->get("admin"); 
 
 		if($rs->num_rows() == 1){
 			
 			$data_member = $rs->row();
 //			/$data['id'] = ' ';
 			$data['tanggal'] = date('Y-m-d h:i:s');
-			$data['id_user'] =  $data_member->id;//$this->db->query('select id from members where email = '.$email);
+			$data['id_admin'] =  $data_member->id;//$this->db->query('select id from members where email = '.$email);
 			$data['hash'] = md5(date('Ymdhis').'r^7dfjdfdkf');
-			$user_id = $data['id_user'];
+			$id_admin = $data['id_admin'];
 			$hash = $data['hash'];
 			$date = $data['tanggal'];
 			
 			$email_body = "<p>Kami Telah Menerima Permintaan <b>Recovery Password<b> anda <p>
 				        	<p>
-				        		Silahkan klik link ". anchor("ubah_password?id_user=$user_id&hash=$hash")  ."
+				        		Silahkan klik link ". anchor("ubah_password?id_admin=$id_admin&hash=$hash")  ."
 				        	</p>";
 			
 			$res = $this->db->insert('lupa_password', $data);

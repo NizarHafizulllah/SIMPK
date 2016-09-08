@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-  <title>Bank Sampah | </title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sistem Informasi Biaya Balik Nama</title>
 
-  <!-- Bootstrap core CSS -->
-  
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/form-elements.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrapValidator.min.css">
 
-  <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/animate.min.css" rel="stylesheet">
-
-  <!-- Custom styling plus plugins -->
-  <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/icheck/flat/green.css" rel="stylesheet">
-
-  
-
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
-
-  <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-57-precomposed.png">
 
-</head>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
 
-<body style="background:#F7F7F7;" class="hold-transition login-page">
 
-  <div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"
+
+ 
+
+    </head>
+
+    <body>
+
+
+
+
+<div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"
     role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -61,90 +64,120 @@
         </div>
     </div>
 </div>
+<!-- Modal ends Here -->
 
 
 
-  <div class="">
-    <a class="hiddenanchor" id="toregister"></a>
-    <a class="hiddenanchor" id="tologin"></a>
 
-    <div id="wrapper">
-      <div id="login" class="animate form">
-        <section class="login_content">
-          <form role="form" action="login/ceklogin" method="post" class="login-form">
-            <h1>Login</h1>
-            <div>
-              <input name="form-username" id="form-username" type="text" class="form-username form-control" placeholder="Username" />
+
+        <!-- Top content -->
+      <div class="top-content">
+          
+            <div class="inner-bg">
+                <div class="container">
+                  
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>SIMPK </strong> Kab. Sumbawa Barat</h1>
+                            <div class="description">
+                              <p>Sistem Informasi Manajemen Pengentasan Kemiskinan Kab. Sumbawa Barat</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-5">
+                          
+                          <div class="form-box">
+                            <div class="form-top">
+                              <div class="form-top-left">
+                                <h2>Masuk </h2>
+                              </div>
+                              <div class="form-top-right">
+                                <i class="fa fa-lock"></i>
+                              </div>
+                              </div>
+                              <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form">
+                              <div class="form-group">
+                                <label class="sr-only" for="form-username">Nama Pengguna</label>
+                                  <input type="text" name="form-username" placeholder="Nama Pengguna..." class="form-username form-control" id="form-username">
+                                </div>
+                                <div class="form-group">
+                                  <label class="sr-only" for="form-password">Kata Sandi</label>
+                                  <input type="password" name="form-password" placeholder="Kata Sandi..." class="form-password form-control" id="form-password">
+                                
+                                        <input type="hidden" id="mask" name="mask" />
+                                        
+                                        </div>
+                                <button type="submit" class="btn">Masuk !</button>
+                                       <a href="<?php echo site_url('lupa_password'); ?>"><u>Lupa Password</u></a>
+                                      
+                            </form>
+                          </div>
+                        </div>
+                    
+                          
+                        </div>
+                        
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+                          
+                        <div class="col-sm-5">
+                          
+                          <div class="form-box">
+                            <div class="form-top">
+                              <div class="form-top-left">
+                                <h2>Selamat Datang </h2>
+                              </div>
+                              <div class="form-top-right">
+                                <i class="fa fa-user"></i>
+                              </div>
+                              </div>
+                              <div class="form-bottom">
+                              <p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selamat Datang di form login aplikasi SIMPK (Sistem Informasi Manajemen Pengentasan Kemiskinan) Kab. Sumbawa Barat.</p>
+                              <p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sebelum Kami Memberikan Hak Admin Kepada Anda Silahkan Login Dengan Cara Memasukkan Nama Pengguna Dan Kata Sandi Pada Form Login Disebelah Kiri.</p>
+                          </div>
+                          </div>
+                          
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-            <div>
-              <input name="form-password" id="form-password" type="password" class="form-password form-control" placeholder="Password" />
-              <input type="hidden" id="mask" name="mask" />
-            </div>
-            <div>
-            <button type="submit" class="btn btn-primary">Log in</button>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+          <div class="container">
+            <div class="row">
+              
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="footer-border"></div>
+                <p>Dikelola oleh <a href="http://sumbawabaratkab.go.id/v/" target="_blank"><strong>PEMDA Kab. Sumbawa Barat</strong></a> 
+                  hak cipta dilindungi undang undang. </p>
+              </div>
               
             </div>
-            <div class="clearfix"></div>
-            <div class="separator">
+          </div>
+        </footer>
 
-              <p class="change_link">Kesalahan
-                <a href="#toregister" class="to_register"> Lupa password? </a>
-              </p>
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1></i> Bank Sampah</h1>
-
-                <p>Dikelola oleh TIGA PILAR MAJU MANDIRI hak cipta dilindungi undang undang. </p>
-              </div>
-            </div>
-          </form>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
-      <div id="register" class="animate form">
-        <section class="login_content">
-          <form>
-            <h1>Lupa Password</h1>
-            <div>
-              <input name="email" id="email" type="text" class="form-control" placeholder="Email" required="" />
-            </div>
-            <div>
-              <a class="btn btn-default submit" >Submit</a>
-            </div>
-            <div class="clearfix"></div>
-            <div class="separator">
-
-              <p class="change_link">Ingat Password ?
-                <a href="#tologin" class="to_register"> Log in </a>
-              </p>
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1> Bank Sampah</h1>
-
-                <p>Dikelola oleh TIGA PILAR MAJU MANDIRI hak cipta dilindungi undang undang. </p>
-              </div>
-            </div>
-          </form>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
-    </div>
-  </div>
-
-    <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/jquery.md5.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/bootstrap-dialog.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/jquery.backstretch.min.js"></script>
-     
-
+        <!-- Javascript -->
+        <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/jquery.backstretch.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/jquery.md5.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrapValidator.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/bootstrap-dialog.min.js"></script>
+        
         <?php 
         $this->load->view("login_view_js");
-        ?>    
+        ?>        
+        <!--[if lt IE 10]>
+            <script src="<?php echo base_url(); ?>assets/js/placeholder.js"></script>
+        <![endif]-->
 
-</body>
+    </body>
 
 </html>
