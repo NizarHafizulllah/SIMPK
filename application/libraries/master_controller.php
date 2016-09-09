@@ -1,5 +1,5 @@
 <?php
-class master_controller extends CI_Controller {
+class Master_controller extends CI_Controller {
 
  
 	function master_controller() {
@@ -25,13 +25,12 @@ class master_controller extends CI_Controller {
 	}
 	
 	function render(){
+
 		$arr = array();	
 		$this->load->view('beranda/beranda_view',$this->content);
-		// $this->load->view("beranda/header",$this->content);
-		// $this->load->view("beranda/menu",$this->content);
-		// $this->load->view("beranda/sidebar",$this->content);
-		// $this->load->view("beranda/footer",$this->content);
 		
+		
+
 		
 	}
 
