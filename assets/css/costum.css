@@ -1,0 +1,110 @@
+body {
+	background-color: #EFEFEF;
+}
+
+.container{
+	padding-left: 0;
+	padding-right: 0;
+}
+.footer {
+	background-color: #EFEFEF;
+	padding: 17px;
+	-webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+	background-color: #DDD;
+	background: url('../img/pendidikan.jpeg') center center no-repeat;
+	background-size: cover;
+	height: 200px;
+}
+
+ul.menu li:hover ul {
+	display: block;
+}
+
+
+.main {
+	background-color: #FFF;	
+	text-align: justify;
+	padding-top: 17px;
+	padding-bottom: 30px;
+	-webkit-box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+.navbar-default {
+	background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+	background-repeat: no-repeat;	
+	border: 1px solid #213AF9;
+	border-radius: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #FFF;
+    background-color: #178acc;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:focus, 
+.navbar-default .navbar-nav > .active > a:hover {
+    color: #FFF;
+    background-color: #178acc;
+}
+
+.btn-primary {
+	background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+	background-repeat: no-repeat;
+	border: 1px solid #213AF9;
+}
+
+.input-style {
+	border-radius: 0;
+	height: 39px;
+}
+
+.btn-style {
+	border-radius: 0;
+	font-weight: bold;
+}
+
+.navbar-nav {
+	font-weight: bold;
+	color: #000;
+	margin-left: 0;
+}
+
+.navbar-default .navbar-collapse, 
+.navbar-default .navbar-form {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.container-fluid > .navbar-collapse, 
+.container-fluid > .navbar-header, .container > 
+.navbar-collapse, .container > .navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.tab-content > .active {
+    display: block;
+    border: 1px solid #DDD;
+    padding: 22px;
+}
+
+.nav-tabs > li > a {
+	border-radius: 0;
+}
+
+.nav-tabs {
+    border: 1px solid #DDD;
+}

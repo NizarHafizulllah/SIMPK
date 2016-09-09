@@ -1,5 +1,5 @@
 <?php
-class master_controller extends CI_Controller {
+class Master_controller extends CI_Controller {
 
 var $pilihan; 
 	function master_controller() {
@@ -33,7 +33,11 @@ var $pilihan;
 	
 	function render(){
 		$arr = array();		 
-		$this->load->view("index_view",$this->content );
+		$this->load->view("beranda/header",$this->content );
+		$this->load->view("beranda/menu",$this->content );
+		$this->load->view("beranda/index_view",$this->content );
+		$this->load->view("beranda/sidebar",$this->content );
+		$this->load->view("beranda/footer",$this->content );
 		
 	}
 
