@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title;  ?></title>
-
+    <link rel="icon" href="<?php echo base_url(); ?>ksb.png" type="image/x-icon" />
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/costum.css'); ?>" rel="stylesheet">
@@ -77,7 +77,7 @@ $(function () {
                 type: 'pie'
             },
             title: {
-                text: 'Browser market shares January, 2015 to May, 2015'
+                text: 'Data Jumlah Kemiskinan Menurut Kecamatan'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -96,25 +96,31 @@ $(function () {
                 name: 'Brands',
                 colorByPoint: true,
                 data: [{
-                    name: 'Microsoft Internet Explorer',
-                    y: 56.33
+                    name: 'Brang Ene',
+                    y: 15.00
                 }, {
-                    name: 'Chrome',
-                    y: 24.03,
+                    name: 'Brang Rea',
+                    y: 20.03,
                     sliced: true,
                     selected: true
                 }, {
-                    name: 'Firefox',
+                    name: 'Jereweh',
                     y: 10.38
+                },{
+                    name: 'Sekongkang',
+                    y: 20.30
+                },{
+                    name: 'Sateluk',
+                    y: 12.03
+                },{
+                    name: 'Taliwang',
+                    y: 3.20
                 }, {
-                    name: 'Safari',
-                    y: 4.77
+                    name: 'Maluk',
+                    y: 8.57
                 }, {
-                    name: 'Opera',
-                    y: 0.91
-                }, {
-                    name: 'Proprietary or Undetectable',
-                    y: 0.2
+                    name: 'Poto Tano',
+                    y: 6.91
                 }]
             }]
         });
@@ -151,7 +157,7 @@ $(function () {
   $(function () {
       $("#slider1").responsiveSlides({
         maxwidth: 800,
-        speed: 800
+        speed: 3000
       });
   });
   </script>

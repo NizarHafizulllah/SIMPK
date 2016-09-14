@@ -13,7 +13,7 @@ $(function () {
                 type: 'pie'
             },
             title: {
-                text: 'Browser market shares January, 2015 to May, 2015'
+                text: 'Data Jumlah Kemiskinan Menurut Kecamatan'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -32,21 +32,21 @@ $(function () {
                 name: 'Brands',
                 colorByPoint: true,
                 data: [{
-                    name: 'Microsoft Internet Explorer',
+                    name: 'Brang Ene',
                     y: 56.33
                 }, {
-                    name: 'Chrome',
+                    name: 'Brang Re',
                     y: 24.03,
                     sliced: true,
                     selected: true
                 }, {
-                    name: 'Firefox',
+                    name: 'Jereweh',
                     y: 10.38
                 }, {
-                    name: 'Safari',
+                    name: 'Maluk',
                     y: 4.77
                 }, {
-                    name: 'Opera',
+                    name: 'Poto Tano',
                     y: 0.91
                 }, {
                     name: 'Proprietary or Undetectable',

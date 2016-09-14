@@ -134,6 +134,7 @@ function get_desa(){
     $this->db->where("id_kecamatan",$id_kecamatan);
     $this->db->order_by("desa");
     $rs = $this->db->get("tiger_desa");
+    echo "<option value='0' selected>Pilih Desa</option>";
     foreach($rs->result() as $row ) :
         echo "<option value=$row->id>$row->desa </option>";
     endforeach;

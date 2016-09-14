@@ -12,7 +12,7 @@ class Beranda extends master_controller  {
 		$content = $this->load->view($this->controller."/content/welcome",$data_array, true);
 		
 		$this->set_subtitle("Beranda");
-		$this->set_title("SIMPK");
+		$this->set_title("SIMPK - Sistem Informasi Pengentasan Kemiskinan");
 		$this->set_content($content);
 		$this->render();
 	}

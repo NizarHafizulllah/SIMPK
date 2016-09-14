@@ -16,7 +16,7 @@ body {
 
 .header {
 	background-color: #DDD;
-	background: url('../img/pendidikan.jpeg') center center no-repeat;
+	background: url('../images/simpkheader.png') center center no-repeat;
 	background-size: cover;
 	height: 200px;
 }
