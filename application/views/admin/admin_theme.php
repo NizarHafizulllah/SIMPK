@@ -153,6 +153,15 @@ folder instead of downloading all of them to reduce the load. -->
                  
               </ul>
             </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-user"></i> <span>Data Penduduk Miskin</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo site_url('admin_add_data_miskin_kab'); ?>"><i class="fa fa-circle-o"></i> Kabupaten</a></li>
+                 
+              </ul>
+            </li>
 
           </ul>
         </section>
