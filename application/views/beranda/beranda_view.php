@@ -37,17 +37,22 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav menu">
-    <li class="active<?php //echo $aktif=='beranda'?'active':''; ?>"><a href="<?php echo site_url() ?>">Beranda <span class="sr-only">(current)</span></a></li>
+    <li class="<?php //echo $aktif=='beranda'?'active':''; ?>"><a href="<?php echo site_url() ?>">Beranda <span class="sr-only">(current)</span></a></li>
     <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/profil_daerah') ?>">Profil Daerah<span class="sr-only">(current)</span></a></li>
-    <li class="dropdown <?php //echo $aktif=='pendaftar'?'active':''; ?>">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil Program<span class="caret"></span></a>
+    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/klaster') ?>">Profil Program<span class="sr-only">(current)</span></a></li>
+ <!--    <li class="dropdown <?php //echo $aktif=='pendaftar'?'active':''; ?>">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil Daerah<span class="caret"></span></a>
       <ul class="dropdown-menu">
       <li><a href="<?php echo site_url('beranda/klaster1'); ?>">Klaster 1</a></li>
       <li><a href="<?php echo site_url('beranda/klaster2'); ?>">Klaster 2</a></li>
       <li><a href="<?php echo site_url('beranda/klaster3'); ?>">Klaster 3</a></li>
       <li><a href="<?php echo site_url('beranda/klaster4'); ?>">Klaster 4</a></li>
       </ul>
-    </li>
+    </li> -->
+    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/datamart') ?>">Datamart<span class="sr-only">(current)</span></a></li>
+    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/grafik') ?>">Grafik<span class="sr-only">(current)</span></a></li>
+    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/tematik') ?>">Tematik<span class="sr-only">(current)</span></a></li>
+    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/pivot') ?>">Pivot<span class="sr-only">(current)</span></a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

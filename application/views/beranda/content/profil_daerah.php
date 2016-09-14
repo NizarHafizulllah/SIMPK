@@ -1,9 +1,35 @@
 <h3>Profil Dearah</h3>
 <hr>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Kabupaten Sumbawa Barat sebagai salah satu daerah dari sembilan kabupaten/kota yang berada pada di wilayah Provinsi Nusa Tenggara Barat terletak di ujung barat Pulau Sumbawa pada posisi 116&deg;42’ sampai dengan 117&deg;05’ Bujur Timur dan 08&deg;08' sampai dengan 09&deg;07’ Lintang Selatan, dengan batas – batas sebagai berikut :
 <br>
 <br>
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+<table width="100%">
+	<tr>
+		<td width="30px"><b>Sebelah Timur</b></td>
+		<td width="1%"><b>:</b></td>
+		<td width="69%"><b>Wilayah Kabupaten Sumbawa</b></td>
+	</tr>
+	<tr>
+		<td width="30px"><b>Sebelah Barat</b></td>
+		<td width="1%"><b>:</b></td>
+		<td width="69%"><b>Selat Alas</b></td>
+	</tr>
+	<tr>
+		<td width="30px"><b>Sebelah Selatan</b></td>
+		<td width="1%"><b>:</b></td>
+		<td width="69%"><b>Samudra Indonesia</b></td>
+	</tr>
+	<tr>
+		<td width="30px"><b>Sebelah Utara</b></td>
+		<td width="1%"><b>:</b></td>
+		<td width="69%"><b>Wilayah Kabupaten Sumbawa</b></td>
+	</tr>
+</table>
 <br>
 <br>
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+Wilayah daratan KSB tahun 2004 seluas 184.902 ha, mencakup lima kecamatan dengan urutan dari yang terluas hingga tersempit adalah Kecamatan Jereweh 31,08%, Kecamatan Taliwang 27,93 %, Kecamata Sekongkang 16,50%, Kecamatan Seteluk 13,00%, dan Kecamatan Brang Rea 11,50% dari luas Kabupaten. Selanjutnya dalam perkembangannya sampai dengan tahun 2008, Wilayah Administrasi Kabupaten Sumbawa Barat telah dimekarkan menjadi 8 (delapan) Kecamatan, yakni Kecamatan Poto Tano dengan Luas 15,888 ha yang terdiri dari 6 desa/desa persiapan, Kecamatan Seteluk dengan luas wilayah 23.621 ha yang terdiri dari  7 desa, Kecamatan Brang Rea dengan Luas mencapai 21.207 ha yang terdiri dari 4 desa, Kemudian Kecamatan Brang Ene dengan luas wilayah 14.090 ha yang terdiri dari 5 desa, Kecamatan Taliwang sebagai Ibu Kota Kabupaten memiliki luas wilayah 37.593 ha yang terdiri dari 6 Kelurahan dan 7 desa, selanjutnya Kecamatan Jereweh memiliki luas 26.019 ha yang terdiri dari 4 desa, Kecamatan Maluk dengan luas wilayah 9.242 ha yang terdiri dari 5 desa dan Kecamatan Sekongkang yang terletak di ujung Selatan Kab. Sumbawa Barat memiliki luas wilayah 37.242 ha yang terdiri dari 6 desa. 
+<br>
+<br>
+
+<img class="col-md-12" src="<?php echo base_url('assets/images/petaksb.gif'); ?>">
+

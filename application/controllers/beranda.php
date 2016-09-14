@@ -26,8 +26,28 @@ class Beranda extends master_controller  {
 		$this->set_content($content);
 		$this->render();
 	}
+
+		function datamart() {
+		$data_array = array();
+		$content = $this->load->view($this->controller."/content/datamart",$data_array, true);
+		
+		$this->set_subtitle("Datamart");
+		$this->set_title("SIMPK - Datamart");
+		$this->set_content($content);
+		$this->render();
+	}
+
+			function grafik() {
+		$data_array = array();
+		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
+		
+		$this->set_subtitle("Grafik");
+		$this->set_title("SIMPK - Grafik");
+		$this->set_content($content);
+		$this->render();
+	}
 	
-	function klaster1() {
+	function klaster() {
 		$data_array = array();
 		$content = $this->load->view($this->controller."/content/klaster1",$data_array, true);
 		
@@ -37,35 +57,7 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	function klaster2() {
-		$data_array = array();
-		$content = $this->load->view($this->controller."/content/klaster2",$data_array, true);
-		
-		$this->set_subtitle("Profil Program klaster 2");
-		$this->set_title("SIMPK - Profil Program klaster 2");
-		$this->set_content($content);
-		$this->render();
-	}
-	
-	function klaster3() {
-		$data_array = array();
-		$content = $this->load->view($this->controller."/content/klaster3",$data_array, true);
-		
-		$this->set_subtitle("Profil Program klaster 3");
-		$this->set_title("SIMPK - Profil Program klaster 3");
-		$this->set_content($content);
-		$this->render();
-	}
 
-		function klaster4() {
-		$data_array = array();
-		$content = $this->load->view($this->controller."/content/klaster4",$data_array, true);
-		
-		$this->set_subtitle("Profil Program klaster 4");
-		$this->set_title("SIMPK - Profil Program klaster 4");
-		$this->set_content($content);
-		$this->render();
-	}
 	
 	function tematik() {
 		$data_array = array();
