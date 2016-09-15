@@ -50,8 +50,8 @@ var $arr_bulan = array(1=>"JANUARI","FEBRUARI","MARET","APRIL","MEI","JUNI","JUL
 
         function arr_dropdown2($vTable, $vINDEX, $vVALUE, $vORDERBY){
                 
-                $this->db->where('id_kota', '52_7');
-                $this->db->order_by($vORDERBY);
+                // $this->db->where('id', '');
+                // $this->db->order_by($vORDERBY);
                 $res  = $this->db->get($vTable);
         //echo $this->db->last_query(); exit;
 

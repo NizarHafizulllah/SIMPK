@@ -13,9 +13,9 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Penduduk Miskin Per Kabupaten</h3>
+              <h3 class="box-title">Data Garis Kemiskinan Per Kabupaten</h3>
               <div class="box-tools pull-right">
-              <a href="<?php echo site_url("admin_add_data_miskin_kab/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Data</button></a>
+              <a href="<?php echo site_url("admin_add_garis_miskin_kab/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Data</button></a>
               </div>
             </div>
             <div class="box-body">

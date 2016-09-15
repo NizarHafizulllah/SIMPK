@@ -13,57 +13,81 @@ $('#form_data').bootstrapValidator({
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    nama: {
+                    tahun: {
                         validators: {
                             notEmpty: {
-                                message : 'Nama tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
 
-                    alamat: {
+                    jumlah1: {
                         validators: {
                             notEmpty: {
-                                message : 'Alamat tidak boleh kosong' 
-                            }
-                        }
-                    },
-                     nomor_kk: {
-                        validators: {
-                            notEmpty: {
-                                message : 'Nomor KK tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
 
-                    tempat_lahir: {
+                    jumlah2: {
                         validators: {
                             notEmpty: {
-                                message : 'Tempat Lahir tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
+                            }
+                        }
+                    },
+                     jumlah3: {
+                        validators: {
+                            notEmpty: {
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
 
-                     tanggal_lahir: {
+                    jumlah4: {
                         validators: {
                             notEmpty: {
-                                message : 'Tanggal Lahir tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
 
-                     rt: {
+                     jumlah5: {
                         validators: {
                             notEmpty: {
-                                message : 'RT tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
 
-                    rw: {
+                     jumlah6: {
                         validators: {
                             notEmpty: {
-                                message : 'RW tidak boleh kosong' 
+                                message : 'inputan tidak boleh kosong' 
+                            }
+                        }
+                    },
+
+                    jumlah7: {
+                        validators: {
+                            notEmpty: {
+                                message : 'inputan tidak boleh kosong' 
+                            }
+                        }
+                    },
+
+                    jumlah8: {
+                        validators: {
+                            notEmpty: {
+                                message : 'inputan tidak boleh kosong' 
+                            }
+                        }
+                    },
+                  
+                    jumlah9: {
+                        validators: {
+                            notEmpty: {
+                                message : 'inputan tidak boleh kosong' 
                             }
                         }
                     },
@@ -93,6 +117,8 @@ $('#form_data').bootstrapValidator({
         $('#reset').click(function() {
             $('#form_data').data('bootstrapValidator').resetForm(true);
         });
+		
+	
 
   $("#id_kota").change(function(){
 
