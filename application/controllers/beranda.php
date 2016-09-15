@@ -60,6 +60,7 @@ class Beranda extends master_controller  {
 		$data_array = array();
 		
 		$data_array['tahun'] = $this->input->get('tahun');
+		$data_array['title'] = 'Data Jumlah Penduduk Miskin per Kabupaten';
 		
 		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
 		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
@@ -79,6 +80,7 @@ class Beranda extends master_controller  {
 		$data_array = array();
 		
 		$data_array['tahun'] = $this->input->get('tahun');
+		$data_array['title'] = 'Data Jumlah Garis Kemiskinan per Kabupaten';
 		
 		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
 		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
