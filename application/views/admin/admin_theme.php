@@ -144,6 +144,7 @@ folder instead of downloading all of them to reduce the load. -->
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
               </a>
             </li>
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-user"></i> <span>Data Master</span> <i class="fa fa-angle-left pull-right"></i>
@@ -161,6 +162,11 @@ folder instead of downloading all of them to reduce the load. -->
                 <li><a href="<?php echo site_url('admin_add_data_miskin_kab'); ?>"><i class="fa fa-circle-o"></i> Kabupaten</a></li>
                  
               </ul>
+            </li>
+            <li class="treeview">
+              <a href="<?php echo site_url('garis_kemiskinan_kab'); ?>">
+                <i class="fa fa-dashboard"></i> <span>Garis Kemiskinan Kabupaten</span></i>
+              </a>
             </li>
 
           </ul>
