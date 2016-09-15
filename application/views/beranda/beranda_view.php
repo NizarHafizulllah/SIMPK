@@ -16,6 +16,7 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
 
 
   </head>
@@ -66,8 +67,6 @@
   echo $content;
 
 ?>
-
-<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
 <script>
 $(function () {
 
