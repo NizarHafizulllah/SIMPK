@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "user";
+$route['default_controller'] = "beranda";
 $route['404_override'] = 'pagenotfound';
 
 
