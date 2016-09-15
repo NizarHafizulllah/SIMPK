@@ -38,8 +38,8 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Hubungan Keluarga</label>
       <div class="col-sm-9">
-        <select class="form-control select2" name="hubungan_keluarga">
-          <option value="" selected="">--Hubungan Dalam Keluarga--</option>
+        <select class="form-control " name="hubungan_keluarga">
+          <option value="" selected="">- Hubungan Dalam Keluarga -</option>
           <option value="1">Kepala Keluarga</option>
           <option value="2">Bukan Kepala Keluarga</option>
         </select>
@@ -66,11 +66,19 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Jenis Kelamin</label>
       <div class="col-sm-9">
-        <select class="form-control select2" name="jk">
+        <select class="form-control " name="jk">
           <option value="" <option value="">--Jenis Kelamin--</option>>--Jenis Kelamin--</option>
           <option value="l">Laki-laki</option>
           <option value="p">Perempuan</option>
         </select>
+      </div>
+    </div>
+         <div class="form-group">
+      <label class="col-sm-3 control-label">Perkejaan </label>
+      <div class="col-sm-9">
+       
+        
+        <?php echo form_dropdown("pekerjaan",$arr_pekerjaan,isset($pekerjaan)?$pekerjaan:'','id="pekerjaan" class="form-control" style="width: 100%;"'); ?>
       </div>
     </div>
      <div class="form-group">
@@ -78,14 +86,14 @@
       <div class="col-sm-9">
        
         
-        <?php echo form_dropdown("kecamatan",$arr_kecamatan,isset($id_kecamatan)?$id_kecamatan:'','id="id_kecamatan" class="form-control select2" style="width: 100%;"'); ?>
+        <?php echo form_dropdown("kecamatan",$arr_kecamatan,isset($id_kecamatan)?$id_kecamatan:'','id="id_kecamatan" class="form-control" style="width: 100%;"'); ?>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">Desa </label>
       <div class="col-sm-9">
        
-        <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style select2"'); ?>
+        <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style "'); ?>
       </div>
     </div>
     <div class="form-group">

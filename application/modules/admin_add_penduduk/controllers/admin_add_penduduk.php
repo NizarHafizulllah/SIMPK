@@ -36,7 +36,7 @@ function index(){
 
         
 
-        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown2("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
 
 		$content = $this->load->view("admin_penduduk_view",$data_array,true);
 
@@ -51,8 +51,8 @@ function baru(){
         $data_array=array();
 
         $data_array['action'] = 'simpan';
-
-       $data_array['arr_kecamatan'] = $this->cm->arr_dropdown2("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
+       $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
        
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
@@ -134,7 +134,7 @@ function get_desa(){
     $this->db->where("id_kecamatan",$id_kecamatan);
     $this->db->order_by("desa");
     $rs = $this->db->get("tiger_desa");
-    echo "<option value='0' selected>Pilih Desa</option>";
+    echo "<option value='0' selected>- Pilih Desa -</option>";
     foreach($rs->result() as $row ) :
         echo "<option value=$row->id>$row->desa </option>";
     endforeach;
@@ -159,7 +159,7 @@ function get_desa(){
         $desa = $_REQUEST['columns'][2]['search']['value'];
 
 
-        
+
 
 
       //  order[0][column]
@@ -195,14 +195,14 @@ function get_desa(){
         $nik = $row['nik'];
             $hapus = "<a href ='#' onclick=\"hapus('$nik')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
             <a href ='$this->controller/editdata?nik=$nik' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
-                	
+       	
         	 
         	$arr_data[] = array(
         		$row['nik'],
-        		$row['nomor_kk'],
         		$row['nama'],
                 $row['alamat'],
-                $row['desa'],      		 
+                $row['pekerjaan'],
+                $row['desa'],     		 
         		$hapus
         		
          			 
@@ -232,6 +232,7 @@ function get_desa(){
 
        
        $data['arr_kecamatan'] = $this->cm->arr_dropdown("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+       $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
        $data['arr_desa'] = $this->cm->arr_dropdown("tiger_desa", "id", "desa", "desa");
 
 

@@ -35,13 +35,13 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Kecamatan</label>
-                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style select2"'); ?>
+                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style "'); ?>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Desa</label>
-                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style select2"'); ?>
+                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style "'); ?>
               </div>
             </div>
             <div class="col-md-1">
@@ -65,9 +65,9 @@
   <tr>
     
         <th width="7%">NIK</th>
-        <th width="7%">No. KK</th>
-        <th width="23%">Nama</th>        
-        <th width="10%">Alamat</th>
+        <th width="13%">Nama</th>        
+        <th width="20%">Alamat</th>
+        <th width="7%">Pekerjaan</th>
         <th width="10%">Desa</th>
         <th width="14%">#</th>
     </tr>

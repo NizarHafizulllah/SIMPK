@@ -25,17 +25,17 @@
             
 
             <form role="form" action="" id="btn-cari" >
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group">
                 <label for="nama">Kabupaten</label>
-                <?php echo form_dropdown("id",$arr_kabupaten,'','id="id" class="form-control input-style select2"'); ?>
+                <?php echo form_dropdown("kabupaten",$arr_kabupaten,'','id="kabupaten" class="form-control input-style "'); ?>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <label for="nama">Tahun</label>
-				<select class="form-control input-style select2" name="tahun" id="tahun">
-					<option selected> - Tahun - </option>
+				<select class="form-control input-style " name="tahun" id="tahun">
+					<option selected value="0"> - Tahun - </option>
 					<?php for($x=2000; $x<=date("Y"); $x++) { ?>
 					
 						<option value="<?php echo $x; ?>"><?php echo $x; ?></option>

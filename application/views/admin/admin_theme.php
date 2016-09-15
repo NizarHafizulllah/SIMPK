@@ -156,7 +156,7 @@ folder instead of downloading all of them to reduce the load. -->
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-user"></i> <span>Data Kemiskinan Kabupaten</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-file"></i> <span>Data Kabupaten</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo site_url('admin_add_data_miskin_kab'); ?>"><i class="fa fa-circle-o"></i> Penduduk Miskin</a></li>
@@ -164,11 +164,7 @@ folder instead of downloading all of them to reduce the load. -->
                  
               </ul>
             </li>
-            <li class="treeview">
-              <a href="<?php echo site_url('garis_kemiskinan_kab'); ?>">
-                <i class="fa fa-dashboard"></i> <span>Garis Kemiskinan Kabupaten</span></i>
-              </a>
-            </li>
+            
 
           </ul>
         </section>

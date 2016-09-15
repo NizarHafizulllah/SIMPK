@@ -176,9 +176,13 @@ function get_desa(){
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $id = $_REQUEST['columns'][1]['search']['value'];
+        $kabupaten = $_REQUEST['columns'][1]['search']['value'];
         $tahun = $_REQUEST['columns'][2]['search']['value'];
 
+
+
+        // echo $kabupaten;
+        // exit();
 
         
 
@@ -188,7 +192,7 @@ function get_desa(){
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
-				"id" => $id,
+				"kabupaten" => $kabupaten,
                 "tahun" => $tahun,
 				
 				 

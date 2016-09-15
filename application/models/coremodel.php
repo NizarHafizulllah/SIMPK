@@ -56,7 +56,7 @@ var $arr_bulan = array(1=>"JANUARI","FEBRUARI","MARET","APRIL","MEI","JUNI","JUL
         //echo $this->db->last_query(); exit;
 
                 $ret = array();
-                $ret = array('' => '--PILIH SATU--', );
+                $ret = array('' => '- Pilih Satu -', );
                 foreach($res->result_array() as $row) : 
                         $ret[$row[$vINDEX]] = $row[$vVALUE];
                 endforeach;
@@ -71,6 +71,7 @@ var $arr_bulan = array(1=>"JANUARI","FEBRUARI","MARET","APRIL","MEI","JUNI","JUL
         //echo $this->db->last_query(); exit;
 
                 $ret = array();
+                $ret = array('' => '- Pilih Satu -', );
                 foreach($res->result_array() as $row) : 
                         $ret[$row[$vINDEX]] = $row[$vVALUE];
                 endforeach;

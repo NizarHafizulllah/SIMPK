@@ -25,8 +25,14 @@ class admin_penduduk_model extends CI_Model {
 							"desa"							 
 		 	);
 
-		 $this->db->select('p.*, desa.desa as desa')->from("penduduk p");
-		 $this->db->join('tiger_desa desa','p.id_desa=desa.id');
+
+		$this->db->select ( '*' ); 
+    	$this->db->from ( 'penduduk p' );
+    	$this->db->join ( 'tiger_desa desa', 'desa.id = p.id_desa' , 'left' );
+    	$this->db->join ( 'pekerjaan pk', 'pk.id = p.pekerjaan' , 'left' );
+
+		 // $this->db->select('p.*, pekerjaan.pekerjaan as pekerjaan desa.desa as desa')->from("penduduk p");
+		 // $this->db->join('tiger_desa desa','p.id_desa=desa.id');
 		
 		 
 

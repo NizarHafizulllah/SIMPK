@@ -20,7 +20,7 @@ $(document).ready(function(){
 		 $("#btn_submit").click(function(){
 		 	  // alert('hello');
 		 	
-				dt.column(1).search($("#id").val())
+				dt.column(1).search($("#kabupaten").val())
 				dt.column(2).search($("#tahun").val())
 				.draw();
 
@@ -29,11 +29,11 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#id").val('');
+			$("#kabupaten").val('');
       
       
       delete rs;
-      $("#tahun").val("");
+      $("#tahun").val("0");
       
 
 
