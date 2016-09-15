@@ -37,8 +37,37 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-			function grafik() {
+	// function grafik() {
+		// $data_array = array();
+		
+		// $data_array['tahun'] = $this->input->get('tahun');
+		
+		// $data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
+		// $data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
+							  // ->order_by('id_kab', 'ASC')
+							  // ->get('data_penduduk_miskin')
+							  // ->result();
+		
+		// $content = $this->load->view($this->controller."/content/grafik",$data_array, true);
+		
+		// $this->set_subtitle("Grafik");
+		// $this->set_title("SIMPK - Grafik");
+		// $this->set_content($content);
+		// $this->render();
+	// }
+
+	function grafik_penduduk_miskin() {
 		$data_array = array();
+		
+		$data_array['tahun'] = $this->input->get('tahun');
+		$data_array['title'] = 'Data Jumlah Penduduk Miskin per Kabupaten';
+		
+		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
+		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
+							  ->order_by('id_kab', 'ASC')
+							  ->get('data_penduduk_miskin')
+							  ->result();
+		
 		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
 		
 		$this->set_subtitle("Grafik");
@@ -46,13 +75,34 @@ class Beranda extends master_controller  {
 		$this->set_content($content);
 		$this->render();
 	}
+
+	function grafik_garis_miskin() {
+		$data_array = array();
+		
+		$data_array['tahun'] = $this->input->get('tahun');
+		$data_array['title'] = 'Data Jumlah Garis Kemiskinan per Kabupaten';
+		
+		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
+		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
+							  ->order_by('id_kab', 'ASC')
+							  ->get('data_garis_miskin')
+							  ->result();
+		
+		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
+		
+		$this->set_subtitle("Grafik");
+		$this->set_title("SIMPK - Grafik");
+		$this->set_content($content);
+		$this->render();
+	}
+
 	
 	function klaster() {
 		$data_array = array();
 		$content = $this->load->view($this->controller."/content/klaster1",$data_array, true);
 		
-		$this->set_subtitle("Profil Program klaster 1");
-		$this->set_title("SIMPK - Profil Program klaster 1");
+		$this->set_subtitle("Profil Program");
+		$this->set_title("SIMPK - Profil Program");
 		$this->set_content($content);
 		$this->render();
 	}

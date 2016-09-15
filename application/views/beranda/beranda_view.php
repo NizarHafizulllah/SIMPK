@@ -16,6 +16,7 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
 
 
   </head>
@@ -37,9 +38,9 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav menu">
-    <li class="<?php //echo $aktif=='beranda'?'active':''; ?>"><a href="<?php echo site_url() ?>">Beranda <span class="sr-only">(current)</span></a></li>
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/profil_daerah') ?>">Profil Daerah<span class="sr-only">(current)</span></a></li>
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/klaster') ?>">Profil Program<span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Beranda'?'active':''; ?>"><a href="<?php echo site_url() ?>">Beranda <span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Profil Dearah'?'active':''; ?>"><a href="<?php echo site_url('beranda/profil_daerah') ?>">Profil Daerah<span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Profil Program'?'active':''; ?>"><a href="<?php echo site_url('beranda/klaster') ?>">Profil Program<span class="sr-only">(current)</span></a></li>
  <!--    <li class="dropdown <?php //echo $aktif=='pendaftar'?'active':''; ?>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil Daerah<span class="caret"></span></a>
       <ul class="dropdown-menu">
@@ -49,10 +50,17 @@
       <li><a href="<?php echo site_url('beranda/klaster4'); ?>">Klaster 4</a></li>
       </ul>
     </li> -->
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/datamart') ?>">Datamart<span class="sr-only">(current)</span></a></li>
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/grafik') ?>">Grafik<span class="sr-only">(current)</span></a></li>
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/tematik') ?>">Tematik<span class="sr-only">(current)</span></a></li>
-    <li class="<?php //echo $aktif=='dinas'?'active':''; ?>"><a href="<?php echo site_url('beranda/pivot') ?>">Pivot<span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Datamart'?'active':''; ?>"><a href="<?php echo site_url('beranda/datamart') ?>">Datamart<span class="sr-only">(current)</span></a></li>
+    <!--li class="<?php echo $subtitle=='Grafik'?'active':''; ?>"><a href="<?php echo site_url('beranda/grafik') ?>">Grafik<span class="sr-only">(current)</span></a></li-->
+	<li class="dropdown <?php echo $subtitle=='Grafik'?'active':''; ?>">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grafik<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+		  <li><a href="<?php echo site_url('beranda/grafik_penduduk_miskin'); ?>">Data Penduduk Miskin per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik_garis_miskin'); ?>">Data Garis Kemiskinan per Kabupaten</a></li>
+		</ul>
+    </li>
+    <li class="<?php echo $subtitle=='Tematik'?'active':''; ?>"><a href="<?php echo site_url('beranda/tematik') ?>">Tematik<span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Pivot'?'active':''; ?>"><a href="<?php echo site_url('beranda/pivot') ?>">Pivot<span class="sr-only">(current)</span></a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -66,8 +74,6 @@
   echo $content;
 
 ?>
-
-<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
 <script>
 $(function () {
 
