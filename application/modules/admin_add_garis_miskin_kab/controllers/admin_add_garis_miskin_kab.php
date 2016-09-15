@@ -1,11 +1,11 @@
 <?php 
-class Admin_add_data_miskin_kab extends admin_controller{
+class Admin_add_garis_miskin_kab extends admin_controller{
 	var $controller;
-	function admin_add_data_miskin_kab(){
+	function admin_add_garis_miskin_kab(){
 		parent::__construct();
 
 		$this->controller = get_class($this);
-		$this->load->model('admin_penduduk_miskin_model','dm');
+		$this->load->model('admin_garis_miskin_model','dm');
         $this->load->model("coremodel","cm");
 		
 		//$this->load->helper("serviceurl");
@@ -40,8 +40,8 @@ function index(){
 
 		$content = $this->load->view("view",$data_array,true);
 
-		$this->set_subtitle("Data Penduduk Miskin");
-		$this->set_title("Data Penduduk Miskin");
+		$this->set_subtitle("Data Garis Kemiskinan");
+		$this->set_title("Data Garis Kemiskinan");
 		$this->set_content($content);
 		$this->cetak();
 }
@@ -56,8 +56,8 @@ function baru(){
        
         $content = $this->load->view("add",$data_array,true);
 
-        $this->set_subtitle("Tambah Data Penduduk Miskin");
-        $this->set_title("Tambah Data Penduduk Miskin");
+        $this->set_subtitle("Tambah Data Garis Kemiskinan");
+        $this->set_title("Tambah Data Garis Kemiskinan");
         $this->set_content($content);
         $this->cetak();
 }
@@ -92,6 +92,8 @@ function simpan(){
 // echo json_encode($post);exit;
 		$this->load->library('form_validation');
 		$kab = $this->db->get("tiger_kabupaten")->result();
+
+        $this->form_validation->set_rules('tahun','Tahun','required');  
 		
 		$x=1;
 		foreach($kab as $row) {
@@ -115,11 +117,11 @@ function simpan(){
 
 		if($this->form_validation->run() == TRUE ) { 
 			
-			$cek = $this->db->get("data_penduduk_miskin")->result();
+			$cek = $this->db->get("data_garis_miskin")->result();
 			
 			if($cek != null) {
 									
-				$this->dm->delete("tahun", $post['tahun'], "data_penduduk_miskin");					
+				$this->dm->delete("tahun", $post['tahun'], "data_garis_miskin");					
 					
 			} 
 
@@ -133,7 +135,7 @@ function simpan(){
 				
 				);
 				
-				$this->dm->add("data_penduduk_miskin", $data);
+				$this->dm->add("data_garis_miskin", $data);
 				
 			}
 			
