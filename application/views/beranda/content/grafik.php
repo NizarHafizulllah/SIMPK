@@ -5,7 +5,7 @@ $(function () {
 		
     $('#grafik').highcharts({
         title: {
-            text: '<?php echo $title ?>',
+            text: 'Data Jumlah Penduduk Miskin per Kabupaten',
             x: -20 //center
         },
 		subtitle: {

@@ -1,4 +1,4 @@
- <link href="<?php echo base_url("assets") ?>/css/datepicker.css" rel="stylesheet">
+<link href="<?php echo base_url("assets") ?>/css/datepicker.css" rel="stylesheet">
 <script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url("assets") ?>/js/jquery.dataTables.min.js"></script>
 
@@ -10,13 +10,12 @@
     <script src="<?php echo base_url("assets") ?>/plugins/select2/select2.full.min.js"></script>
         <!-- Content Header (Page header) -->
    
-
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Penduduk</h3>
+              <h3 class="box-title">Data Penduduk Miskin Per Kabupaten</h3>
               <div class="box-tools pull-right">
-              <a href="<?php echo site_url("$this->controller/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Penduduk</button></a>
+              <a href="<?php echo site_url("admin_add_penduduk_miskin/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Data</button></a>
               </div>
             </div>
             <div class="box-body">
@@ -28,20 +27,27 @@
             <form role="form" action="" id="btn-cari" >
             <div class="col-md-3">
               <div class="form-group">
-                <label for="nama">Nama</label>
-                <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" style="border-radius: 8px;">
-              </div>
+                <label for="nama">Tahun</label>
+				<select class="form-control input-style select2" name="tahun" id="tahun">
+					<option selected value="0"> - Tahun - </option>
+						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
+					
+						<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+					
+					<?php } ?>
+				</select>
+			  </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Kecamatan</label>
-                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style "'); ?>
+                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style select2"'); ?>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Desa</label>
-                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style "'); ?>
+                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style select2"'); ?>
               </div>
             </div>
             <div class="col-md-1">
@@ -63,13 +69,12 @@
 <table width="100%" border="0" id="biro_jasa" class="table table-striped table-hover dataTable no-footer" role="grid">
 <thead>
   <tr>
-    
-        <th width="7%">NIK</th>
-        <th width="13%">Nama</th>        
-        <th width="20%">Alamat</th>
-        <th width="7%">Pekerjaan</th>
-        <th width="10%">Desa</th>
-        <th width="14%">#</th>
+        <th width="10%">Tahun</th>        
+        <th width="15%">NIK</th>        
+        <th width="15%">Nama</th>        
+        <th width="">Alamat</th>
+        <th width="15%">Pekerjaan</th>
+        <th width="15%">Desa</th>
     </tr>
   
 </thead>
@@ -82,5 +87,5 @@
 
 
 <?php 
-$this->load->view("admin_penduduk_view_js");
+$this->load->view("view_js");
 ?>

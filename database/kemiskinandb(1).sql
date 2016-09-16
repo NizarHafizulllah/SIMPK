@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Sep 2016 pada 01.50
+-- Generation Time: 16 Sep 2016 pada 11.54
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -39,7 +39,34 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `nama`, `username`, `password`, `email`) VALUES
-(1, 'Nizar Hafizullah', 'ichal', '93279e3308bdbbeed946fc965017f67a', 'nizarhafizullah66@gmail.com');
+(1, 'Nizar Hafizullah', 'ichal', 'c20ad4d76fe97759aa27a0c99bff6710', 'nizarhafizullah66@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_garis_miskin`
+--
+
+CREATE TABLE IF NOT EXISTS `data_garis_miskin` (
+  `id_kab` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `data_garis_miskin`
+--
+
+INSERT INTO `data_garis_miskin` (`id_kab`, `tahun`, `jumlah`) VALUES
+(1, 2006, 456),
+(2, 2006, 123),
+(3, 2006, 234),
+(4, 2006, 452),
+(5, 2006, 342),
+(6, 2006, 342),
+(7, 2006, 543),
+(8, 2006, 342),
+(9, 2006, 222);
 
 -- --------------------------------------------------------
 
@@ -49,10 +76,67 @@ INSERT INTO `admin` (`id`, `nama`, `username`, `password`, `email`) VALUES
 
 CREATE TABLE IF NOT EXISTS `data_kemiskinan` (
   `nik` char(16) NOT NULL,
+  `tahun` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `data_kemiskinan`
+--
+
+INSERT INTO `data_kemiskinan` (`nik`, `tahun`) VALUES
+('123123123', 2012),
+('123123123', 2015),
+('1231231231', 2012),
+('1231231231', 2015),
+('124124', 2012),
+('124124', 2015),
+('2839218938', 2012),
+('2839218938', 2015);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_penduduk_miskin`
+--
+
+CREATE TABLE IF NOT EXISTS `data_penduduk_miskin` (
+  `id_kab` int(11) NOT NULL,
   `tahun` int(11) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
-  `keterangan` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='untuk menampung data kemiskinan';
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `data_penduduk_miskin`
+--
+
+INSERT INTO `data_penduduk_miskin` (`id_kab`, `tahun`, `jumlah`) VALUES
+(1, 2000, 331),
+(1, 2001, 111),
+(1, 2007, 100),
+(2, 2000, 767),
+(2, 2001, 222),
+(2, 2007, 100),
+(3, 2000, 565),
+(3, 2001, 333),
+(3, 2007, 1000),
+(4, 2000, 6),
+(4, 2001, 444),
+(4, 2007, 100),
+(5, 2000, 4),
+(5, 2001, 555),
+(5, 2007, 100),
+(6, 2000, 6),
+(6, 2001, 666),
+(6, 2007, 100),
+(7, 2000, 6),
+(7, 2001, 777),
+(7, 2007, 100),
+(8, 2000, 6),
+(8, 2001, 888),
+(8, 2007, 100),
+(9, 2000, 6),
+(9, 2001, 999),
+(9, 2007, 100);
 
 -- --------------------------------------------------------
 
@@ -82,6 +166,25 @@ INSERT INTO `lupa_password` (`id`, `id_admin`, `hash`, `tanggal`, `valid`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pekerjaan`
+--
+
+CREATE TABLE IF NOT EXISTS `pekerjaan` (
+`id` int(11) NOT NULL,
+  `pekerjaan` varchar(100) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `pekerjaan`
+--
+
+INSERT INTO `pekerjaan` (`id`, `pekerjaan`) VALUES
+(1, 'PNS'),
+(2, 'Wiraswasta');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `penduduk`
 --
 
@@ -96,21 +199,23 @@ CREATE TABLE IF NOT EXISTS `penduduk` (
   `jk` char(1) NOT NULL,
   `hubungan_keluarga` int(11) NOT NULL COMMENT '1=kepala keluarga',
   `tempat_lahir` varchar(100) NOT NULL,
-  `tanggal_lahir` date NOT NULL
+  `tanggal_lahir` date NOT NULL,
+  `pekerjaan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `penduduk`
 --
 
-INSERT INTO `penduduk` (`nik`, `nomor_kk`, `nama`, `alamat`, `rt`, `rw`, `id_desa`, `jk`, `hubungan_keluarga`, `tempat_lahir`, `tanggal_lahir`) VALUES
-('123123123', '23123123123', 'Abdurahman', 'Jlan. Meraran', 2, 3, '52_7_3_2001', 'l', 1, 'Taliwang', '0000-00-00'),
-('1231231231', '1231124313', 'Aklaoma', 'Jlan. Manggis Mujahidin 11', 1, 10, '52_7_7_2005', 'l', 2, 'Taliwang', '1967-08-08'),
-('1231233123111', '1212432432', 'Nizar Hafizullah', 'Jlan. Olat Maras No. 17', 1, 10, '52_7_2_1006', 'l', 2, 'Sumbawa', '0000-00-00'),
-('124124', '21213123', 'Jaelani', 'Jlan. Osap Sio III', 1, 10, '52_7_1_2009', 'l', 1, 'Sumbawa', '1976-12-08'),
-('2839218938', '12891829898291', 'Mulyanto', 'Jlan. Meraran No. 3', 1, 10, '52_7_3_2001', 'l', 2, 'Sumbawa Besar', '0000-00-00'),
-('838792719', '37912838', 'Abdurahma', 'Jlan. Tebo Sampai Petang ', 2, 3, '52_7_6_2007', 'l', 2, 'Sumbawa', '0000-00-00'),
-('98298309128', '8132018392803', 'Fitrah Arisandi', 'Kec. Utan', 1, 10, '52_7_1_2009', 'l', 1, 'Utan', '1995-08-09');
+INSERT INTO `penduduk` (`nik`, `nomor_kk`, `nama`, `alamat`, `rt`, `rw`, `id_desa`, `jk`, `hubungan_keluarga`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`) VALUES
+('123123123', '23123123123', 'Abdurahman', 'Jlan. Meraran', 2, 3, '52_7_3_2001', 'l', 1, 'Taliwang', '0000-00-00', 1),
+('1231231231', '1231124313', 'Aklaoma', 'Jlan. Manggis Mujahidin 11', 1, 10, '52_7_7_2005', 'l', 2, 'Taliwang', '1967-08-08', 2),
+('1231233123111', '1212432432', 'Nizar Hafizullah', 'Jlan. Olat Maras No. 17', 1, 10, '52_7_2_1006', 'l', 2, 'Sumbawa', '0000-00-00', 2),
+('124124', '21213123', 'Jaelani', 'Jlan. Osap Sio III', 1, 10, '52_7_1_2009', 'l', 1, 'Sumbawa', '1976-12-08', 1),
+('2839218938', '12891829898291', 'Mulyanto', 'Jlan. Meraran No. 3', 1, 10, '52_7_3_2001', 'l', 2, 'Sumbawa Besar', '0000-00-00', 1),
+('7687687687676', '6556576576', 'Erwin', 'Sumbawa', 2, 1, '52_1_1_2009', 'l', 2, 'Sumbawa', '1995-03-07', 2),
+('838792719', '37912838', 'Abdurahma', 'Jlan. Tebo Sampai Petang ', 2, 3, '52_7_6_2007', 'l', 2, 'Sumbawa', '0000-00-00', 2),
+('98298309128', '8132018392803', 'Fitrah Arisandi', 'Kec. Utan', 1, 10, '52_7_1_2009', 'l', 1, 'Utan', '1995-08-09', 1);
 
 -- --------------------------------------------------------
 
@@ -1273,6 +1378,32 @@ INSERT INTO `tiger_desa` (`id`, `desa`, `kode_desa`, `id_kecamatan`, `kelompok`)
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tiger_kabupaten`
+--
+
+CREATE TABLE IF NOT EXISTS `tiger_kabupaten` (
+`id` int(11) NOT NULL,
+  `nama_kab` varchar(200) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data untuk tabel `tiger_kabupaten`
+--
+
+INSERT INTO `tiger_kabupaten` (`id`, `nama_kab`) VALUES
+(1, 'Mataram'),
+(2, 'Lombok Barat'),
+(3, 'Lombok Tengah'),
+(4, 'Lombok Timur'),
+(5, 'Lombok Utara'),
+(6, 'Sumbawa Barat'),
+(7, 'Sumbawa'),
+(8, 'Dompu'),
+(9, 'Bima');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tiger_kecamatan`
 --
 
@@ -1464,15 +1595,33 @@ ALTER TABLE `admin`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `data_garis_miskin`
+--
+ALTER TABLE `data_garis_miskin`
+ ADD PRIMARY KEY (`id_kab`,`tahun`);
+
+--
 -- Indexes for table `data_kemiskinan`
 --
 ALTER TABLE `data_kemiskinan`
  ADD PRIMARY KEY (`nik`,`tahun`);
 
 --
+-- Indexes for table `data_penduduk_miskin`
+--
+ALTER TABLE `data_penduduk_miskin`
+ ADD PRIMARY KEY (`id_kab`,`tahun`);
+
+--
 -- Indexes for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -1486,6 +1635,12 @@ ALTER TABLE `penduduk`
 --
 ALTER TABLE `tiger_desa`
  ADD PRIMARY KEY (`id`), ADD KEY `id_kecamatan` (`id_kecamatan`);
+
+--
+-- Indexes for table `tiger_kabupaten`
+--
+ALTER TABLE `tiger_kabupaten`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tiger_kecamatan`
@@ -1519,6 +1674,16 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 ALTER TABLE `lupa_password`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tiger_kabupaten`
+--
+ALTER TABLE `tiger_kabupaten`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
