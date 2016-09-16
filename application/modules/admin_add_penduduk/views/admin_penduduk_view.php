@@ -35,13 +35,13 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Kecamatan</label>
-                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style "'); ?>
+                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style " style="border-radius: 8px;"'); ?>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">Desa</label>
-                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style "'); ?>
+                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style" style="border-radius: 8px;"'); ?>
               </div>
             </div>
             <div class="col-md-1">
@@ -60,10 +60,9 @@
   </div>          
 <div class="col-md-12">
 <div class="table-responsive">
-<table width="100%" border="0" id="biro_jasa" class="table table-striped table-hover dataTable no-footer" role="grid">
+<table width="100%" border="0" id="biro_jasa" class="table table-bordered table-hover dataTable" role="grid">
 <thead>
   <tr>
-    
         <th width="7%">NIK</th>
         <th width="13%">Nama</th>        
         <th width="20%">Alamat</th>
