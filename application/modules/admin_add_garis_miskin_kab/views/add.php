@@ -23,9 +23,9 @@
 			<tr>	
 				<td></td>
 				<td>
-					<select class="form-control input-style" name="tahun" id="tahun">
+					<select  class="form-control input-style select2" name="tahun" id="tahun">
 						<option> - Pilih Tahun - </option>
-						<?php for($x=2000; $x<=date("Y"); $x++) { ?>
+						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
 						
 							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 							
@@ -47,7 +47,7 @@
 				<td><?php echo $row->nama_kab; ?></td>
 				<td>
 					<input type="hidden" name="<?php echo 'id_kab'.$x; ?>" value="<?php echo $row->id; ?>">
-					<input type="post" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
+					<input type="number" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
 				</td>
 			</tr>
 			<?php $x++; endforeach; ?>
