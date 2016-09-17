@@ -4,10 +4,6 @@ class Master_controller extends CI_Controller {
  
 	function master_controller() {
 		parent::__construct(); 
-
-		
-		
-
 		
 	}
 

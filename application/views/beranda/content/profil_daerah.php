@@ -31,5 +31,5 @@ Wilayah daratan KSB tahun 2004 seluas 184.902 ha, mencakup lima kecamatan dengan
 <br>
 <br>
 
-<img class="col-md-12" src="<?php echo base_url('assets/images/petaksb.gif'); ?>">
+
 

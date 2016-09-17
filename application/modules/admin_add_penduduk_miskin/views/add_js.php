@@ -68,8 +68,11 @@ $("#tombolsubmitsimpan").click(function(){
                         }); 
             }
         }
-    });
 
+    });
+		
+    $('#biro_jasa').DataTable().ajax.reload();
+	// $('#tombolsubmitsimpan').click();
     return false;
 });
 

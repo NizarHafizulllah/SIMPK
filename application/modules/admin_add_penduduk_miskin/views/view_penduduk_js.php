@@ -16,11 +16,13 @@ $(document).ready(function(){
 		 
 		 $("#biro_jasa_filter").css("display","none");  
 	
+
 		$("#tahun").change(function(){
 			dt.column(3).search($("#tahun").val()).draw();
 			
 			return false;
 		});
+
 		 $("#btn_submit").click(function(){
 		 	  // alert('hello');
 		 	  

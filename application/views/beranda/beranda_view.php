@@ -97,6 +97,9 @@ $(function () {
             title: {
                 text: 'Data Jumlah Kemiskinan Menurut Kecamatan'
             },
+			subtitle: {
+				text: 'Tahun :<?php echo date('Y')-1; ?>',
+			},
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
@@ -111,35 +114,46 @@ $(function () {
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'Persentasi',
                 colorByPoint: true,
-                data: [{
-                    name: 'Brang Ene',
-                    y: 15.00
-                }, {
-                    name: 'Brang Rea',
-                    y: 20.03,
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Jereweh',
-                    y: 10.38
-                },{
-                    name: 'Sekongkang',
-                    y: 20.30
-                },{
-                    name: 'Sateluk',
-                    y: 12.03
-                },{
-                    name: 'Taliwang',
-                    y: 3.20
-                }, {
-                    name: 'Maluk',
-                    y: 8.57
-                }, {
-                    name: 'Poto Tano',
-                    y: 6.91
-                }]
+                data: [
+			
+				<?php
+				
+					$kec 	= $this->db->get_where('tiger_kecamatan', array('id_kota' => '52_7'))->result();
+					$query	= "SELECT tk.kecamatan, COUNT(dk.nik) jumlah FROM data_kemiskinan dk
+							   LEFT JOIN penduduk p on p.nik = dk.nik
+							   LEFT JOIN tiger_desa td on td.id = p.id_desa
+							   LEFT JOIN tiger_kecamatan tk on tk.id = td.id_kecamatan
+							   WHERE dk.tahun = ".(date('Y')-1)."
+							   GROUP BY(tk.id)";
+					$jml	= $this->db->query($query)->result();
+
+					$total = 0;
+					foreach($jml as $row): 
+	
+						$total = $total + $row->jumlah;
+
+					endforeach;					
+					
+					foreach($kec as $list): 
+						foreach($jml as $row): 
+							if($list->kecamatan == $row->kecamatan) {
+								$nilai = $row->jumlah/$total*100;
+								break;
+							} else {
+								$nilai = 0;
+							}
+						endforeach;
+				?>		
+					{
+						name: <?php echo "'$list->kecamatan'"; ?>,
+						y: <?php echo $nilai; ?>
+					},
+						
+				<?php endforeach; ?>
+					
+				]
             }]
         });
     });

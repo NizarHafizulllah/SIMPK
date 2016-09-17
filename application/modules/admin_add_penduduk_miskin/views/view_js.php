@@ -31,7 +31,6 @@ $(document).ready(function(){
 		 $("#btn_reset").click(function(){
 			$("#tahun").val('');
       
-      
       delete rs;
       $("#id_desa").val("");
       

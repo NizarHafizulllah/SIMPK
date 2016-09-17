@@ -231,6 +231,7 @@ function get_nama(){
 		$tahun = $_REQUEST['columns'][3]['search']['value'];
 
 
+
         // echo $kabupaten;
         // exit();
 
@@ -259,7 +260,12 @@ function get_nama(){
                     'end' => $limit
         );
           
-		$result = $this->adm->data($req_param)->result_array();
+
+			$result = $this->adm->data($req_param)->result_array();
+
+        // echo $this->db->last_query();
+        // exit();
+
        
         $arr_data = array();
         foreach($result as $row) : 
