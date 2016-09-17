@@ -5,8 +5,7 @@
     <script src="<?php echo base_url("assets") ?>/plugins/select2/select2.full.min.js"></script>
      
         <!-- Main content -->
-        <form id="form_data" class="form-horizontal" method="post" 
-        action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
+        <form id="form_data" class="form-horizontal" method="post" action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
 
  
 
@@ -23,7 +22,7 @@
 			<tr>	
 				<td></td>
 				<td>
-					<select  class="form-control input-style select2" name="tahun" id="tahun">
+					<select  class="form-control input-style select2" name="tahun" id="tahun" required>
 						<option> - Pilih Tahun - </option>
 						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
 						

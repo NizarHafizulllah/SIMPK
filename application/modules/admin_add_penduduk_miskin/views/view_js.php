@@ -20,8 +20,8 @@ $(document).ready(function(){
 		 $("#btn_submit").click(function(){
 		 	  // alert('hello');
 		 	
-				dt.column(1).search($("#kabupaten").val())
-				dt.column(2).search($("#tahun").val())
+				dt.column(1).search($("#tahun").val())
+				dt.column(2).search($("#id_desa").val())
 				.draw();
 
 				return false;
@@ -29,11 +29,11 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#kabupaten").val('');
+			$("#tahun").val('');
       
       
       delete rs;
-      $("#tahun").val("0");
+      $("#id_desa").val("");
       
 
 
@@ -52,8 +52,8 @@ function hapus(nik){
 
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA USER BIRO JASA. ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA USER  BIRO JASA',
+            message : 'ANDA AKAN MENGHAPUS DATA PENDUDUK MISKIN. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA USER  PENDUDUK MISKIN',
             draggable: true,
             buttons : [
               {

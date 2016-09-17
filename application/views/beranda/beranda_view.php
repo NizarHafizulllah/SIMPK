@@ -50,17 +50,24 @@
       <li><a href="<?php echo site_url('beranda/klaster4'); ?>">Klaster 4</a></li>
       </ul>
     </li> -->
-    <li class="<?php echo $subtitle=='Datamart'?'active':''; ?>"><a href="<?php echo site_url('beranda/datamart') ?>">Datamart<span class="sr-only">(current)</span></a></li>
+    <li class="<?php echo $subtitle=='Datamart'?'active':''; ?>"><a href="<?php echo site_url('beranda/datamart') ?>">Datamart <span class="sr-only">(current)</span></a></li>
     <!--li class="<?php echo $subtitle=='Grafik'?'active':''; ?>"><a href="<?php echo site_url('beranda/grafik') ?>">Grafik<span class="sr-only">(current)</span></a></li-->
 	<li class="dropdown <?php echo $subtitle=='Grafik'?'active':''; ?>">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grafik<span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grafik <span class="caret"></span></a>
 		<ul class="dropdown-menu">
-		  <li><a href="<?php echo site_url('beranda/grafik_penduduk_miskin'); ?>">Data Penduduk Miskin per Kabupaten</a></li>
-		  <li><a href="<?php echo site_url('beranda/grafik_garis_miskin'); ?>">Data Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik_kec'); ?>">Penduduk Miskin Per Kecamatan</a></li>
 		</ul>
     </li>
     <li class="<?php echo $subtitle=='Tematik'?'active':''; ?>"><a href="<?php echo site_url('beranda/tematik') ?>">Tematik<span class="sr-only">(current)</span></a></li>
-    <li class="<?php echo $subtitle=='Pivot'?'active':''; ?>"><a href="<?php echo site_url('beranda/pivot') ?>">Pivot<span class="sr-only">(current)</span></a></li>
+ 	<li class="dropdown <?php echo $subtitle=='Pivot'?'active':''; ?>">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pivot <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+		  <li><a href="<?php echo site_url('beranda/pivot_penduduk_miskin'); ?>">Penduduk Miskin per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/pivot_garis_miskin'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		</ul>
+    </li>
     </ul>
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

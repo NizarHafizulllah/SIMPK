@@ -25,8 +25,8 @@ $(document).ready(function(){
 		 	  // alert('hello');
 		 	  
 
-		 	  dt.column(1).search($("#nama").val())
-        dt.column(2).search($("#id_desa").val())
+		 	  dt.column(1).search($("#id_desa").val())
+			  dt.column(2).search($("#nama").val())
 				 .draw();
 
 				 return false;
@@ -34,11 +34,11 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#nama").val('');
+			$("#id_desa").val('');
       
       
       delete rs;
-      $("#id_desa").val("");
+      $("#nama").val("");
       
 
 
@@ -122,6 +122,20 @@ $("#id_kecamatan").change(function(){
             type : 'post', 
             success : function(result) {
                 $("#id_desa").html(result)
+            }
+    });
+
+});
+
+$("#id_desa").change(function(){
+
+    $.ajax({
+
+            url : '<?php echo site_url("$this->controller/get_nama") ?>',
+            data : { id_desa : $(this).val() },
+            type : 'post', 
+            success : function(result) {
+                $("#nama").html(result)
             }
     });
 

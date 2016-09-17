@@ -43,7 +43,7 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label for="nama">nama</label>
-                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style select2"'); ?>
+                <?php echo form_dropdown("nama",array(),'','id="nama" class="form-control input-style select2"'); ?>
               </div>
             </div>
             <div class="col-md-1">

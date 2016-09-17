@@ -37,13 +37,13 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		
 		 
 
-		 // if($kabupaten!=null) {
-		 	// $this->db->like("d.id_kab",$kabupaten);
-		 // }
+		 if($tahun!=null) {
+		 	$this->db->like("dk.tahun",$tahun);
+		 }
 
-		 // if($tahun!='0') {
-		 	// $this->db->like("d.tahun",$tahun);
-		 // }
+		 if($desa!='0') {
+		 	$this->db->like("desa.id",$desa);
+		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');
 		//$this->db->limit($param['limit']['end'], $param['limit']['start']) ;

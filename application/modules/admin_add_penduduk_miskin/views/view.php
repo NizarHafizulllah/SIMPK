@@ -75,6 +75,7 @@
         <th width="">Alamat</th>
         <th width="15%">Pekerjaan</th>
         <th width="15%">Desa</th>
+        <th width="15%">#</th>
     </tr>
   
 </thead>

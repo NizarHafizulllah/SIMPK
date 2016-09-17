@@ -150,7 +150,7 @@ $('#form_data').bootstrapValidator({
 
 $("#tombolsubmitsimpan").click(function(){
  console.log('tests');
-
+ 
     $.ajax({
         url:'<?php echo site_url("$this->controller/simpan"); ?>',
         data : $('#form_data').serialize(),

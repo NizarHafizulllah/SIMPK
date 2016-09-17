@@ -53,7 +53,7 @@ function baru(){
 
         $data_array['action'] = 'simpan';
 		// $data_array['kabupaten'] = $this->db->get("tiger_kabupaten");
-       $data_array['arr_kecamatan'] = $this->cm->arr_dropdown2("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
        
         $content = $this->load->view("add",$data_array,true);
 
@@ -124,6 +124,21 @@ function get_desa(){
 
 }
 
+function get_nama(){
+    $data = $this->input->post();
+    $rs = array('' => 'Pilih Satu', );
+    $id_desa = $data['id_desa'];
+    $this->db->where("id_desa",$id_desa);
+    $this->db->order_by("nama");
+    $rs = $this->db->get("penduduk");
+    echo "<option value='0' selected>Pilih Nama</option>";
+    foreach($rs->result() as $row ) :
+        echo "<option value=$row->id>$row->nama </option>";
+    endforeach;
+
+
+}
+
 
     function get_data() {
 
@@ -137,8 +152,8 @@ function get_desa(){
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $kabupaten = $_REQUEST['columns'][1]['search']['value'];
-        $tahun = $_REQUEST['columns'][2]['search']['value'];
+        $tahun = $_REQUEST['columns'][1]['search']['value'];
+        $desa = $_REQUEST['columns'][2]['search']['value'];
 
 
 
@@ -153,8 +168,8 @@ function get_desa(){
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
-				"kabupaten" => $kabupaten,
-                "tahun" => $tahun,
+				"tahun" => $tahun,
+                "desa" => $desa,
 				
 				 
 		);     
@@ -174,9 +189,9 @@ function get_desa(){
         $arr_data = array();
         foreach($result as $row) : 
 		// $daft_id = $row['daft_id'];
-        // $nik = $row['nik'];
-            // $hapus = "<a href ='#' onclick=\"hapus('$nik')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
-            // <a href ='$this->controller/editdata?nik=$nik' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
+        $nik = $row['nik'];
+            $hapus = "<a href ='#' onclick=\"hapus('$nik')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
+            <!--a href ='$this->controller/editdata?nik=$nik' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a-->";
              // $select = "<input type='checkbox' name='nik' id='nik' value='$nik'>";   	
         	$arr_data[] = array(
 				// $select,
@@ -185,7 +200,8 @@ function get_desa(){
                 $row['nama'],     		
                 $row['alamat'],     		
                 $row['pekerjaan'],    		
-                $row['desa']    		
+                $row['desa'],
+				$hapus
         	);
         endforeach;
 
@@ -210,8 +226,8 @@ function get_desa(){
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $kabupaten = $_REQUEST['columns'][1]['search']['value'];
-        $desa = $_REQUEST['columns'][2]['search']['value'];
+        $desa = $_REQUEST['columns'][1]['search']['value'];
+        $nama = $_REQUEST['columns'][2]['search']['value'];
 		$tahun = $_REQUEST['columns'][3]['search']['value'];
 
 
@@ -226,7 +242,8 @@ function get_desa(){
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
-				"kabupaten" => $kabupaten,
+				"desa" => $desa,
+				"nama" => $nama,
                 "tahun" => $tahun,
 				
 				 
@@ -396,7 +413,7 @@ else {
 
     	$data = array('nik' => $nik, );
 
-    	$res = $this->db->delete('penduduk', $data);
+    	$res = $this->db->delete('data_kemiskinan', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }
