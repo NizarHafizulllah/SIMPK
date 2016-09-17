@@ -171,8 +171,9 @@ $("#tombolsubmitsimpan").click(function(){
                         }); 
             }
         }
-    });
 
+    });
+    $('#biro_jasa').DataTable().ajax.reload();
     return false;
 });
 

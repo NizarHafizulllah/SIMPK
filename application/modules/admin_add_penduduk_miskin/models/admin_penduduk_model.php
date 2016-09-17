@@ -28,6 +28,7 @@ class admin_penduduk_model extends CI_Model {
 
 		$this->db->select ( '*' ); 
     	$this->db->from ( 'penduduk p' );
+    	$this->db->where('nik not in(select nik from data_kemiskinan where tahun="'.$tahun.'")');
     	$this->db->join ( 'tiger_desa desa', 'desa.id = p.id_desa' , 'left' );
     	$this->db->join ( 'pekerjaan pk', 'pk.id = p.pekerjaan' , 'left' );
 

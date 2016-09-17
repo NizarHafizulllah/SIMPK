@@ -235,7 +235,8 @@ function get_desa(){
         
   
         $kabupaten = $_REQUEST['columns'][1]['search']['value'];
-        $tahun = $_REQUEST['columns'][2]['search']['value'];
+        $desa = $_REQUEST['columns'][2]['search']['value'];
+        $tahun = $_REQUEST['columns'][3]['search']['value'];
 
 
 
@@ -267,6 +268,9 @@ function get_desa(){
         );
           
 			$result = $this->adm->data($req_param)->result_array();
+
+        // echo $this->db->last_query();
+        // exit();
        
         $arr_data = array();
         foreach($result as $row) : 

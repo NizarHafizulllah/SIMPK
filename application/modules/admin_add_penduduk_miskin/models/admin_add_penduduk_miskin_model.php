@@ -19,7 +19,7 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		 extract($param);
 
 		 $kolom = array(0=>"tahun",
-		 					"nik",
+		 					"p.nik",
 		 					"nama",
 							"alamat",
 							"pekerjaan",
