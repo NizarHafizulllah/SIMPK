@@ -90,45 +90,21 @@ function cek_passwd($p1){
 function simpan(){
 
     $post = $this->input->post('nik');
-// echo json_encode($post);exit;
-		// $this->load->library('form_validation');
-		// $kab = $this->db->get("tiger_kabupaten")->result();
 		
-        // $this->form_validation->set_rules('nama','Nama Penduduk','required');  
-        // $this->form_validation->set_rules('nik','NIK','callback_cek_nik');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
-         
-        // $this->form_validation->set_message('required', ' %s Harus diisi ');
-        
-        // $this->form_validation->set_error_delimiters('', '<br>');
-
-        // $post['tanggal_lahir'] = flipdate($post['tanggal_lahir']);
-        
-        // unset($post['kecamatan']);
-        
-        //show_array($data);
-
-		// if($this->form_validation->run() == TRUE ) { 
+	foreach($post as $nik) {
 		
-			foreach($post as $nik) {
-				
-				$data = array(
-			
-					'nik'		=> $nik,
-					'tahun'		=> $this->input->post('tahun')
-				
-				);
-				$this->db->insert('data_kemiskinan', $data); 
-				
-			}
-            $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
-
-		// }
-	// else {
-		// $arr = array("error"=>true,'message'=>validation_errors());
-// }
+		$data = array(
+	
+			'nik'		=> $nik,
+			'tahun'		=> $this->input->post('tahun')
 		
-				echo json_encode($arr);
+		);
+		$this->db->insert('data_kemiskinan', $data); 
+		
+	}
+	$arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
+
+	echo json_encode($arr);
 				
 	}
 
@@ -235,8 +211,8 @@ function get_desa(){
         
   
         $kabupaten = $_REQUEST['columns'][1]['search']['value'];
-        $tahun = $_REQUEST['columns'][2]['search']['value'];
-
+        $desa = $_REQUEST['columns'][2]['search']['value'];
+		$tahun = $_REQUEST['columns'][3]['search']['value'];
 
 
         // echo $kabupaten;
@@ -266,7 +242,7 @@ function get_desa(){
                     'end' => $limit
         );
           
-			$result = $this->adm->data($req_param)->result_array();
+		$result = $this->adm->data($req_param)->result_array();
        
         $arr_data = array();
         foreach($result as $row) : 

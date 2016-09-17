@@ -37,36 +37,33 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	// function grafik() {
-		// $data_array = array();
-		
-		// $data_array['tahun'] = $this->input->get('tahun');
-		
-		// $data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
-		// $data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
-							  // ->order_by('id_kab', 'ASC')
-							  // ->get('data_penduduk_miskin')
-							  // ->result();
-		
-		// $content = $this->load->view($this->controller."/content/grafik",$data_array, true);
-		
-		// $this->set_subtitle("Grafik");
-		// $this->set_title("SIMPK - Grafik");
-		// $this->set_content($content);
-		// $this->render();
-	// }
-
-	function grafik_penduduk_miskin() {
-		$data_array = array();
+	function get_grafik() {
 		
 		$data_array['tahun'] = $this->input->get('tahun');
-		$data_array['title'] = 'Data Jumlah Penduduk Miskin per Kabupaten';
+		$url = $this->input->get('url');
+		
+		if($url == 'grafik_penduduk_miskin') {
+			$data_array['title'] = 'Data Jumlah Penduduk Miskin';
+			$tabel 				 = 'data_penduduk_miskin';
+		} else {
+			$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
+			$tabel 				 = 'data_garis_miskin';
+		}
+			
 		
 		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
 		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
 							  ->order_by('id_kab', 'ASC')
-							  ->get('data_penduduk_miskin')
+							  ->get($tabel)
 							  ->result();
+		
+		$this->load->view($this->controller."/content/grafik_view",$data_array);
+		
+	}
+
+	function grafik_penduduk_miskin() {
+		$data_array = array();
+		
 		
 		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
 		
@@ -79,14 +76,6 @@ class Beranda extends master_controller  {
 	function grafik_garis_miskin() {
 		$data_array = array();
 		
-		$data_array['tahun'] = $this->input->get('tahun');
-		$data_array['title'] = 'Data Jumlah Garis Kemiskinan per Kabupaten';
-		
-		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
-		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
-							  ->order_by('id_kab', 'ASC')
-							  ->get('data_garis_miskin')
-							  ->result();
 		
 		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
 		
@@ -121,12 +110,40 @@ class Beranda extends master_controller  {
 
 	function Pivot() {
 		$data_array = array();
+				
 		$content = $this->load->view($this->controller."/content/pivot",$data_array, true);
 		
 		$this->set_subtitle("Pivot");
 		$this->set_title("SIMPK - Pivot");
 		$this->set_content($content);
 		$this->render();
+	}
+	
+	function get_pivot() {
+		
+		$data_array = array();
+		$tahun1 = $this->input->get('tahun1');
+		$tahun2= $this->input->get('tahun2');
+		
+		$query = "SELECT tk.nama_kab, tahun, ";
+		
+		for($x=$tahun1; $x<$tahun2; $x++) {
+			
+			$query .="SUM(IF(pm.tahun=".$x.", pm.jumlah, 0)) t".$x.", ";
+			
+		}
+		
+		$query = substr($query, 0, strlen($query) - 2);
+		
+		$query .= " FROM data_penduduk_miskin pm, 
+				  tiger_kabupaten tk
+				  WHERE pm.id_kab = tk.id
+				  GROUP BY(id_kab)";
+		
+		$data_array['pivot'] = $this->db->query($query)->result();
+		
+		$content = $this->load->view($this->controller."/content/pivot_view",$data_array);
+				
 	}
 
 	function statistik() {

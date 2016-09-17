@@ -61,6 +61,7 @@
             </form>
 		</div>          
 			<br>
+			<form id="form_data" class="form-horizontal" method="post" action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
 			<div class="row">
 				<div class="col-md-4">
 					<select class="form-control input-style select2" name="tahun" id="tahun">
@@ -74,7 +75,6 @@
 				</div>
 			</div>
 			<br>
-			<form id="form_data" class="form-horizontal" method="post" action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
 			<div class="col-md-12">
 				<div class="table-responsive">
 
@@ -92,7 +92,7 @@
 				</thead>
 				</table>
 				</div>
-				<button id="ttombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
+				<button id="tombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
 				<a href="<?php echo site_url("$this->controller"); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>				
 			</div>
 			</form>
