@@ -64,8 +64,8 @@
  	<li class="dropdown <?php echo $subtitle=='Pivot'?'active':''; ?>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pivot <span class="caret"></span></a>
 		<ul class="dropdown-menu">
-		  <li><a href="<?php echo site_url('beranda/pivot_penduduk_miskin'); ?>">Penduduk Miskin per Kabupaten</a></li>
-		  <li><a href="<?php echo site_url('beranda/pivot_garis_miskin'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/pivot/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/pivot/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
 		</ul>
     </li>
     </ul>
