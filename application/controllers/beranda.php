@@ -162,7 +162,7 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	function pivot_penduduk_miskin() {
+	function pivot($url) {
 		$data_array = array();
 				
 		$content = $this->load->view($this->controller."/content/pivot",$data_array, true);
@@ -173,24 +173,14 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	function pivot_garis_miskin() {
-		$data_array = array();
-				
-		$content = $this->load->view($this->controller."/content/pivot",$data_array, true);
-		
-		$this->set_subtitle("Pivot");
-		$this->set_title("SIMPK - Pivot");
-		$this->set_content($content);
-		$this->render();
-	}
-	
 	function get_pivot() {
 		
 		$data_array = array();
 		$tahun = $this->input->get('tahun');
+		$batas = 7;
 		$url = $this->input->get('url');
 		
-		if($url == 'pivot_penduduk_miskin') {
+		if($url == 1) {
 			$data_array['title'] = 'Data Jumlah Penduduk Miskin';
 			$tabel 				 = 'data_penduduk_miskin';
 		} else {
@@ -200,7 +190,7 @@ class Beranda extends master_controller  {
 		
 		$query = "SELECT tk.nama_kab, tahun, ";
 		
-		for($x=$tahun-7; $x<=$tahun; $x++) {
+		for($x=$tahun - $batas; $x<=$tahun; $x++) {
 			
 			$query .="SUM(IF(pm.tahun=".$x.", pm.jumlah, 0)) t".$x.", ";
 			
@@ -214,6 +204,8 @@ class Beranda extends master_controller  {
 				  GROUP BY(id_kab)";
 		
 		$data_array['tahun'] = $tahun;
+		$data_array['batas'] = $batas;
+		$data_array['kab']   = $this->db->get('tiger_kabupaten')->result();
 		$data_array['pivot'] = $this->db->query($query)->result();
 		
 		$content = $this->load->view($this->controller."/content/pivot_view",$data_array);

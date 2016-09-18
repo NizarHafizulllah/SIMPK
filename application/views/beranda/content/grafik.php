@@ -30,22 +30,22 @@ $(function () {
 });
 </script>
 
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-right: 20px;">
-      <div class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-			<select class="form-control" name="tahun" id="tahun">
-				<option value="">- Pilih Tahun -</option>
-				<?php for($x=date('Y'); $x>=2000; $x--) { ?>
-					<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
-				<?php } ?>
-			</select>
-		</div>
-        <button class="btn btn-default" id="cari">Cari</button>
-      </div>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<div class="panel panel-default" style="background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);">
+  <div class="panel-body">
+	<span class="col-md-5  col-md-offset-7">
+	<div class="input-group">
+		<select class="form-control" name="tahun" id="tahun">
+			<option value="">- Pilih Tahun -</option>
+			<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+				<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+			<?php } ?>
+		</select>
+      <span class="input-group-btn">
+		<button class="btn btn-default" id="cari">Cari</button>
+      </span>
+    </div><!-- /input-group -->
+	</span>
+  </div>
+</div>
+
 <div id="grafik"></div>
