@@ -11,12 +11,12 @@ $(function () {
 			return false;
 		}
 		
-		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"></div>');
+		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"><p>Ichal Ganteng</p></div>');
 		
 		$.ajax({
 			
 			url : '<?php echo site_url("beranda/get_grafik"); ?>',
-            data : 'tahun=' + nilai + '&url=<?php echo $this->uri->segment(2); ?>',
+            data : 'tahun=' + nilai + '&url=<?php echo $this->uri->segment(3); ?>',
             type : 'get', 
             success : function(result) {
                 $("#grafik").html(result);

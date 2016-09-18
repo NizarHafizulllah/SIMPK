@@ -39,13 +39,13 @@ class admin_penduduk_model extends CI_Model {
 		
 		 
 
-		 // if(!empty($nama)) {
-		 	// $this->db->like("p.nama",$nama);
-		 // }
+		 if(!empty($nama)) {
+		 	$this->db->like("p.nama",$nama);
+		 }
 
-		 // if($desa!='null') {
-		 	// $this->db->like("desa.id",$desa);
-		 // }
+		 if($desa!='null') {
+		 	$this->db->like("desa.id",$desa);
+		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');
 		//$this->db->limit($param['limit']['end'], $param['limit']['start']) ;
@@ -56,10 +56,6 @@ class admin_penduduk_model extends CI_Model {
 		// echo $this->db->last_query(); exit;
  		return $res;
 	}
-
-
-	
-
 
 }
 

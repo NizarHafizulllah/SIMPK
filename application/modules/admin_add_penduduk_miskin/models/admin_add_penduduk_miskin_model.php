@@ -38,12 +38,14 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		
 		 
 
+
 		 if($desa!='null') {
 		 	$this->db->like("p.id_desa",$desa);
 		 }
 
 		 if($tahun!='0') {
 		 	$this->db->like("dk.tahun", $tahun);
+
 		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');

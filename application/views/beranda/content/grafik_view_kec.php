@@ -8,15 +8,15 @@ $(function () {
             x: -20 //center
         },
 		subtitle: {
-            text: 'per Kabupaten Tahun :<?php echo $tahun; ?>',
+            text: 'per Kecamatan Tahun :<?php echo $tahun; ?>',
             x: -20
         },
         xAxis: {
             categories: [
 				<?php
 					
-					foreach($kab as $row) {
-						echo "'.$row->nama_kab.'".",";
+					foreach($kec as $row) {
+						echo "'.$row->kecamatan.'".",";
 					}
 				
 				?>
@@ -47,14 +47,28 @@ $(function () {
 				<?php
 					
 					if($jml == null ) {
-						for($x=1; $x<=count($kab); $x++){
+						
+						for($x=1; $x<=count($kec); $x++){
 							echo '0, ';
 						}
+						
 					} else {
-						foreach($jml as $row) {
-							echo $row->jumlah.', ';
-						}
-					}
+						
+						foreach($kec as $list): 
+							foreach($jml as $row): 
+								if($list->kecamatan == $row->kecamatan) {
+									$nilai = $row->jumlah.', ';
+									break;
+								} else {
+									$nilai = '0, ';
+								}
+							endforeach;
+							
+							echo $nilai;
+							
+						endforeach;
+						
+					}				
 					
 				?>
 			]

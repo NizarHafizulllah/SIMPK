@@ -23,7 +23,7 @@
 			<tr>	
 				<td></td>
 				<td>
-					<select class="form-control input-style select2" name="tahun">
+					<select class="form-control input-style select2" name="tahun" required>
 						<option> - Pilih Tahun - </option>
 						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
 						

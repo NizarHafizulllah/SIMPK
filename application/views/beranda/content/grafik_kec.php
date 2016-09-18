@@ -1,4 +1,4 @@
-<h3>Pivot</h3>
+<h3>Grafik</h3>
 <hr>
 <script>
 $(function () {
@@ -11,15 +11,15 @@ $(function () {
 			return false;
 		}
 		
-		$('#pivot').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"><p>Ichal Ganteng</p></div>');
+		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"><p>Ichal Ganteng</p></div>');
 		
 		$.ajax({
 			
-			url : '<?php echo site_url("beranda/get_pivot"); ?>',
-            data : 'tahun=' + nilai + '&url=<?php echo $this->uri->segment(2); ?>',
+			url : '<?php echo site_url("beranda/get_grafik_kec"); ?>',
+            data : 'tahun=' + nilai ,
             type : 'get', 
             success : function(result) {
-                $("#pivot").html(result);
+                $("#grafik").html(result);
             }
 
 			
@@ -39,7 +39,7 @@ $(function () {
 			<select class="form-control" name="tahun" id="tahun">
 				<option value="">- Pilih Tahun -</option>
 				<?php for($x=date('Y'); $x>=2000; $x--) { ?>
-					<option value="<?php echo $x; ?>"><?php echo ($x-7).' - '.$x; ?></option>
+					<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 				<?php } ?>
 			</select>
 		</div>
@@ -48,4 +48,4 @@ $(function () {
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div id="pivot"></div>
+<div id="grafik"></div>
