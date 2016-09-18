@@ -11,7 +11,7 @@ $(function () {
 			return false;
 		}
 		
-		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"><p>Ichal Ganteng</p></div>');
+		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"></div>');
 		
 		$.ajax({
 			
@@ -33,7 +33,7 @@ $(function () {
 <div class="panel panel-default" style="background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);">
   <div class="panel-body">
 	<span class="col-md-5  col-md-offset-7">
-	<div class="input-group">
+	<div class="input-group" style="margin-top: -7px; margin-bottom: -7px">
 		<select class="form-control" name="tahun" id="tahun">
 			<option value="">- Pilih Tahun -</option>
 			<?php for($x=date('Y'); $x>=2000; $x--) { ?>

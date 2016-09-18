@@ -128,7 +128,8 @@ $(function () {
 							   WHERE dk.tahun = ".(date('Y')-1)."
 							   GROUP BY(tk.id)";
 					$jml	= $this->db->query($query)->result();
-
+					
+					
 					$total = 0;
 					foreach($jml as $row): 
 	
@@ -136,15 +137,22 @@ $(function () {
 
 					endforeach;					
 					
-					foreach($kec as $list): 
-						foreach($jml as $row): 
-							if($list->kecamatan == $row->kecamatan) {
-								$nilai = $row->jumlah/$total*100;
-								break;
-							} else {
-								$nilai = 0;
-							}
-						endforeach;
+					foreach($kec as $list):
+						
+						if(!$jml) {
+							$nilai = '0.0';
+						} else {
+						
+							foreach($jml as $row): 
+								if($list->kecamatan == $row->kecamatan) {
+									$nilai = $row->jumlah/$total*100;
+									break;
+								} else {
+									$nilai = '0.0';
+								}
+							endforeach;
+							
+						}
 				?>		
 					{
 						name: <?php echo "'$list->kecamatan'"; ?>,
