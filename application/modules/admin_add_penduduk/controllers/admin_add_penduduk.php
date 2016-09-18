@@ -50,9 +50,20 @@ function index(){
 function baru(){
         $data_array=array();
 
+        $data_array['form'] = 'form_simpan';
+
         $data_array['action'] = 'simpan';
         $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
        $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
+       $data_array['arr_jk'] = array(
+                            '' => 'Pilih Jenis Kelamin',
+                            'l' => 'Laki-laki',
+                            'p' => 'Perempuan' );
+
+       $data_array['arr_hubungan'] = array( '' => 'Hubungan Dalam Keluarga',
+                                            '1' => 'Kepala Keluarga',
+                                            '2' => 'Bukan Kepala Keluarga' );
+       $data_array['arr_desa'] = array('' => 'Silahkan Pilih Kecamatan');
        
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
@@ -207,12 +218,22 @@ function get_desa(){
     	 $rs = $this->db->get('penduduk');
     	 $data = $rs->row_array();
 
+         $data['form'] = 'form_update'; 
+
          $data['tanggal_lahir'] = flipdate($data['tanggal_lahir']);
 
+         $kecamatan = $data['id_kecamatan'];
        
-       $data['arr_kecamatan'] = $this->cm->arr_dropdown("tiger_kecamatan", "id", "kecamatan", "kecamatan");
-       $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
-       $data['arr_desa'] = $this->cm->arr_dropdown("tiger_desa", "id", "desa", "desa");
+       $data['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
+       $data['arr_jk'] = array('l' => 'Laki-laki',
+                            'p' => 'Perempuan' );
+
+       $data['arr_hubungan'] = array('1' => 'Kepala Keluarga',
+                                            '2' => 'Bukan Kepala Keluarga' );
+      
+
+       $data['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
+       $data['arr_desa'] = $this->cm->arr_dropdown3("tiger_desa", "id", "desa", "desa", "id_kecamatan", $kecamatan);
 
 
         $data['action'] = 'update';
@@ -236,8 +257,8 @@ function get_desa(){
 
          // $content = $this->load->view($this->controller."_form_view",$data,true);
 
-		$this->set_subtitle("Edit Pengepul");
-		$this->set_title("Edit Pengepul");
+		$this->set_subtitle("Edit Penduduk");
+		$this->set_title("Edit Penduduk");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -272,12 +293,9 @@ function update(){
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('nama','Nama Pengguna','required');    
-        $this->form_validation->set_rules('nomor_hp','Nomor HP','required');   
-        $this->form_validation->set_rules('p1','Password','callback_cek_passwd2'); 
-        // $this->form_validation->set_rules('email','Email','callback_cek_email');   
-        // $this->form_validation->set_rules('email','Email','callback_cek_email');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
+        $this->form_validation->set_rules('nik','NIK','required');    
+        // $this->form_validation->set_rules('p1','Password','callback_cek_passwd2'); 
+      
          
         $this->form_validation->set_message('required', ' %s Harus diisi ');
         
@@ -289,21 +307,13 @@ function update(){
 
 if($this->form_validation->run() == TRUE ) { 
 
+       
+        $post['tanggal_lahir'] = flipdate($post['tanggal_lahir']);
 
 
+        $this->db->where("nik",$post['nik']);
+        $res = $this->db->update('penduduk', $post); 
 
-        if(!empty($post['p1']) or !empty($post['p2'])) {
-            $post['password'] = md5($post['p1']);
-        }
-        
-        unset($post['p1']);
-        unset($post['p2']);
-
-
-
-
-        $this->db->where("id",$post['id']);
-        $res = $this->db->update('pengguna', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
@@ -315,6 +325,7 @@ else {
     $arr = array("error"=>true,'message'=>validation_errors());
 }
         echo json_encode($arr);
+        
 }
 
 

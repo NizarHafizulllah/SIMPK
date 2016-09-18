@@ -6,7 +6,7 @@
      
         <!-- Main content -->
         <form id="form_data" class="form-horizontal" method="post" 
-        action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
+        action="" role="form"> 
 
  
 
@@ -20,13 +20,14 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Pekerjaan</label>
       <div class="col-sm-9">
+        <input type="hidden" name="id" value="<?php echo isset($id)?$id:""; ?>">
         <input type="text" name="pekerjaan"  value="<?php echo isset($pekerjaan)?$pekerjaan:""; ?>" id="pekerjaan" class="form-control input-style" placeholder="Pekerjaan . . ."  style="border-radius: 8px;">
       </div>
     </div>
        
     <div class="form-group pull-center">
         <div class="col-sm-offset-3 col-sm-9">
-          <button id="tombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
+          <button id="<?php echo $action ?>" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
           <a href="<?php echo site_url("$this->controller"); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>
         </div>
       </div>

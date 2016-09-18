@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Biro Jasa </title>
+  <title>SIMPK </title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
             <h2>Halaman Yang Anda Cari Tidak Ada</h2>
             <p>Silahkan Cek Kembali Link Yang Anda Masukkan
             </p>
-            <p><a href="<?php echo site_url('birojasa'); ?>"></a></p>
+            <p><a href="<?php echo site_url('beranda'); ?>">Beranda</a></p>
             <div class="mid_center">
               <h3>Search</h3>
               <form>

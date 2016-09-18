@@ -35,7 +35,7 @@ $('#form_data').bootstrapValidator({
 
 
 
-$("#tombolsubmitsimpan").click(function(){
+$("#simpan").click(function(){
  console.log('tests');
 
     $.ajax({
@@ -75,10 +75,10 @@ $("#tombolsubmitsimpan").click(function(){
 
 
 
-$("#tombolsubmitupdate").click(function(){ 
+$("#update").click(function(){ 
     $.ajax({
         url:'<?php echo site_url("$this->controller/update"); ?>',
-        data : $('#form_edit').serialize(),
+        data : $('#form_data').serialize(),
         type : 'post',
         dataType : 'json',
         success : function(obj){

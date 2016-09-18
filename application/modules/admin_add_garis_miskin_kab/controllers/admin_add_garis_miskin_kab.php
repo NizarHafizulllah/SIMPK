@@ -73,18 +73,6 @@ function cek_email($nik){
 
 }
 
-function cek_passwd($p1){
-    $p2 = $this->input->post('p2');
-
-    if(empty($p1) or empty($p2)){
-         $this->form_validation->set_message('cek_passwd', ' %s harus diisi');
-         return false;
-    }
-    if($p1 <> $p2) {
-        $this->form_validation->set_message('cek_passwd', ' %s tidak sama');
-         return false;
-    }
-}
 
 function simpan(){
 
@@ -101,13 +89,11 @@ function simpan(){
 			$this->form_validation->set_rules('jumlah'.$x, $row->nama_kab,'required');  
 			$x++;
 		}
-        // $this->form_validation->set_rules('nama','Nama Penduduk','required');  
-        // $this->form_validation->set_rules('nik','NIK','callback_cek_nik');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
+        $this->form_validation->set_rules('tahun','Tahun ','required');          
          
-        // $this->form_validation->set_message('required', ' %s Harus diisi ');
+        $this->form_validation->set_message('required', ' %s Harus diisi ');
         
-        // $this->form_validation->set_error_delimiters('', '<br>');
+        $this->form_validation->set_error_delimiters('', '<br>');
 
         // $post['tanggal_lahir'] = flipdate($post['tanggal_lahir']);
         

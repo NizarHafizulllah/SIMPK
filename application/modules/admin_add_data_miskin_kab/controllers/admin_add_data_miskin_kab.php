@@ -13,20 +13,6 @@ class Admin_add_data_miskin_kab extends admin_controller{
 	}
 
 
-    function cekNIK(){
-        $nik = $this->input->post('nik');
-        $valid = true;
-        $this->db->where('nik', $nik);
-        $jumlah = $this->db->get("penduduk")->num_rows();    
-        if($jumlah == 1) {
-            $valid = false;
-        }
-        
-        echo json_encode(array('valid' => $valid));
-    
-    }
-
-
 
 
 
@@ -63,28 +49,7 @@ function baru(){
 }
 
 
-function cek_email($nik){
-    $this->db->where("nik",$nik);
-    if($this->db->get("penduduk")->num_rows() > 0)
-    {
-         $this->form_validation->set_message('cek_nik', ' %s Sudah pernah ditambahkan');
-         return false;
-    }
 
-}
-
-function cek_passwd($p1){
-    $p2 = $this->input->post('p2');
-
-    if(empty($p1) or empty($p2)){
-         $this->form_validation->set_message('cek_passwd', ' %s harus diisi');
-         return false;
-    }
-    if($p1 <> $p2) {
-        $this->form_validation->set_message('cek_passwd', ' %s tidak sama');
-         return false;
-    }
-}
 
 function simpan(){
 
@@ -99,13 +64,11 @@ function simpan(){
 			$this->form_validation->set_rules('jumlah'.$x, $row->nama_kab,'required');  
 			$x++;
 		}
-        // $this->form_validation->set_rules('nama','Nama Penduduk','required');  
-        // $this->form_validation->set_rules('nik','NIK','callback_cek_nik');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
+        $this->form_validation->set_rules('tahun','Tahun ','required');         
          
-        // $this->form_validation->set_message('required', ' %s Harus diisi ');
+        $this->form_validation->set_message('required', ' %s Harus diisi ');
         
-        // $this->form_validation->set_error_delimiters('', '<br>');
+        $this->form_validation->set_error_delimiters('', '<br>');
 
         // $post['tanggal_lahir'] = flipdate($post['tanggal_lahir']);
         

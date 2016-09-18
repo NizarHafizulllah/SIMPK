@@ -5,8 +5,9 @@
     <script src="<?php echo base_url("assets") ?>/plugins/select2/select2.full.min.js"></script>
      
         <!-- Main content -->
-        <form id="form_data" class="form-horizontal" method="post" 
-        action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
+
+        <form id="<?php echo $form ?>" class="form-horizontal" method="post" 
+        action="" role="form"> 
 
  
 
@@ -38,11 +39,8 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Hubungan Keluarga</label>
       <div class="col-sm-9">
-        <select class="form-control " name="hubungan_keluarga">
-          <option value="" selected="">- Hubungan Dalam Keluarga -</option>
-          <option value="1">Kepala Keluarga</option>
-          <option value="2">Bukan Kepala Keluarga</option>
-        </select>
+      <?php echo form_dropdown("hubungan_keluarga",$arr_hubungan,isset($hubungan_keluarga)?$hubungan_keluarga:'','id="hubungan_keluarga" class="form-control" style="width: 100%;"'); ?>
+      
       </div>
     </div>
     <div class="form-group">
@@ -66,18 +64,13 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Jenis Kelamin</label>
       <div class="col-sm-9">
-        <select class="form-control " name="jk">
-          <option value="" <option value="">--Jenis Kelamin--</option>>--Jenis Kelamin--</option>
-          <option value="l">Laki-laki</option>
-          <option value="p">Perempuan</option>
-        </select>
+      <?php echo form_dropdown("jk",$arr_jk,isset($jk)?$jk:'','id="jk" class="form-control" style="width: 100%;"'); ?>
+        
       </div>
     </div>
          <div class="form-group">
       <label class="col-sm-3 control-label">Perkejaan </label>
       <div class="col-sm-9">
-       
-        
         <?php echo form_dropdown("pekerjaan",$arr_pekerjaan,isset($pekerjaan)?$pekerjaan:'','id="pekerjaan" class="form-control" style="width: 100%;"'); ?>
       </div>
     </div>
@@ -86,14 +79,14 @@
       <div class="col-sm-9">
        
         
-        <?php echo form_dropdown("kecamatan",$arr_kecamatan,isset($id_kecamatan)?$id_kecamatan:'','id="id_kecamatan" class="form-control" style="width: 100%;"'); ?>
+        <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,isset($id_kecamatan)?$id_kecamatan:'','id="id_kecamatan" class="form-control" style="width: 100%;"'); ?>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">Desa </label>
       <div class="col-sm-9">
        
-        <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style "'); ?>
+        <?php echo form_dropdown("id_desa",$arr_desa,isset($id_desa)?$id_desa:'','id="id_desa" class="form-control input-style "'); ?>
       </div>
     </div>
     <div class="form-group">
@@ -115,7 +108,7 @@
        
     <div class="form-group pull-center">
         <div class="col-sm-offset-3 col-sm-9">
-          <button id="tombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
+          <button id="<?php echo $action ?>" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
           <a href="<?php echo site_url("$this->controller"); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>
         </div>
       </div>

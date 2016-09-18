@@ -111,7 +111,7 @@
                                         
                                         </div>
                                 <button type="submit" class="btn">Masuk !</button>
-                                       <a href="<?php echo site_url('lupa_password'); ?>"><u>Lupa Password</u></a>
+                                       <!-- <a href="<?php echo site_url('lupa_password'); ?>"><u>Lupa Password</u></a> -->
                                       
                             </form>
                           </div>
@@ -122,6 +122,11 @@
                         
                         <div class="col-sm-1 middle-border"></div>
                         <div class="col-sm-1"></div>
+
+
+                        <!-- <div class="col-md-5">
+                          <h2>Selamat Datang</h2>
+                        </div> -->
                           
                         <div class="col-sm-5">
                           
@@ -129,15 +134,14 @@
                             <div class="form-top">
                               <div class="form-top-left">
                                 <h2>Selamat Datang </h2>
+                      
+                                <h4>Silahkan Login Untuk Melanjutkan</h4>
                               </div>
                               <div class="form-top-right">
                                 <i class="fa fa-user"></i>
                               </div>
                               </div>
-                              <div class="form-bottom">
-                              <p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selamat Datang di form login aplikasi SIMPK (Sistem Informasi Manajemen Pengentasan Kemiskinan) Kab. Sumbawa Barat.</p>
-                              <p style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sebelum Kami Memberikan Hak Admin Kepada Anda Silahkan Login Dengan Cara Memasukkan Nama Pengguna Dan Kata Sandi Pada Form Login Disebelah Kiri.</p>
-                          </div>
+                              
                           </div>
                           
                         </div>

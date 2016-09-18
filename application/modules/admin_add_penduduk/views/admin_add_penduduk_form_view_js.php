@@ -5,7 +5,7 @@ $(document).ready(function(){
  $(".select2").select2();
 $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 
-$('#form_data').bootstrapValidator({
+$('#form_simpan').bootstrapValidator({
                 message: 'This value is not valid', 
                 feedbackIcons: { 
                     valid: 'glyphicon glyphicon-ok', 
@@ -66,22 +66,7 @@ $('#form_data').bootstrapValidator({
                                 message : 'RW tidak boleh kosong' 
                             }
                         }
-                    },
-                  
-
-                    nik: {
-                        validators: {
-                            notEmpty: {
-                                message : 'NIK Tidak Boleh Kosong'    
-                            },
-                            remote: {
-                                type: 'POST',
-                                url: "<?php echo site_url('admin_add_penduduk/cekNIK'); ?>",
-                                message: 'Penduduk dengan NIK ini sudah pernah ditambahkan',
-                                delay: 200
-                            }
-                        }
-                    } 
+                    }
 
                     
                 }
@@ -122,12 +107,12 @@ $('#form_data').bootstrapValidator({
 
     });
 
-$("#tombolsubmitsimpan").click(function(){
+$("#simpan").click(function(){
  console.log('tests');
 
     $.ajax({
         url:'<?php echo site_url("$this->controller/simpan"); ?>',
-        data : $('#form_data').serialize(),
+        data : $('#form_simpan').serialize(),
         type : 'post',
         dataType : 'json',
         success : function(obj){
@@ -162,10 +147,10 @@ $("#tombolsubmitsimpan").click(function(){
 
 
 
-$("#tombolsubmitupdate").click(function(){ 
+$("#update").click(function(){ 
     $.ajax({
         url:'<?php echo site_url("$this->controller/update"); ?>',
-        data : $('#form_edit').serialize(),
+        data : $('#form_update').serialize(),
         type : 'post',
         dataType : 'json',
         success : function(obj){

@@ -5,6 +5,9 @@ $(document).ready(function(){
  $(".select2").select2();
 $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 
+
+
+
 $('#form_data').bootstrapValidator({
                 message: 'This value is not valid', 
                 feedbackIcons: { 

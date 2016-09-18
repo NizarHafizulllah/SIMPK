@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch(window.location.origin+"/bbn/assets/img/backgrounds/1.jpg");
+    $.backstretch(window.location.origin+"/simpk/assets/img/backgrounds/1.jpg");
     
     /*
         Login form validation

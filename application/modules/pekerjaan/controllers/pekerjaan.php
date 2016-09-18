@@ -33,13 +33,12 @@ function baru(){
         $data_array=array();
 
         $data_array['action'] = 'simpan';
-        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
-       $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
+       
        
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
-        $this->set_subtitle("Tambah Penduduk");
-        $this->set_title("Tambah Penduduk");
+        $this->set_subtitle("Tambah Pekerjaan");
+        $this->set_title("Tambah Pekerjaan");
         $this->set_content($content);
         $this->cetak();
 }
@@ -161,43 +160,22 @@ else {
 
     function editdata(){
     	 $get = $this->input->get(); 
-    	 $nik = $get['nik'];
+    	 $id = $get['id'];
 
-    	 $this->db->where('nik',$nik);
-    	 $rs = $this->db->get('penduduk');
+    	 $this->db->where('id',$id);
+    	 $rs = $this->db->get('pekerjaan');
     	 $data = $rs->row_array();
 
-         $data['tanggal_lahir'] = flipdate($data['tanggal_lahir']);
-
-       
-       $data['arr_kecamatan'] = $this->cm->arr_dropdown("tiger_kecamatan", "id", "kecamatan", "kecamatan");
-       $data_array['arr_pekerjaan'] = $this->cm->arr_dropdown("pekerjaan", "id", "pekerjaan", "pekerjaan");
-       $data['arr_desa'] = $this->cm->arr_dropdown("tiger_desa", "id", "desa", "desa");
-
+         
 
         $data['action'] = 'update';
-         // show_array($data); exit;
-    	 
-		
-
-    	// $data_array=array(
-    	// 		'id' => $data->id,
-    	// 		'nama' => $data->nama,
-    	// 		'no_siup' => $data->no_siup,
-    	// 		'no_npwp' => $data->no_npwp,
-    	// 		'no_tdp' => $data->no_tdp,
-    	// 		'telp' => $data->telp,
-    	// 		'alamat' => $data->alamat,
-    	// 		'email' => $data->email,
-    	// 		'hp' => $data->hp,
-
-    	// 	);
-		$content = $this->load->view("admin_add_penduduk_form_view",$data,true);
+         
+		$content = $this->load->view($this->controller."_form_view",$data,true);
 
          // $content = $this->load->view($this->controller."_form_view",$data,true);
 
-		$this->set_subtitle("Edit Pengepul");
-		$this->set_title("Edit Pengepul");
+		$this->set_subtitle("Edit Pekerjaan");
+		$this->set_title("Edit Pekerjaan");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -216,12 +194,7 @@ function update(){
 
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('nama','Nama Pengguna','required');    
-        $this->form_validation->set_rules('nomor_hp','Nomor HP','required');   
-        $this->form_validation->set_rules('p1','Password','callback_cek_passwd2'); 
-        // $this->form_validation->set_rules('email','Email','callback_cek_email');   
-        // $this->form_validation->set_rules('email','Email','callback_cek_email');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
+        $this->form_validation->set_rules('pekerjaan','Nama Pekerjaan','required');       
          
         $this->form_validation->set_message('required', ' %s Harus diisi ');
         
@@ -234,20 +207,8 @@ function update(){
 if($this->form_validation->run() == TRUE ) { 
 
 
-
-
-        if(!empty($post['p1']) or !empty($post['p2'])) {
-            $post['password'] = md5($post['p1']);
-        }
-        
-        unset($post['p1']);
-        unset($post['p2']);
-
-
-
-
         $this->db->where("id",$post['id']);
-        $res = $this->db->update('pengguna', $post); 
+        $res = $this->db->update('pekerjaan', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }

@@ -1,4 +1,4 @@
-      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+     <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
         <link href="<?php echo base_url("assets") ?>/css/datepicker.css" rel="stylesheet">
   <link href="<?php echo base_url("assets") ?>/plugins/select2/select2.min.css" rel="stylesheet" >
     <script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
@@ -23,8 +23,8 @@
 			<tr>	
 				<td></td>
 				<td>
-					<select class="form-control input-style select2" name="tahun" required>
-						<option> - Pilih Tahun - </option>
+					<select class="form-control input-style select2" name="tahun" id="tahun" required>
+						<option value=""> - Pilih Tahun - </option>
 						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
 						
 							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
@@ -47,7 +47,7 @@
 				<td><?php echo $row->nama_kab; ?></td>
 				<td>
 					<input type="hidden" name="<?php echo 'id_kab'.$x; ?>" value="<?php echo $row->id; ?>">
-					<input type="number" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
+					<input type="number" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style kabupaten">
 				</td>
 			</tr>
 			<?php $x++; endforeach; ?>
