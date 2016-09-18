@@ -137,7 +137,7 @@ function get_desa(){
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $kabupaten = $_REQUEST['columns'][1]['search']['value'];
+        $desa = $_REQUEST['columns'][1]['search']['value'];
         $tahun = $_REQUEST['columns'][2]['search']['value'];
 
 
@@ -153,7 +153,7 @@ function get_desa(){
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
-				"kabupaten" => $kabupaten,
+				"desa" => $desa,
                 "tahun" => $tahun,
 				
 				 
@@ -169,7 +169,10 @@ function get_desa(){
                     'end' => $limit
         );
           
-		$result = $this->dm->data($req_param)->result_array();			
+		$result = $this->dm->data($req_param)->result_array();	
+
+        // echo $this->db->last_query();
+        // exit();		
        
         $arr_data = array();
         foreach($result as $row) : 

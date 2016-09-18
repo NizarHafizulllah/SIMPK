@@ -1,34 +1,16 @@
 <?php 
-class admin_add_penduduk extends admin_controller{
+class pekerjaan extends admin_controller{
 	var $controller;
-	function admin_add_penduduk(){
+	function pekerjaan(){
 		parent::__construct();
 
 		$this->controller = get_class($this);
-		$this->load->model('admin_penduduk_model','dm');
+		$this->load->model('pekerjaan_model','dm');
         $this->load->model("coremodel","cm");
 		
 		//$this->load->helper("serviceurl");
 		
 	}
-
-
-    function cekNIK(){
-        $nik = $this->input->post('nik');
-        $valid = true;
-        $this->db->where('nik', $nik);
-        $jumlah = $this->db->get("penduduk")->num_rows();    
-        if($jumlah == 1) {
-            $valid = false;
-        }
-        
-        echo json_encode(array('valid' => $valid));
-    
-    }
-
-
-
-
 
 
 function index(){
@@ -38,10 +20,10 @@ function index(){
 
         $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
 
-		$content = $this->load->view("admin_penduduk_view",$data_array,true);
+		$content = $this->load->view("pekerjaan_view",$data_array,true);
 
-		$this->set_subtitle("Data Penduduk");
-		$this->set_title("Data Penduduk");
+		$this->set_subtitle("Pekerjaan");
+		$this->set_title("Pekerjaan");
 		$this->set_content($content);
 		$this->cetak();
 }
@@ -65,6 +47,7 @@ function baru(){
 
 
 
+
 function simpan(){
 
 
@@ -74,24 +57,20 @@ function simpan(){
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nama','Nama Penduduk','required');  
-        $this->form_validation->set_rules('nik','NIK','callback_cek_nik');    
-        // $this->form_validation->set_rules('pelaksana_nip','NIP','required');         
+        $this->form_validation->set_rules('pekerjaan','Nama Pekerjaan','required');  
+              
          
         $this->form_validation->set_message('required', ' %s Harus diisi ');
         
         $this->form_validation->set_error_delimiters('', '<br>');
 
-        $post['tanggal_lahir'] = flipdate($post['tanggal_lahir']);
-        
-        unset($post['kecamatan']);
-        
+       
         //show_array($data);
 
 if($this->form_validation->run() == TRUE ) { 
 
         
-        $res = $this->db->insert('penduduk', $post); 
+        $res = $this->db->insert('pekerjaan', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
         }
@@ -106,20 +85,6 @@ else {
 }
 
 
-function get_desa(){
-    $data = $this->input->post();
-    $rs = array('' => 'Pilih Satu', );
-    $id_kecamatan = $data['id_kecamatan'];
-    $this->db->where("id_kecamatan",$id_kecamatan);
-    $this->db->order_by("desa");
-    $rs = $this->db->get("tiger_desa");
-    echo "<option value='0' selected>- Pilih Desa -</option>";
-    foreach($rs->result() as $row ) :
-        echo "<option value=$row->id>$row->desa </option>";
-    endforeach;
-
-
-}
 
 
     function get_data() {
@@ -134,8 +99,7 @@ function get_desa(){
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $nama = $_REQUEST['columns'][1]['search']['value'];
-        $desa = $_REQUEST['columns'][2]['search']['value'];
+        $pekerjaan = $_REQUEST['columns'][1]['search']['value'];
 
 
 
@@ -146,8 +110,7 @@ function get_desa(){
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
-				"nama" => $nama,
-                "desa" => $desa,
+                "pekerjaan" => $pekerjaan,
 				
 				 
 		);     
@@ -171,17 +134,14 @@ function get_desa(){
         $arr_data = array();
         foreach($result as $row) : 
 		// $daft_id = $row['daft_id'];
-        $nik = $row['nik'];
-            $hapus = "<a href ='#' onclick=\"hapus('$nik')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
-            <a href ='$this->controller/editdata?nik=$nik' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
+        $id = $row['id'];
+            $hapus = "<a href ='#' onclick=\"hapus('$id')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
+            <a href ='$this->controller/editdata?id=$id' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
        	
         	 
         	$arr_data[] = array(
-        		$row['nik'],
-        		$row['nama'],
-                $row['alamat'],
-                $row['pekerjaan'],
-                $row['desa'],     		 
+        		$row['id'],
+        		$row['pekerjaan'],     		 
         		$hapus
         		
          			 
@@ -247,22 +207,6 @@ function get_desa(){
 
 
 
- function get_kecamatan(){
-    $data = $this->input->post();
-
-    $id_kota = $data['id_kota'];
-    $this->db->where("id_kota",$id_kota);
-    $this->db->order_by("kecamatan");
-    $rs = $this->db->get("tiger_kecamatan");
-    foreach($rs->result() as $row ) :
-        echo "<option value=$row->id>$row->kecamatan </option>";
-    endforeach;
-
-
-}
-
-
-
 function update(){
 
     $post = $this->input->post();
@@ -321,11 +265,11 @@ else {
 
     function hapusdata(){
     	$get = $this->input->post();
-    	$nik = $get['nik'];
+    	$id = $get['id'];
 
-    	$data = array('nik' => $nik, );
+    	$data = array('id' => $id, );
 
-    	$res = $this->db->delete('penduduk', $data);
+    	$res = $this->db->delete('pekerjaan', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }

@@ -23,7 +23,8 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		 					"nama",
 							"alamat",
 							"pekerjaan",
-							"desa"
+							"desa",
+							"tahun"
 		 	);
 			
 		$this->db->select ( '*' ); 
@@ -37,13 +38,13 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		
 		 
 
-		 // if($kabupaten!=null) {
-		 	// $this->db->like("d.id_kab",$kabupaten);
-		 // }
+		 if($desa!='null') {
+		 	$this->db->like("p.id_desa",$desa);
+		 }
 
-		 // if($tahun!='0') {
-		 	// $this->db->like("d.tahun",$tahun);
-		 // }
+		 if($tahun!='0') {
+		 	$this->db->like("dk.tahun", $tahun);
+		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');
 		//$this->db->limit($param['limit']['end'], $param['limit']['start']) ;

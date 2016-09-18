@@ -21,8 +21,7 @@ $(document).ready(function(){
 		 	  // alert('hello');
 		 	  
 
-		 	  dt.column(1).search($("#nama").val())
-        dt.column(2).search($("#id_desa").val())
+		 	  dt.column(1).search($("#pekerjaan").val())
 				 .draw();
 
 				 return false;
@@ -30,13 +29,10 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#nama").val('');
+			$("#pekerjaan").val('');
       
       
-      delete rs;
-      $("#id_desa").val("");
-      
-
+ 
 
 			$("#btn_submit").click();
 		 });
@@ -48,13 +44,13 @@ $(document).ready(function(){
  $(".select2").select2();
 
 
-function hapus(nik){
+function hapus(id){
 
 
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA PENDUDUK INI. ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA PENDUDUK',
+            message : 'ANDA AKAN MENGHAPUS DATA PEKERJAAN INI. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA PEKERJAAN',
             draggable: true,
             buttons : [
               {
@@ -69,7 +65,7 @@ BootstrapDialog.show({
                   $.ajax({
                   	url : '<?php echo site_url("$this->controller/hapusdata") ?>',
                   	type : 'post',
-                  	data : {nik : nik},
+                  	data : {id : id},
                   	dataType : 'json',
                   	success : function(obj) {
                   		$('#myPleaseWait').modal('hide'); 

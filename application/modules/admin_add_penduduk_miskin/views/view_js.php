@@ -20,7 +20,7 @@ $(document).ready(function(){
 		 $("#btn_submit").click(function(){
 		 	  // alert('hello');
 		 	
-				dt.column(1).search($("#kabupaten").val())
+				dt.column(1).search($("#id_desa").val())
 				dt.column(2).search($("#tahun").val())
 				.draw();
 
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#kabupaten").val('');
+			$("#id_desa").val('');
       
       
       delete rs;

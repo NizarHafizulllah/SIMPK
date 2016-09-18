@@ -1,10 +1,29 @@
 <h3>Datamart</h3>
 <hr>
 
-	<div class="jumbotron col-md-12">
-		<img class="col-md-2" src="<?php echo base_url('assets/img/pdf.png'); ?>">
-	</div>
+	
+<table width="100%" >
+	<tr style="font-size: 30px; background-color: grey;">
+		<td height="60px" align="center">Jenis</td>
+		<td align="center">Nama File</td>
+		<td align="center">#</td>
+	</tr>
+	
+	<?php $rs = $this->db->get('datamart');
+	$result = $rs->result_array();
+		  foreach ($result as $row) :?>
+		<tr>
+		<td width="20%"><img width="100%" src="<?php echo base_url('assets/img/pdf.png'); ?>"></td>
+		<td width="60%" style="font-size: 30px;"><?php echo $row['nama_file'] ?></td>
+		<td width="20%"><div class="col-md-4"><a href="<?php echo $row['link'] ?>" target="_blank"><button class="btn btn-primary" style="font-size: 30px;">Download</button></a></div></td>	
+	</tr>
 
-<h2><a href="https://drive.google.com/open?id=0B-9PXb8xWYQRZ2NHcG9Ja0paUDdlckJKTmxBMm41R09WMElJ" target="_blank">KSB Dalam Angka 20151</a></h2>
-<h2><a href="https://drive.google.com/open?id=0B-9PXb8xWYQRdlpWX0FmZENQakdvZnZVVWlWRjhTbWstdUEw" target="_blank">PDRB KSB 2010-2014</a></h2>
-<h2><a href="https://drive.google.com/open?id=0B-9PXb8xWYQRem5iVFE0eldqUVIyMnpTMXNWeWJCWmFvX0xj" target="_blank">Statistik Daerah KSB Tahun-2015</a></h2>
+	<?php 
+	endforeach;
+		  
+	 ?>
+
+
+	
+
+</table>

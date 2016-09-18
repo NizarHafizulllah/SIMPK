@@ -152,6 +152,7 @@ folder instead of downloading all of them to reduce the load. -->
               <ul class="treeview-menu">
                 <li><a href="<?php echo site_url('admin_add_penduduk'); ?>"><i class="fa fa-circle-o"></i> Penduduk</a></li>
                 <li><a href="<?php echo site_url('admin_add_penduduk_miskin'); ?>"><i class="fa fa-circle-o"></i> Data Kemiskinan</a></li>
+                <li><a href="<?php echo site_url('pekerjaan'); ?>"><i class="fa fa-circle-o"></i> Pekerjaan</a></li>
               </ul>
             </li>
             <li class="treeview">
