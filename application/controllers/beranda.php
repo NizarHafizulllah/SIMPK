@@ -102,44 +102,6 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	function grafik_penduduk_miskin() {
-		$data_array = array();
-		
-		
-		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
-		
-		$this->set_subtitle("Grafik");
-		$this->set_title("SIMPK - Grafik");
-		$this->set_content($content);
-		$this->render();
-	}
-
-	function grafik_garis_miskin() {
-		$data_array = array();
-		
-		
-		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
-		
-		$this->set_subtitle("Grafik");
-		$this->set_title("SIMPK - Grafik");
-		$this->set_content($content);
-		$this->render();
-	}
-
-	function grafik_penduduk_miskin_kec() {
-		
-		$data_array = array();
-		
-		
-		$content = $this->load->view($this->controller."/content/grafik",$data_array, true);
-		
-		$this->set_subtitle("Grafik");
-		$this->set_title("SIMPK - Grafik");
-		$this->set_content($content);
-		$this->render();
-		
-	}
-	
 	function klaster() {
 		$data_array = array();
 		$content = $this->load->view($this->controller."/content/klaster1",$data_array, true);
@@ -172,6 +134,17 @@ class Beranda extends master_controller  {
 		$this->set_content($content);
 		$this->render();
 	}
+	
+	function pivot_kec() {
+		$data_array = array();
+				
+		$content = $this->load->view($this->controller."/content/pivot_kec",$data_array, true);
+		
+		$this->set_subtitle("Pivot");
+		$this->set_title("SIMPK - Pivot");
+		$this->set_content($content);
+		$this->render();
+	}
 
 	function get_pivot() {
 		
@@ -188,7 +161,7 @@ class Beranda extends master_controller  {
 			$tabel 				 = 'data_garis_miskin';
 		}
 		
-		$query = "SELECT tk.nama_kab, tahun, ";
+		$query = "SELECT tk.nama_kab, ";
 		
 		for($x=$tahun - $batas; $x<=$tahun; $x++) {
 			
@@ -212,6 +185,39 @@ class Beranda extends master_controller  {
 				
 	}
 
+	function get_pivot_kec() {
+		
+		$data_array = array();
+		$tahun = $this->input->get('tahun');
+		$batas = 7;
+		
+		$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
+		
+		$query = "SELECT tk.kecamatan, ";
+		
+		for($x=$tahun - $batas; $x<=$tahun; $x++) {
+			
+			$query .="COUNT(CASE WHEN dk.tahun = ".$x." then dk.nik END) t".$x.", ";
+			
+		}
+		
+		$query = substr($query, 0, strlen($query) - 2);
+		
+		$query .= " FROM data_kemiskinan dk
+					LEFT JOIN penduduk p on p.nik = dk.nik
+					LEFT JOIN tiger_desa td on td.id = p.id_desa
+					LEFT JOIN tiger_kecamatan tk on tk.id = td.id_kecamatan
+					GROUP BY tk.id";
+				
+		$data_array['tahun'] = $tahun;
+		$data_array['batas'] = $batas;
+		$data_array['kec']   = $this->db->get_where('tiger_kecamatan', array('id_kota' => '52_7'))->result();
+		$data_array['pivot'] = $this->db->query($query)->result();
+		
+		$content = $this->load->view($this->controller."/content/pivot_view_kec",$data_array);
+				
+	}	
+	
 	function statistik() {
 		$data_array = array();
 		$content = $this->load->view($this->controller."/content/statistik",$data_array, true);

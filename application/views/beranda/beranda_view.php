@@ -66,6 +66,7 @@
 		<ul class="dropdown-menu">
 		  <li><a href="<?php echo site_url('beranda/pivot/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
 		  <li><a href="<?php echo site_url('beranda/pivot/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/pivot_kec'); ?>">Penduduk Miskin Per Kecamatan</a></li>
 		</ul>
     </li>
     </ul>

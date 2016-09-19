@@ -77,14 +77,14 @@ function cek_email($nik){
 
 function simpan(){
 
-    $post = $this->input->post('nik');
+    $post 		  = $this->input->post('nik');
 		
 	foreach($post as $nik) {
 		
 		$data = array(
 	
-			'nik'		=> $nik,
-			'tahun'		=> $this->input->post('tahun')
+			'nik'			=> $nik,
+			'tahun'			=> $this->input->post('tahun')
 		
 		);
 		$this->db->insert('data_kemiskinan', $data); 
@@ -266,7 +266,8 @@ function get_nama(){
         $nik = $row['nik'];
             // $hapus = "<a href ='#' onclick=\"hapus('$nik')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
             // <a href ='$this->controller/editdata?nik=$nik' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
-             $select = "<input type='checkbox' name='nik[]' id='nik' value='$nik'>";   	
+             $select = "<input type='checkbox' name='nik[]' id='nik' value='$nik'>";  
+						
         	$arr_data[] = array(
 				$select,
         		$row['nik'],
