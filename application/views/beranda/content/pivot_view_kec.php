@@ -26,8 +26,7 @@
 	<?php
 		endforeach;
 	} else {
-		foreach($pivot as $row): 
-		
+		foreach($pivot as $row):
 	?>
 		<tr>
 			<td style="background-color: #57bef9"><?php echo $row->kecamatan; ?></td>

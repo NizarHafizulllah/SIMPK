@@ -10,6 +10,7 @@
     <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/costum.css'); ?>" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/responsiveslides.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/fancybox/jquery.fancybox.css'); ?>">
 
 	<!-- jQuery -->
     <script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js'); ?>"></script>
@@ -17,6 +18,7 @@
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/fancybox/jquery.fancybox.pack.js'); ?>"></script>
 
 
   </head>
