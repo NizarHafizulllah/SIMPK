@@ -76,12 +76,6 @@ function baru(){
 			
 			if(!$this->upload->do_upload('photo')) {
 				
-				// $pesan = "<div class='alert alert-danger alert-dismissable'>
-						// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						// <p align='center'>".$this->upload->display_errors()."</p>
-					  // </div>";
-								
-				// $this->session->set_flashdata('message', $pesan);
 				$arr = array("error"=>true,'message'=>$this->upload->display_errors());
 				
 			} else {
@@ -104,14 +98,6 @@ function baru(){
 				else {
 					 $arr = array("error"=>true,'message'=>"GAGAL  DIUPDATE");
 				}
-				// $res == true ? $info = 'berhasil insert data' : $info = 'gagal insert data';
-			
-				// $pesan = "<div class='alert alert-info alert-dismissable'>
-							// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-							// <p align='center'>".$info."</p>
-						  // </div>";
-				
-				// $this->session->set_flashdata('message', $pesan);
 												
 			}
 			
@@ -119,16 +105,9 @@ function baru(){
 					
 		}
 		else {
-			// $pesan = "<div class='alert alert-error alert-dismissable'>
-						// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						// <p align='center'>".validation_errors()."</p>
-					  // </div>";
-			
-			// $this->session->set_flashdata('message', $pesan);
 			
 			$arr = array("error"=>true,'message'=>validation_errors());
 		}
-			// redirect('kegiatan/baru');
 			echo json_encode($arr);
 	}
 

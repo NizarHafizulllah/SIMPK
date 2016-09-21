@@ -31,8 +31,8 @@ class Kegiatan_model extends CI_Model {
 		
 		 
 
-		 if(!empty($pekerjaan)) {
-		 	$this->db->like("pekerjaan",$pekerjaan);
+		 if(!empty($judul)) {
+		 	$this->db->like("judul",$judul);
 		 }
 
 		 // // if($desa!='null') {

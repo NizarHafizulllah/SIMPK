@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#pekerjaan").val('');
+			$("#judul").val('');
       
       
  
