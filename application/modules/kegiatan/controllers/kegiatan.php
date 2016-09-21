@@ -48,7 +48,7 @@ function baru(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('judul','Judul Foto','required');  
 		$this->form_validation->set_rules('keterangan','Keterangan Foto','required');  
-		$this->form_validation->set_rules('photo','File Foto','required');  
+		// $this->form_validation->set_rules('photo','File Foto','required');  	
 			  
 		 
 		$this->form_validation->set_message('required', ' %s Harus diisi ');
@@ -76,15 +76,16 @@ function baru(){
 			
 			if(!$this->upload->do_upload('photo')) {
 				
-				$pesan = "<div class='alert alert-danger alert-dismissable'>
-						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						<p align='center'>".$this->upload->display_errors()."</p>
-					  </div>";
+				// $pesan = "<div class='alert alert-danger alert-dismissable'>
+						// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+						// <p align='center'>".$this->upload->display_errors()."</p>
+					  // </div>";
 								
-				$this->session->set_flashdata('message', $pesan);
+				// $this->session->set_flashdata('message', $pesan);
+				$arr = array("error"=>true,'message'=>$this->upload->display_errors());
 				
 			} else {
-
+			
 				$get_name = $this->upload->data();
 				$name = $get_name['file_name'];
 				$nama_photo = $name;
@@ -97,30 +98,38 @@ function baru(){
 				);
 				
 				$res = $this->db->insert('kegiatan', $post); 
-				$res == true ? $info = 'anda berhasil insert data' : $info = 'anda gagal insert data';
+				if($res){
+					$arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
+				}
+				else {
+					 $arr = array("error"=>true,'message'=>"GAGAL  DIUPDATE");
+				}
+				// $res == true ? $info = 'berhasil insert data' : $info = 'gagal insert data';
 			
-				$pesan = "<div class='alert alert-info alert-dismissable'>
-							<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-							<p align='center'>".$info."</p>
-						  </div>";
+				// $pesan = "<div class='alert alert-info alert-dismissable'>
+							// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+							// <p align='center'>".$info."</p>
+						  // </div>";
 				
-				$this->session->set_flashdata('message', $pesan);
+				// $this->session->set_flashdata('message', $pesan);
 												
 			}
+			
+			
 					
 		}
 		else {
-			$pesan = "<div class='alert alert-error alert-dismissable'>
-						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						<p align='center'>".validation_errors()."</p>
-					  </div>";
+			// $pesan = "<div class='alert alert-error alert-dismissable'>
+						// <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+						// <p align='center'>".validation_errors()."</p>
+					  // </div>";
 			
-			$this->session->set_flashdata('message', $pesan);
+			// $this->session->set_flashdata('message', $pesan);
 			
-			// $arr = array("error"=>true,'message'=>validation_errors());
+			$arr = array("error"=>true,'message'=>validation_errors());
 		}
-			redirect('kegiatan/baru');
-			// echo json_encode($arr);
+			// redirect('kegiatan/baru');
+			echo json_encode($arr);
 	}
 
 
@@ -170,13 +179,16 @@ function baru(){
         foreach($result as $x => $row) : 
 		// $daft_id = $row['daft_id'];
         $id = $row['id'];
+        $image = $row['photo'];
+		$photo = "<img src='".base_url('assets/kegiatan/'.$image.'')."' style='width: 200px'>";
             $hapus = "<a href ='#' onclick=\"hapus('$id')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
-            <a href ='$this->controller/editdata?id=$id' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
+            <!--a href ='$this->controller/editdata?id=$id' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a-->";
        	
         	$arr_data[] = array(
         		$x+1,
         		$row['judul'],     		 
-        		$row['keterangan'],     		 
+        		$row['keterangan'], 
+				$photo,
         		$hapus
          			 
 				);
@@ -264,8 +276,12 @@ else {
     	$id = $get['id'];
 
     	$data = array('id' => $id, );
+		
+		$cek = $this->db->get('kegiatan', $data)->row();
 
-    	$res = $this->db->delete('pekerjaan', $data);
+			unlink('assets/kegiatan/'.$cek->photo);
+		
+    	$res = $this->db->delete('kegiatan', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }

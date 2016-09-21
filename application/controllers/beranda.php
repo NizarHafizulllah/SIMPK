@@ -228,8 +228,35 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
-	function kegiatan() {
+	function kegiatan($num = null) {
+		
+		$config['base_url'] = base_url().'index.php/beranda/kegiatan/';
+		$config['total_rows'] = $this->db->count_all('kegiatan');
+		$config['per_page'] = '12';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#"><span class="sr-only">(current)</span>';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['first_link']='<span class="glyphicon glyphicon-fast-backward"></span>';
+		$config['last_link']='<span class="glyphicon glyphicon-fast-forward"></span>';
+		$config['next_link']='<span class="glyphicon glyphicon-step-forward"></span>';
+		$config['prev_link']='<span class="glyphicon glyphicon-step-backward"></span>';	
+
+		$this->pagination->initialize($config);
+		
 		$data_array = array();
+		$data_array['halaman'] = $this->pagination->create_links();
+		$data_array['query'] = $this->db->get('kegiatan', $config['per_page'],$num)->result();
+
 		$content = $this->load->view($this->controller."/content/kegiatan",$data_array, true);
 		
 		$this->set_subtitle("Foto Kegiatan");

@@ -51,9 +51,10 @@
 <table width="100%" border="0" id="biro_jasa" class="table table-bordered table-hover dataTable" role="grid">
 <thead>
   <tr>
-    <th width="7%">No</th>
+    <th width="1%">No</th>
     <th width="13%">Judul</th> 
     <th width="13%">Keterangan</th> 
+    <th width="13%">Photo</th> 
     <th width="14%">#</th>
   </tr>
   

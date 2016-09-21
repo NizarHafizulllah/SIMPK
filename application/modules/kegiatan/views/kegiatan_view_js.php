@@ -49,8 +49,8 @@ function hapus(id){
 
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA PEKERJAAN INI. ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA PEKERJAAN',
+            message : 'ANDA AKAN MENGHAPUS DATA KEGIATAN INI. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA KEGIATAN',
             draggable: true,
             buttons : [
               {

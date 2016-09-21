@@ -47,10 +47,10 @@ $("#simpan").click(function(){
 
     $.ajax({
         url:'<?php echo site_url("$this->controller/simpan"); ?>',
-        data : $('#form_data').serialize(),
+        data : new FormData($('#form_data')[0]),
+		contentType: false,
+		processData: false,
         type : 'post',
-		contentType: 'multipart/form-data; charset=UTF-8; boundary=AaB03x', 
-		encoding: '', 
         dataType : 'json',
         success : function(obj){
 

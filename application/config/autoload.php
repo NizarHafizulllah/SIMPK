@@ -54,7 +54,7 @@ $autoload['packages'] = array();
 
 // $this->load->library('email', $config);
 
-$autoload['libraries'] = array('session','database');
+$autoload['libraries'] = array('session','database', 'pagination');
 
 
 /*

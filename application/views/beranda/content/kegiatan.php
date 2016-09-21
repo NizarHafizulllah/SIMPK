@@ -7,16 +7,19 @@
 <hr>
 
 <div class="row">
-<?php for($x=1; $x<=12; $x++) { ?>
+<?php if($query == null){?>
+  <h3 style="text-align: center">- Data kosong -</h3>
+<?php }else{ foreach ($query as $row):?>
   <div class="col-xs-3 col-md-3">
-	<a class="fancybox thumbnail" rel="galery" href="<?php echo base_url().'assets/kegiatan/kegiatan'.$x.'.jpg'; ?>" title="Deskripsi tentang kegiatan <?php echo $x; ?>">
-		<img src="<?php echo base_url().'assets/kegiatan/kegiatan'.$x.'.jpg'; ?>">
+	<a class="fancybox thumbnail" rel="galery" href="<?php echo base_url().'assets/kegiatan/'.$row->photo; ?>" title="<?php echo $row->keterangan; ?>">
+		<img src="<?php echo base_url().'assets/kegiatan/'.$row->photo; ?>">
 	</a>
   </div>
-<?php } ?>
+<?php endforeach; } ?>
 </div>
 <br>
 <div style="text-align: center">
+  <?php echo $halaman; ?>
 </div>
 <script>
 $(".fancybox").fancybox({
