@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Sep 2016 pada 15.58
+-- Generation Time: 23 Sep 2016 pada 12.08
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -201,21 +201,15 @@ CREATE TABLE IF NOT EXISTS `kegiatan` (
   `judul` varchar(200) NOT NULL,
   `keterangan` text NOT NULL,
   `photo` varchar(500) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data untuk tabel `kegiatan`
 --
 
 INSERT INTO `kegiatan` (`id`, `tanggal`, `judul`, `keterangan`, `photo`) VALUES
-(18, '2016-09-21', 'kegiatan 1', 'keterangan kegiatan 1', 'kegiatan1.jpg'),
-(20, '2016-09-21', 'kegiatan 2', 'keterangan kegiatan 2', 'kegiatan2.JPG'),
-(21, '2016-09-21', 'kegiatan 3', 'keterangan kegiatan 3', 'kegiatan3.jpg'),
-(22, '2016-09-21', 'kegiatan 4', 'keterangan kegiatan 4', 'kegiatan4.jpg'),
-(23, '2016-09-21', 'kegiatan 5', 'keterangan kegiatan 5', 'kegiatan5.jpg'),
-(24, '2016-09-21', 'kegiatan 6', 'keterangan kegiatan 6', 'kegiatan7.jpg'),
-(25, '2016-09-21', 'kegiatan 7', 'keterangan kegiatan 7', 'kegiatan8.jpg'),
-(26, '2016-09-21', 'kegiatan 8', 'keterangan kegiatan 8', 'kegiatan9.jpg');
+(32, '2016-09-23', 'kegiatan 1', 'Ketetangan kegiatan1', 'kegiatan6.jpg'),
+(33, '2016-09-23', 'kegiatan 2', 'Keterangan kegiatan2', 'kegiatan10.jpg');
 
 -- --------------------------------------------------------
 
@@ -1774,7 +1768,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `lupa_password`
 --
