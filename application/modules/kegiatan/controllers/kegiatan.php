@@ -67,7 +67,7 @@ function baru(){
 				'file_name'    => $photo,
 				'upload_path'  => './assets/kegiatan/',
 				'allowed_types' => 'jpg|jpeg|png',
-				'max_size'      => 100,
+				'max_size'      => 2048,
 				'max_width'    => 1024,
 				'max_height'   => 768
 			);
@@ -79,10 +79,28 @@ function baru(){
 				$arr = array("error"=>true,'message'=>$this->upload->display_errors());
 				
 			} else {
-			
+				
 				$get_name = $this->upload->data();
 				$name = $get_name['file_name'];
 				$nama_photo = $name;
+				
+				// Image Resizing
+				$config2 = array(
+					'image_library' 	=> 'gd2',
+					'source_image' 		=> './assets/kegiatan/'.$nama_photo,
+					'new_image'			=> './assets/kegiatan/thumb/',
+					'maintain_ratio' 	=> TRUE,
+					'width'         	=> 200,
+					'height'       		=> 300				
+				);
+				
+				$this->load->library('image_lib', $config2);
+				
+				if ( ! $this->image_lib->resize()){
+					$this->session->set_flashdata('message', $this->image_lib->display_errors('', ''));
+				}
+
+				
 				
 				$post = array(
 					'tanggal'		=> date('Y-m-d'),
@@ -159,7 +177,7 @@ function baru(){
 		// $daft_id = $row['daft_id'];
         $id = $row['id'];
         $image = $row['photo'];
-		$photo = "<img src='".base_url('assets/kegiatan/'.$image.'')."' style='width: 200px'>";
+		$photo = "<img src='".base_url('assets/kegiatan/thumb/'.$image.'')."' style='width: 200px'>";
             $hapus = "<a href ='#' onclick=\"hapus('$id')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
             <!--a href ='$this->controller/editdata?id=$id' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a-->";
        	
@@ -259,6 +277,7 @@ else {
 		$cek = $this->db->get('kegiatan', $data)->row();
 
 			unlink('assets/kegiatan/'.$cek->photo);
+			unlink('assets/kegiatan/thumb/'.$cek->photo);
 		
     	$res = $this->db->delete('kegiatan', $data);
         if($res){

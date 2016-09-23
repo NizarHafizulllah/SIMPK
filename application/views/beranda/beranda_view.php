@@ -177,8 +177,8 @@ $(function () {
     <div class="panel-heading">
     <h3 class="panel-title">Grafik</h3>
     </div>
-  </div>
   <div id="container">
+  </div>
   </div>
   <div class="panel panel-default">
     <ul class="list-group">

@@ -12,7 +12,7 @@
 <?php }else{ foreach ($query as $row):?>
   <div class="col-xs-3 col-md-3">
 	<a class="fancybox thumbnail" rel="galery" href="<?php echo base_url().'assets/kegiatan/'.$row->photo; ?>" title="<?php echo $row->keterangan; ?>">
-		<img src="<?php echo base_url().'assets/kegiatan/'.$row->photo; ?>">
+		<img src="<?php echo base_url().'assets/kegiatan/thumb/'.$row->photo; ?>">
 	</a>
   </div>
 <?php endforeach; } ?>
