@@ -90,7 +90,36 @@ var $arr_bulan = array(1=>"JANUARI","FEBRUARI","MARET","APRIL","MEI","JUNI","JUL
                 return $arr;
         }
 
+function arr_desa() {
+    $arr=array();
+    $res = $this->db->get('tiger_desa');
+    foreach($res->result() as $row) : 
+    //$arr['x'] = " - Semua Kabupaten / kota  - ";
+    $arr[$row->id] = strtoupper($row->desa);
+    endforeach;
+    return $arr;
+}
 
+function arr_kecamatan() {
+    $arr=array();
+    $res = $this->db->get('tiger_kecamatan');
+    foreach($res->result() as $row) : 
+    //$arr['x'] = " - Semua Kabupaten / kota  - ";
+    $arr[$row->id] = strtoupper($row->kecamatan);
+    endforeach;
+    return $arr;
+}
+
+function arr_pekerjaan() {
+    $arr=array();
+    $this->db->order_by("pekerjaan");
+    $res = $this->db->get('pekerjaan');
+    foreach($res->result() as $row) : 
+    //$arr['x'] = " - Semua Kabupaten / kota  - ";
+    $arr[$row->id] = strtoupper($row->pekerjaan);
+    endforeach;
+    return $arr;
+}
  
 
 
