@@ -19,7 +19,7 @@ $(function () {
 		
 		var range = nilai2 - nilai1;
 		if(range > 7) {
-			alert('range dari tahun pertama ke tahun kedua tidak boleh lebih dari 8');
+			alert('range tidak boleh lebih dari 8');
 			return false;			
 		}
 		

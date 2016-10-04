@@ -359,8 +359,19 @@ else {
 
 	 
 	}
+	
+	function refresh() {
+		
+        $data_array=array();
 
-
+        $data_array['action'] = 'simpan';
+		// $data_array['kabupaten'] = $this->db->get("tiger_kabupaten");
+       // $data_array['arr_kecamatan'] = $this->cm->arr_dropdown2("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+       
+        $content = $this->load->view("adds",$data_array,true);
+		
+	}
+	
 
 }
 

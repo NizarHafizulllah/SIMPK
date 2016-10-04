@@ -59,7 +59,7 @@ class Beranda extends master_controller  {
 	function get_grafik_kec() {
 		
 		$data_array['tahun'] = $this->input->get('tahun');		
-		$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
+		$data_array['title'] = 'Data Jumlah Kemiskinan Menurut Kecamatan';						
 		$data_array['kec']   = $this->db->get_where('tiger_kecamatan', array('id_kota' => '52_7'))->result();
 		$query   			 = "SELECT tk.kecamatan, COUNT(dk.nik) jumlah FROM data_kemiskinan dk
 							    LEFT JOIN penduduk p on p.nik = dk.nik

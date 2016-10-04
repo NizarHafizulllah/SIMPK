@@ -24,7 +24,7 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: '<?php echo $title.' Tahun '.$tahun; ?>'
+                text: 'Jumlah Penduduk <?php echo 'Tahun '.$tahun; ?>'
             },
             plotLines: [{
                 value: 0,

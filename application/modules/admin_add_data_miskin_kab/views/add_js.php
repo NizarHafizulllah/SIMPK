@@ -8,7 +8,7 @@ $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 
 
 
-$('#form_data').bootstrapValidator({
+$('#fform_data').bootstrapValidator({
                 message: 'This value is not valid', 
                 feedbackIcons: { 
                     valid: 'glyphicon glyphicon-ok', 
@@ -202,8 +202,12 @@ $("#tombolsubmitsimpan").click(function(){
                             title: 'Informasi',
                             message: obj.message
                              
-                        });   
-                      $('#form_data').data('bootstrapValidator').resetForm(true);
+                    });   
+				
+				// var loadUrl = "<?php echo site_url("$this->controller/refresh"); ?>";
+				// $('#form_data').load(loadUrl);
+				
+                $('#form_data').data('bootstrapValidator').resetForm(true);
 
             }
             else {
