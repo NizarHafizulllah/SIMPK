@@ -360,6 +360,32 @@ else {
     	//redirect('sa_birojasa_user');
         echo json_encode($arr);
     }
+	
+	function get_nilai() {
+	 
+		$tahun = $this->input->post('tahun');
+		 
+		$this->db->where("tahun", $tahun);
+		$rs = $this->db->get("data_garis_miskin")->result();
+		
+		if(!$rs) {
+			$data = array('kosong' => '1');
+		} else {
+			foreach($rs as $x => $row):
+				$data['jumlah'.++$x] = $row->jumlah;
+			endforeach;
+			$data['kosong'] = '0';
+			$data['jml'] = $x;
+		}
+		
+		echo json_encode($data);
+
+	 
+	}
+	
+	
+	
+	
 
 
 }

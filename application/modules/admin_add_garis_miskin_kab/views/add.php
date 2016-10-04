@@ -46,7 +46,7 @@
 				<td><?php echo $row->nama_kab; ?></td>
 				<td>
 					<input type="hidden" name="<?php echo 'id_kab'.$x; ?>" value="<?php echo $row->id; ?>">
-					<input type="number" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
+					<input type="number" id="<?php echo 'jumlah'.$x; ?>" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
 				</td>
 			</tr>
 			<?php $x++; endforeach; ?>

@@ -40,21 +40,17 @@ class Beranda extends master_controller  {
 	function get_grafik() {
 		
 		$data_array['tahun'] = $this->input->get('tahun');
-		$url = $this->input->get('url');
 		
-		if($url == 1) {
-			$data_array['title'] = 'Data Jumlah Penduduk Miskin';
-			$tabel 				 = 'data_penduduk_miskin';
-		} else {
-			$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
-			$tabel 				 = 'data_garis_miskin';
-		} 
-		
-		$data_array['kab']  = $this->db->get('tiger_kabupaten')->result();
-		$data_array['jml']  = $this->db->where('tahun', $data_array['tahun'])
-							  ->order_by('id_kab', 'ASC')
-							  ->get($tabel)
-							  ->result();
+		$data_array['title'] = 'Penduduk Miskin dan Garis Kemiskinan';
+		$data_array['kab']     = $this->db->get('tiger_kabupaten')->result();
+		$data_array['jml_penmis']  = $this->db->where('tahun', $data_array['tahun'])
+							                  ->order_by('id_kab', 'ASC')
+											  ->get('data_penduduk_miskin')
+											  ->result();
+		$data_array['jml_gamis']  = $this->db->where('tahun', $data_array['tahun'])
+							                 ->order_by('id_kab', 'ASC')
+										  	 ->get('data_garis_miskin')
+											 ->result();
 		
 		$this->load->view($this->controller."/content/grafik_view",$data_array);
 		
@@ -76,9 +72,26 @@ class Beranda extends master_controller  {
 		$this->load->view($this->controller."/content/grafik_view_kec",$data_array);
 		
 	}
+	
+	function get_grafdon_kec() {
+		
+		$data_array['tahun'] = $this->input->get('tahun');		
+		$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
+		$data_array['kec']   = $this->db->get_where('tiger_kecamatan', array('id_kota' => '52_7'))->result();
+		$query				 = "SELECT tk.kecamatan, COUNT(dk.nik) jumlah FROM data_kemiskinan dk
+							   LEFT JOIN penduduk p on p.nik = dk.nik
+							   LEFT JOIN tiger_desa td on td.id = p.id_desa
+							   LEFT JOIN tiger_kecamatan tk on tk.id = td.id_kecamatan
+							   WHERE dk.tahun = ".$data_array['tahun']."
+							   GROUP BY(tk.id)";
+		$data_array['jml']	 = $this->db->query($query)->result();
+		
+		$this->load->view($this->controller."/content/grafik_donat_kec",$data_array);
+		
+	}
 
 	
-	function grafik($id) {
+	function grafik() {
 		$data_array = array();
 		
 		
@@ -101,6 +114,7 @@ class Beranda extends master_controller  {
 		$this->set_content($content);
 		$this->render();
 	}
+	
 
 	function klaster() {
 		$data_array = array();
@@ -149,9 +163,9 @@ class Beranda extends master_controller  {
 	function get_pivot() {
 		
 		$data_array = array();
-		$tahun = $this->input->get('tahun');
-		$batas = 7;
-		$url = $this->input->get('url');
+		$tahun1 = $this->input->get('tahun1');
+		$tahun2 = $this->input->get('tahun2');
+		$url    = $this->input->get('url');
 		
 		if($url == 1) {
 			$data_array['title'] = 'Data Jumlah Penduduk Miskin';
@@ -163,7 +177,7 @@ class Beranda extends master_controller  {
 		
 		$query = "SELECT tk.nama_kab, ";
 		
-		for($x=$tahun - $batas; $x<=$tahun; $x++) {
+		for($x=$tahun1; $x<=$tahun2; $x++) {
 			
 			$query .="SUM(IF(pm.tahun=".$x.", pm.jumlah, 0)) t".$x.", ";
 			
@@ -176,8 +190,8 @@ class Beranda extends master_controller  {
 				  WHERE pm.id_kab = tk.id
 				  GROUP BY(id_kab)";
 		
-		$data_array['tahun'] = $tahun;
-		$data_array['batas'] = $batas;
+		$data_array['tahun1'] = $tahun1;
+		$data_array['tahun2'] = $tahun2;
 		$data_array['kab']   = $this->db->get('tiger_kabupaten')->result();
 		$data_array['pivot'] = $this->db->query($query)->result();
 		
@@ -188,14 +202,14 @@ class Beranda extends master_controller  {
 	function get_pivot_kec() {
 		
 		$data_array = array();
-		$tahun = $this->input->get('tahun');
-		$batas = 7;
+		$tahun1 = $this->input->get('tahun1');
+		$tahun2 = $this->input->get('tahun2');
 		
-		$data_array['title'] = 'Data Jumlah Garis Kemiskinan';						
+		$data_array['title'] = 'Data Jumlah Penduduk Miskin per Kecamatan';						
 		
 		$query = "SELECT tk.kecamatan, ";
 		
-		for($x=$tahun - $batas; $x<=$tahun; $x++) {
+		for($x=$tahun1; $x<=$tahun2; $x++) {
 			
 			$query .="COUNT(CASE WHEN dk.tahun = ".$x." then dk.nik END) t".$x.", ";
 			
@@ -209,8 +223,8 @@ class Beranda extends master_controller  {
 					LEFT JOIN tiger_kecamatan tk on tk.id = td.id_kecamatan
 					GROUP BY tk.id";
 				
-		$data_array['tahun'] = $tahun;
-		$data_array['batas'] = $batas;
+		$data_array['tahun1'] = $tahun1;
+		$data_array['tahun2'] = $tahun2;
 		$data_array['kec']   = $this->db->get_where('tiger_kecamatan', array('id_kota' => '52_7'))->result();
 		$data_array['pivot'] = $this->db->query($query)->result();
 		
