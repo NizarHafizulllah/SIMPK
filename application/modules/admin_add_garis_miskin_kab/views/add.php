@@ -53,7 +53,7 @@
 			<tr>	
 				<td></td>
 				<td>
-				  <button id="tombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
+				  <button id="simpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
 				  <a href="<?php echo site_url("$this->controller"); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>				
 				</td>
 			</tr>

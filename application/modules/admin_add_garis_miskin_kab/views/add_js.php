@@ -5,6 +5,8 @@ $(document).ready(function(){
  $(".select2").select2();
 $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 
+
+
 $('#form_data').bootstrapValidator({
                 message: 'This value is not valid', 
                 feedbackIcons: { 
@@ -98,8 +100,6 @@ $('#form_data').bootstrapValidator({
                         }
                     } 
 
-                    
-                }
                 
             });
 
@@ -181,7 +181,7 @@ $('#form_data').bootstrapValidator({
 	});
 
 	
-$("#tombolsubmitsimpan").click(function(){
+$("#simpan").click(function(){
  console.log('tests');
  
     $.ajax({

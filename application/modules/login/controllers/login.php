@@ -59,7 +59,7 @@ class Login extends CI_Controller {
 
 		 		$this->session->set_userdata('admin_login', $jj);
 
-		 		$datalogin = $this->session->userdata("login");
+		 		$datalogin = $this->session->userdata("admin_login");
 
 		 		//show_array($datalogin); exit;
 
