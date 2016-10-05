@@ -10,6 +10,7 @@
     <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/costum.css'); ?>" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/responsiveslides.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/fancybox/jquery.fancybox.css'); ?>">
 
 	<!-- jQuery -->
     <script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js'); ?>"></script>
@@ -17,6 +18,7 @@
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/highcharts/highcharts.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/fancybox/jquery.fancybox.pack.js'); ?>"></script>
 
 
   </head>
@@ -55,8 +57,7 @@
 	<li class="dropdown <?php echo $subtitle=='Grafik'?'active':''; ?>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grafik <span class="caret"></span></a>
 		<ul class="dropdown-menu">
-		  <li><a href="<?php echo site_url('beranda/grafik/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
-		  <li><a href="<?php echo site_url('beranda/grafik/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik'); ?>">Data Kemiskinan per Kabupaten</a></li>
 		  <li><a href="<?php echo site_url('beranda/grafik_kec'); ?>">Penduduk Miskin Per Kecamatan</a></li>
 		</ul>
     </li>
@@ -66,6 +67,7 @@
 		<ul class="dropdown-menu">
 		  <li><a href="<?php echo site_url('beranda/pivot/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
 		  <li><a href="<?php echo site_url('beranda/pivot/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/pivot_kec'); ?>">Penduduk Miskin Per Kecamatan</a></li>
 		</ul>
     </li>
     </ul>
@@ -165,17 +167,44 @@ $(function () {
             }]
         });
     });
+	
+	$('#tahundonat').change(function() {
+		
+		$('#container').html('<div style="text-align: center; padding-top: 150px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"></div>');
+		
+		$.ajax({
+			
+			url : '<?php echo site_url("beranda/get_grafdon_kec"); ?>',
+            data : 'tahun=' + $(this).val(),
+            type : 'get', 
+            success : function(result) {
+                $("#container").html(result);
+            }
+			
+		});
+		
+	});
+
 });
 
 </script>
 </div>
 <div class="col-md-4">
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="height: 490px;">
     <div class="panel-heading">
     <h3 class="panel-title">Grafik</h3>
     </div>
-  </div>
-  <div id="container">
+	<div class="container-fluid" style="margin-top: 12px">
+		<div class="col-md-7 col-md-offset-6">
+			<select class="form-control" id="tahundonat">
+				<option value=""> - Pilih Tahun - </option>
+				<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+					<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+				<?php } ?>
+			</select>
+		</div>
+	</div>
+  <div id="container"></div>
   </div>
   <div class="panel panel-default">
     <ul class="list-group">

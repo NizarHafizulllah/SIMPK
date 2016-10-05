@@ -1,16 +1,3 @@
-     <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-        <link href="<?php echo base_url("assets") ?>/css/datepicker.css" rel="stylesheet">
-  <link href="<?php echo base_url("assets") ?>/plugins/select2/select2.min.css" rel="stylesheet" >
-    <script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
-    <script src="<?php echo base_url("assets") ?>/plugins/select2/select2.full.min.js"></script>
-     
-        <!-- Main content -->
-        <form id="form_data" class="form-horizontal" method="post" 
-        action="<?php echo site_url("$this->controller/$action"); ?>" role="form"> 
-
- 
-
-
               <div class="panel panel-primary">
       <div class="panel-heading">
       <strong><h3 class="panel-title">Tambah data </h3></strong>
@@ -66,9 +53,3 @@
 
   </div>
   </div>
-  </form>
-
-
-<?php 
-$this->load->view("add_js");
-?>

@@ -337,7 +337,41 @@ else {
     	//redirect('sa_birojasa_user');
         echo json_encode($arr);
     }
+	
+	function get_nilai() {
+	 
+		$tahun = $this->input->post('tahun');
+		 
+		$this->db->where("tahun", $tahun);
+		$rs = $this->db->get("data_penduduk_miskin")->result();
+		
+		if(!$rs) {
+			$data = array('kosong' => '1');
+		} else {
+			foreach($rs as $x => $row):
+				$data['jumlah'.++$x] = $row->jumlah;
+			endforeach;
+			$data['kosong'] = '0';
+			$data['jml'] = $x;
+		}
+		
+		echo json_encode($data);
 
+	 
+	}
+	
+	function refresh() {
+		
+        $data_array=array();
+
+        $data_array['action'] = 'simpan';
+		// $data_array['kabupaten'] = $this->db->get("tiger_kabupaten");
+       // $data_array['arr_kecamatan'] = $this->cm->arr_dropdown2("tiger_kecamatan", "id", "kecamatan", "kecamatan");
+       
+        $content = $this->load->view("adds",$data_array,true);
+		
+	}
+	
 
 }
 

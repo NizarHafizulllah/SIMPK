@@ -8,7 +8,7 @@ $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 
 
 
-$('#form_data').bootstrapValidator({
+$('#fform_data').bootstrapValidator({
                 message: 'This value is not valid', 
                 feedbackIcons: { 
                     valid: 'glyphicon glyphicon-ok', 
@@ -140,6 +140,47 @@ $('#form_data').bootstrapValidator({
       });
 
     });
+	
+	$("#tahun").change(function(){
+		
+		$.ajax({
+			
+			url : '<?php echo site_url("$this->controller/get_nilai") ?>',
+			data : { tahun : $(this).val() },
+			type : 'post', 
+			dataType : 'json',
+			success : function(obj) {
+
+				if(obj.kosong == '1') {
+					
+					$("#jumlah1").attr("value", "");
+					$("#jumlah2").attr("value", "");
+					$("#jumlah3").attr("value", "");
+					$("#jumlah4").attr("value", "");
+					$("#jumlah5").attr("value", "");
+					$("#jumlah6").attr("value", "");
+					$("#jumlah7").attr("value", "");
+					$("#jumlah8").attr("value", "");
+					$("#jumlah9").attr("value", "");
+					
+				} else {
+					
+					$("#jumlah1").attr("value", obj.jumlah1);
+					$("#jumlah2").attr("value", obj.jumlah2);
+					$("#jumlah3").attr("value", obj.jumlah3);
+					$("#jumlah4").attr("value", obj.jumlah4);
+					$("#jumlah5").attr("value", obj.jumlah5);
+					$("#jumlah6").attr("value", obj.jumlah6);
+					$("#jumlah7").attr("value", obj.jumlah7);
+					$("#jumlah8").attr("value", obj.jumlah8);
+					$("#jumlah9").attr("value", obj.jumlah9);
+					
+				}
+
+			}
+		});
+		
+	});
 
 $("#tombolsubmitsimpan").click(function(){
  console.log('tests');
@@ -161,8 +202,12 @@ $("#tombolsubmitsimpan").click(function(){
                             title: 'Informasi',
                             message: obj.message
                              
-                        });   
-                      $('#form_data').data('bootstrapValidator').resetForm(true);
+                    });   
+				
+				// var loadUrl = "<?php echo site_url("$this->controller/refresh"); ?>";
+				// $('#form_data').load(loadUrl);
+				
+                $('#form_data').data('bootstrapValidator').resetForm(true);
 
             }
             else {

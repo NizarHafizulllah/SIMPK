@@ -24,12 +24,12 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: '<?php echo $title.' Tahun '.$tahun; ?>'
+                text: 'Jumlah Penduduk <?php echo 'Tahun '.$tahun; ?>'
             },
             plotLines: [{
                 value: 0,
                 width: 1,
-                color: '#808080'
+                color: '#f1c40f'
             }]
         },
         tooltip: {
@@ -42,21 +42,38 @@ $(function () {
             borderWidth: 0
         },
         series: [{
-            name: 'Jumlah',
+            name: 'Penduduk Miskin',
             data: [
 				<?php
 					
-					if($jml == null ) {
+					if($jml_penmis == null ) {
 						for($x=1; $x<=count($kab); $x++){
 							echo '0, ';
 						}
 					} else {
-						foreach($jml as $row) {
+						foreach($jml_penmis as $row) {
 							echo $row->jumlah.', ';
 						}
 					}
 					
 				?>
+				],
+		}, {
+            name: 'Garis Miskin',
+            data: [
+				<?php
+					
+					if($jml_gamis == null ) {
+						for($x=1; $x<=count($kab); $x++){
+							echo '0, ';
+						}
+					} else {
+						foreach($jml_gamis as $row) {
+							echo $row->jumlah.', ';
+						}
+					}
+					
+				?>				
 			]
         }]
     });

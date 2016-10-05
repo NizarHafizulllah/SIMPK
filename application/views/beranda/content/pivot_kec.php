@@ -1,13 +1,8 @@
-<h3>Pivot 
-	<?php 
-		echo $this->uri->segment(3) == 1 ? 'Data Jumlah Penduduk Miskin' : 'Data Jumlah Garis Kemiskinan'; 
-	?>
-</h3>
+<h3>Pivot Data Jumlah Penduduk Miskin per Kecamatan</h3>
 <hr>
 <script>
 $(function () {
 		
-
 	$('#cari').click(function() {
 		var nilai1 = $('#tahun1').val();
 		var nilai2 = $('#tahun2').val();
@@ -32,8 +27,8 @@ $(function () {
 		
 		$.ajax({
 			
-			url : '<?php echo site_url("beranda/get_pivot"); ?>',
-            data : 'tahun1=' + nilai1 + '&tahun2=' + nilai2 + '&url=<?php echo $this->uri->segment(3); ?>',
+			url : '<?php echo site_url("beranda/get_pivot_kec"); ?>',
+            data : 'tahun1=' + nilai1 + '&tahun2=' + nilai2,
             type : 'get', 
             success : function(result) {
                 $("#pivot").html(result);

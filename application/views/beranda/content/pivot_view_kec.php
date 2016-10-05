@@ -3,7 +3,7 @@
 <table class="table table-bordered">
 	<thead>
 		<tr style="background-color: #2fa4e7">
-			<th>Nama Kabupaten</th>
+			<th>Nama Kecamatan</th>
 			<?php for($x=$tahun1; $x<=$tahun2; $x++) { ?>
 				
 				<th><?php echo $x; ?></th>
@@ -14,11 +14,11 @@
 	<tbody>
 	<?php
 		if($pivot == null) {
-		foreach($kab as $row):
+		foreach($kec as $row):
 	?>
 		
 		<tr> 
-			<td><?php echo $row->nama_kab; ?></td>
+			<td><?php echo $row->kecamatan; ?></td>
 			<?php for($x=0; $x<=$batas; $x++){?>
 				<td><?php echo '0'; ?></td>
 			<?php } ?>
@@ -26,11 +26,10 @@
 	<?php
 		endforeach;
 	} else {
-		foreach($pivot as $row): 
-		
+		foreach($pivot as $row):
 	?>
 		<tr>
-			<td style="background-color: #57bef9"><?php echo $row->nama_kab; ?></td>
+			<td style="background-color: #57bef9"><?php echo $row->kecamatan; ?></td>
 			<?php for($x=$tahun1; $x<=$tahun2; $x++) { ?>
 				
 				<td><?php $y='t'.$x; echo $row->$y; ?></td>

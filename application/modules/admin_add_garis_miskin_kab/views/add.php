@@ -46,14 +46,14 @@
 				<td><?php echo $row->nama_kab; ?></td>
 				<td>
 					<input type="hidden" name="<?php echo 'id_kab'.$x; ?>" value="<?php echo $row->id; ?>">
-					<input type="number" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
+					<input type="number" id="<?php echo 'jumlah'.$x; ?>" name="<?php echo 'jumlah'.$x; ?>" class="form-control input-style">
 				</td>
 			</tr>
 			<?php $x++; endforeach; ?>
 			<tr>	
 				<td></td>
 				<td>
-				  <button id="tombolsubmitsimpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
+				  <button id="simpan" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
 				  <a href="<?php echo site_url("$this->controller"); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>				
 				</td>
 			</tr>

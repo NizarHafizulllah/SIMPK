@@ -1,4 +1,4 @@
-<h3>Grafik</h3>
+<h3>Grafik Data Kemiskinan Menurut Kecamatan</h3>
 <hr>
 <script>
 $(function () {

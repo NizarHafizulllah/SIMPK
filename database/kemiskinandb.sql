@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Sep 2016 pada 16.20
+-- Generation Time: 23 Sep 2016 pada 12.08
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -116,14 +116,21 @@ CREATE TABLE IF NOT EXISTS `data_kemiskinan` (
 
 INSERT INTO `data_kemiskinan` (`nik`, `tahun`) VALUES
 ('123123123', 2015),
-('123123123', 2016),
+('1231231231', 2013),
 ('1231231231', 2015),
 ('1231233123111', 2015),
+('124124', 2013),
 ('124124', 2015),
-('124124', 2016),
+('2131232132', 2013),
+('2131232132', 2014),
+('2131232132', 2015),
+('2839218938', 2013),
+('2839218938', 2014),
 ('2839218938', 2015),
-('2839218938', 2016),
+('7687687687676', 2014),
 ('7687687687676', 2015),
+('838792719', 2013),
+('838792719', 2014),
 ('838792719', 2015);
 
 -- --------------------------------------------------------
@@ -181,6 +188,28 @@ INSERT INTO `data_penduduk_miskin` (`id_kab`, `tahun`, `jumlah`) VALUES
 (9, 2001, 999),
 (9, 2007, 100),
 (9, 2010, 12312);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kegiatan`
+--
+
+CREATE TABLE IF NOT EXISTS `kegiatan` (
+`id` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `judul` varchar(200) NOT NULL,
+  `keterangan` text NOT NULL,
+  `photo` varchar(500) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+
+--
+-- Dumping data untuk tabel `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id`, `tanggal`, `judul`, `keterangan`, `photo`) VALUES
+(32, '2016-09-23', 'kegiatan 1', 'Ketetangan kegiatan1', 'kegiatan6.jpg'),
+(33, '2016-09-23', 'kegiatan 2', 'Keterangan kegiatan2', 'kegiatan10.jpg');
 
 -- --------------------------------------------------------
 
@@ -1668,6 +1697,12 @@ ALTER TABLE `data_penduduk_miskin`
  ADD PRIMARY KEY (`id_kab`,`tahun`);
 
 --
+-- Indexes for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
@@ -1729,6 +1764,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 ALTER TABLE `datamart`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `lupa_password`
 --
