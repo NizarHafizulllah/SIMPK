@@ -42,39 +42,22 @@ $(function () {
             borderWidth: 0
         },
         series: [{
-            name: 'Penduduk Miskin',
+            name: 'Jumlah',
             data: [
 				<?php
 					
-					if($jml_penmis == null ) {
+					if($jml == null ) {
 						for($x=1; $x<=count($kab); $x++){
 							echo '0, ';
 						}
 					} else {
-						foreach($jml_penmis as $row) {
+						foreach($jml as $row) {
 							echo $row->jumlah.', ';
 						}
 					}
 					
 				?>
-				],
-		}, {
-            name: 'Garis Miskin',
-            data: [
-				<?php
-					
-					if($jml_gamis == null ) {
-						for($x=1; $x<=count($kab); $x++){
-							echo '0, ';
-						}
-					} else {
-						foreach($jml_gamis as $row) {
-							echo $row->jumlah.', ';
-						}
-					}
-					
-				?>				
-			]
+				]
         }]
     });
 		

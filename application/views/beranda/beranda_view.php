@@ -57,7 +57,8 @@
 	<li class="dropdown <?php echo $subtitle=='Grafik'?'active':''; ?>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grafik <span class="caret"></span></a>
 		<ul class="dropdown-menu">
-		  <li><a href="<?php echo site_url('beranda/grafik'); ?>">Data Kemiskinan per Kabupaten</a></li>
+		  <li><a href="<?php echo site_url('beranda/grafik/1'); ?>">Penduduk Miskin per Kabupaten</a></li>
+      <li><a href="<?php echo site_url('beranda/grafik/2'); ?>">Garis Kemiskinan per Kabupaten</a></li>
 		  <li><a href="<?php echo site_url('beranda/grafik_kec'); ?>">Penduduk Miskin Per Kecamatan</a></li>
 		</ul>
     </li>
