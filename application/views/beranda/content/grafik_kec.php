@@ -71,8 +71,8 @@ $(function () {
 			<?php } ?>
 		</select>
         <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control "'); ?>
-        <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control"'); ?>
-        <?php echo form_dropdown("rw",array(),'','id="rw" class="form-control"'); ?>
+        <?php echo form_dropdown("id_desa",$arr_desa,'','id="id_desa" class="form-control"'); ?>
+        <?php echo form_dropdown("rw",$arr_rw,'','id="rw" class="form-control"'); ?>
 		<button class="btn btn-default" id="cari">Cari</button>
 	</form>
     </div><!-- /input-group -->

@@ -196,7 +196,9 @@ class Beranda extends master_controller  {
 		$data_array = array();
 		
         $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
-		
+		$data_array['arr_desa'] 	 = array('' => '- Pilih Desa -', );
+		$data_array['arr_rw'] 		 = array('' => '- Pilih RW -', );
+
 		$content = $this->load->view($this->controller."/content/grafik_kec",$data_array, true);
 		
 		$this->set_subtitle("Grafik");
