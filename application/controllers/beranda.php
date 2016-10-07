@@ -210,12 +210,38 @@ class Beranda extends master_controller  {
 
 	function klaster() {
 		$data_array = array();
-		$content = $this->load->view($this->controller."/content/klaster1",$data_array, true);
+
+		$query = "SELECT p.*, k.klaster 
+				  FROM program p 
+				  LEFT JOIN klaster k 
+				  ON k.id = p.id_klaster 
+				  WHERE p.tahun = 2015";
+
+		$data_array['klaster'] = $this->db->query($query)->result();
+
+		$content = $this->load->view($this->controller."/content/klaster",$data_array, true);
 		
 		$this->set_subtitle("Profil Program");
 		$this->set_title("SIMPK - Profil Program");
 		$this->set_content($content);
 		$this->render();
+	}
+
+	function get_klaster() {
+
+		$data_array['tahun'] = $this->input->get('tahun');
+
+		$data_array['title'] = "Profil Program Tahun : ".$data_array['tahun'];
+		$query = "SELECT p.*, k.klaster 
+				  FROM program p 
+				  LEFT JOIN klaster k 
+				  ON k.id = p.id_klaster 
+				  WHERE p.tahun = ".$data_array['tahun'];
+
+		$data_array['klaster'] = $this->db->query($query)->result();
+		
+		$this->load->view($this->controller."/content/klaster_view",$data_array);		
+
 	}
 
 
