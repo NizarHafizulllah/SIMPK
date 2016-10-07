@@ -28,8 +28,32 @@
             <form role="form" action="" id="btn-cari" >
             <div class="col-md-3">
               <div class="form-group">
+                <label for="program">Klaster</label>
+				<select class="form-control input-style select2" name="klaster" id="klaster">
+					<option value=""> - Pilih Klaster - </option>
+					<?php foreach($arr_klaster as $row): ?>
+						<option value="<?php echo $row->klaster; ?>"> <?php echo $row->klaster; ?> </option>
+					<?php endforeach; ?>
+				</select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
                 <label for="program">Program</label>
                 <input id="program" name="program" type="text" class="form-control" placeholder="program" style="border-radius: 8px;">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="program">Tahun</label>
+				<select class="form-control input-style select2" name="tahun" id="tahun">
+					<option selected value="0"> - Tahun - </option>
+						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
+					
+						<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+					
+					<?php } ?>
+				</select>
               </div>
             </div>
             <div class="col-md-1">

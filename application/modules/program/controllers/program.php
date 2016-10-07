@@ -18,7 +18,10 @@ function index(){
 
         
 
-        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
+		$this->db->order_by("id", "ASC");
+		$rs = $this->db->get("klaster")->result();
+		
+		$data_array['arr_klaster'] = $rs;
 
 		$content = $this->load->view("program_view",$data_array,true);
 
@@ -102,7 +105,9 @@ else {
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         
   
-        $program = $_REQUEST['columns'][1]['search']['value'];
+        $klaster = $_REQUEST['columns'][1]['search']['value'];
+        $program = $_REQUEST['columns'][2]['search']['value'];
+        $tahun = $_REQUEST['columns'][3]['search']['value'];
 
 
 
@@ -113,7 +118,9 @@ else {
 				"sort_by" => $sidx,
 				"sort_direction" => $sord,
 				"limit" => null,
+                "klaster" => $klaster,
                 "program" => $program,
+                "tahun" => $tahun
 				
 				 
 		);     
@@ -131,7 +138,6 @@ else {
         
         $result = $this->dm->data($req_param)->result_array();
         
-       
         $arr_data = array();
         foreach($result as $x => $row) : 
 		// $daft_id = $row['daft_id'];
@@ -151,6 +157,7 @@ else {
 			
         endforeach;
 		
+
          $responce = array('draw' => $draw, // ($start==0)?1:$start,
         				  'recordsTotal' => $count, 
         				  'recordsFiltered' => $count,

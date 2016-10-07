@@ -21,7 +21,9 @@ $(document).ready(function(){
 		 	  // alert('hello');
 		 	  
 
-		 	  dt.column(1).search($("#program").val())
+		 	  dt.column(1).search($("#klaster").val())
+		 	  dt.column(2).search($("#program").val())
+		 	  dt.column(3).search($("#tahun").val())
 				 .draw();
 
 				 return false;
