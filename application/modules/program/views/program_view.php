@@ -75,12 +75,12 @@
 <table width="100%" border="0" id="biro_jasa" class="table table-bordered table-hover dataTable" role="grid">
 <thead>
   <tr>
-    <th width="7%">No</th>
+    <th width="2%">No</th>
     <th width="7%">Klaster</th>
     <th width="13%">Program</th> 
-    <th width="13%">Keterangan</th> 
-    <th width="13%">Tahun</th> 
-    <th width="14%">#</th>
+    <th>Keterangan</th> 
+    <th width="7%">Tahun</th> 
+    <th width="15%">#</th>
   </tr>
   
 </thead>
