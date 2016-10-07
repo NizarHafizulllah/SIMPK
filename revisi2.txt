@@ -2,3 +2,10 @@
 2. klaster ==> Program ==> detailnya. ditampilkan tombol detail di halaman depan. 
 3. filter data penduduk dan penduduk miskin, per kecamatan atau per desa. perkecamatan, semua desa. 
 4. export ke PDF atau ke Excel. pengurutan, no KK, KK, umur. 
+
+klaster
+	- id_klaster
+	- id_program
+	- nama_program
+	- keterangan
+	- tahun

@@ -71,11 +71,10 @@ class Beranda extends master_controller  {
 
 		$value = $this->input->post();
 
-		$cek_kec = $this->db->get_where('tiger_kecamatan', array('id' => $value['id_kecamatan']))->row();
-
 		if(!empty($value['tahun'])) {
 
-			$title  = 'Data Jumlah Kemiskinan Menurut Kecamatan';						
+			$title  = 'Data Jumlah Kemiskinan Menurut Kecamatan';
+			$subtitle  = '';						
 			$xaxis  = $this->db->query("SELECT id, kecamatan as title FROM tiger_kecamatan WHERE id_kota = '52_7'")->result();
 			$query  = "SELECT tk.kecamatan title, COUNT(dk.nik) jumlah FROM data_kemiskinan dk
 					   LEFT JOIN penduduk p on p.nik = dk.nik
@@ -91,6 +90,7 @@ class Beranda extends master_controller  {
 			$cek_kec = $this->db->get_where('tiger_kecamatan', array('id' => $value['id_kecamatan']))->row();
 
 			$title  = 'Data Jumlah Kemiskinan Menurut Kecamatan '.$cek_kec->kecamatan;						
+			$subtitle  = '';						
 			$xaxis  = $this->db->query("SELECT id, desa as title FROM tiger_desa WHERE id_kecamatan = '$value[id_kecamatan]'")->result();
 			$query  = "SELECT tk.kecamatan, td.desa  title, COUNT(dk.nik) jumlah FROM data_kemiskinan dk
 				       LEFT JOIN penduduk p on p.nik = dk.nik
@@ -106,6 +106,7 @@ class Beranda extends master_controller  {
 			$cek_desa = $this->db->get_where('tiger_desa', array('id' => $value['id_desa']))->row();
 
 			$title  = 'Data Jumlah Kemiskinan Menurut Kecamatan '.$cek_kec->kecamatan.", Desa ".$cek_desa->desa;						
+			$subtitle  = 'RW';						
 			$xaxis  = $this->db->query("SELECT rw title FROM penduduk 
 							    		WHERE id_desa = '".$value['id_desa']."' 
 							    		GROUP BY rw 
@@ -128,6 +129,7 @@ class Beranda extends master_controller  {
 										AND rw = ".$value['rw'])->row();
 
 			$title  = 'Data Jumlah Kemiskinan Menurut Kecamatan '.$cek_kec->kecamatan.", Desa ".$cek_desa->desa.", RW ".$cek_rw->rw;						
+			$subtitle  = 'RT ';						
 			$xaxis  = $this->db->query("SELECT rt title FROM penduduk 
 							    		WHERE id_desa = '".$value['id_desa']."'
 							    		AND rw = ".$value['rw']." 
@@ -146,6 +148,7 @@ class Beranda extends master_controller  {
 
 
 		$data_array['tahun'] = $value['tahun'];		
+		$data_array['subtitle'] = $subtitle;
 		$data_array['title'] = $title;						
 		$data_array['data']  = $xaxis;
 		$data_array['jml'] 	 = $this->db->query($query)->result();
@@ -173,6 +176,11 @@ class Beranda extends master_controller  {
 
 	
 	function grafik($url) {
+
+		if(!$url) {
+			redirect('beranda');
+		}
+
 		$data_array = array();
 		
 		
@@ -221,6 +229,11 @@ class Beranda extends master_controller  {
 	}
 
 	function pivot($url) {
+
+		if(!$url) {
+			redirect('beranda');
+		}
+
 		$data_array = array();
 				
 		$content = $this->load->view($this->controller."/content/pivot",$data_array, true);

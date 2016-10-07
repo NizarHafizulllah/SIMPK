@@ -8,7 +8,7 @@ $(function () {
             x: -20 //center
         },
 		subtitle: {
-            text: 'per Kecamatan Tahun :<?php echo $tahun; ?>',
+            text: 'Tahun :<?php echo $tahun; ?>',
             x: -20
         },
         xAxis: {
@@ -16,7 +16,7 @@ $(function () {
 				<?php
 					
 					foreach($data as $row) {
-						echo "'.$row->title.'".",";
+						echo "'$subtitle $row->title'".",";
 					}
 				
 				?>
