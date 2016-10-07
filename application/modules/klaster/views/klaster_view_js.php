@@ -21,7 +21,7 @@ $(document).ready(function(){
 		 	  // alert('hello');
 		 	  
 
-		 	  dt.column(1).search($("#pekerjaan").val())
+		 	  dt.column(1).search($("#klaster").val())
 				 .draw();
 
 				 return false;
