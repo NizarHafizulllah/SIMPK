@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Sep 2016 pada 12.08
+-- Generation Time: 07 Okt 2016 pada 12.59
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -82,22 +82,31 @@ CREATE TABLE IF NOT EXISTS `data_garis_miskin` (
 INSERT INTO `data_garis_miskin` (`id_kab`, `tahun`, `jumlah`) VALUES
 (1, 2006, 456),
 (1, 2007, 123),
+(1, 2009, 43983),
 (2, 2006, 123),
 (2, 2007, 123),
+(2, 2009, 73882),
 (3, 2006, 234),
 (3, 2007, 123),
+(3, 2009, 37844),
 (4, 2006, 452),
 (4, 2007, 323),
+(4, 2009, 84775),
 (5, 2006, 342),
 (5, 2007, 454),
+(5, 2009, 90348),
 (6, 2006, 342),
 (6, 2007, 700),
+(6, 2009, 90849),
 (7, 2006, 543),
 (7, 2007, 800),
+(7, 2009, 98493),
 (8, 2006, 342),
 (8, 2007, 203),
+(8, 2009, 93438),
 (9, 2006, 222),
-(9, 2007, 821);
+(9, 2007, 821),
+(9, 2009, 23344);
 
 -- --------------------------------------------------------
 
@@ -131,7 +140,8 @@ INSERT INTO `data_kemiskinan` (`nik`, `tahun`) VALUES
 ('7687687687676', 2015),
 ('838792719', 2013),
 ('838792719', 2014),
-('838792719', 2015);
+('838792719', 2015),
+('98298309128', 2015);
 
 -- --------------------------------------------------------
 
@@ -152,42 +162,60 @@ CREATE TABLE IF NOT EXISTS `data_penduduk_miskin` (
 INSERT INTO `data_penduduk_miskin` (`id_kab`, `tahun`, `jumlah`) VALUES
 (1, 2000, 331),
 (1, 2001, 111),
-(1, 2007, 100),
-(1, 2010, 124),
+(1, 2007, 200),
+(1, 2009, 61173),
+(1, 2010, 400),
+(1, 2012, 500),
 (2, 2000, 767),
 (2, 2001, 222),
 (2, 2007, 100),
-(2, 2010, 2312),
+(2, 2009, 25170),
+(2, 2010, 400),
+(2, 2012, 445),
 (3, 2000, 565),
 (3, 2001, 333),
 (3, 2007, 1000),
-(3, 2010, 123),
+(3, 2009, 25370),
+(3, 2010, 300),
+(3, 2012, 345),
 (4, 2000, 6),
 (4, 2001, 444),
 (4, 2007, 100),
-(4, 2010, 123),
+(4, 2009, 38980),
+(4, 2010, 100),
+(4, 2012, 534),
 (5, 2000, 4),
 (5, 2001, 555),
 (5, 2007, 100),
-(5, 2010, 21323),
+(5, 2009, 30980),
+(5, 2010, 200),
+(5, 2012, 435),
 (6, 2000, 6),
 (6, 2001, 666),
 (6, 2007, 100),
-(6, 2010, 3213),
+(6, 2009, 24336),
+(6, 2010, 200),
+(6, 2012, 345),
 (7, 2000, 6),
 (7, 2001, 777),
 (7, 2007, 100),
-(7, 2010, 2312),
+(7, 2009, 78208),
+(7, 2010, 200),
+(7, 2012, 534),
 (8, 0, 12),
 (8, 2000, 6),
 (8, 2001, 888),
 (8, 2007, 100),
-(8, 2010, 2312),
+(8, 2009, 30000),
+(8, 2010, 200),
+(8, 2012, 530),
 (9, 0, 123),
 (9, 2000, 6),
 (9, 2001, 999),
 (9, 2007, 100),
-(9, 2010, 12312);
+(9, 2009, 67423),
+(9, 2010, 100),
+(9, 2012, 400);
 
 -- --------------------------------------------------------
 
@@ -210,6 +238,27 @@ CREATE TABLE IF NOT EXISTS `kegiatan` (
 INSERT INTO `kegiatan` (`id`, `tanggal`, `judul`, `keterangan`, `photo`) VALUES
 (32, '2016-09-23', 'kegiatan 1', 'Ketetangan kegiatan1', 'kegiatan6.jpg'),
 (33, '2016-09-23', 'kegiatan 2', 'Keterangan kegiatan2', 'kegiatan10.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `klaster`
+--
+
+CREATE TABLE IF NOT EXISTS `klaster` (
+`id` int(11) NOT NULL,
+  `klaster` varchar(200) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `klaster`
+--
+
+INSERT INTO `klaster` (`id`, `klaster`) VALUES
+(2, 'Klaster 1'),
+(3, 'Klaster 2'),
+(4, 'Klaster 3'),
+(5, 'Klaster 4');
 
 -- --------------------------------------------------------
 
@@ -291,9 +340,42 @@ INSERT INTO `penduduk` (`nik`, `nomor_kk`, `nama`, `alamat`, `rt`, `rw`, `id_des
 ('124124', '21213123', 'Jaelani', 'Jlan. Osap Sio III', 1, 10, '52_7_5_2001', '52_7_5', 'l', 1, 'Sumbawa', '1976-12-08', 1),
 ('2131232132', '124124123', 'Yahya Gunawan', 'Jlan. Osap Sio 3', 1, 10, '52_7_5_2006', '52_7_5', 'l', 1, 'Sumbawa Besar', '1992-02-09', 2),
 ('2839218938', '12891829898291', 'Mulyanto', 'Jlan. Meraran No. 3', 1, 10, '52_7_5_2001', '52_7_5', 'l', 2, 'Sumbawa Besar', '1978-04-09', 1),
-('7687687687676', '6556576576', 'Erwin', 'Sumbawa', 2, 1, '52_7_7_2003', '52_7_7', 'l', 2, 'Sumbawa', '1995-03-07', 2),
+('7687687687676', '6556576576', 'Erwin Mardinata', 'Sumbawa', 2, 1, '52_7_7_2003', '52_7_7', 'l', 2, 'Sumbawa', '1995-03-07', 2),
 ('838792719', '37912838', 'Abdurahma', 'Jlan. Tebo Sampai Petang ', 2, 3, '52_7_1_2002', '52_7_1', 'l', 2, 'Sumbawa', '1967-08-19', 2),
 ('98298309128', '8132018392803', 'Fitrah Arisandi', 'Kec. Utan', 1, 10, '52_7_5_2001', '52_7_5', 'l', 1, 'Utan', '1995-08-09', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `program`
+--
+
+CREATE TABLE IF NOT EXISTS `program` (
+`id` int(11) NOT NULL,
+  `id_klaster` int(11) NOT NULL,
+  `program` varchar(200) NOT NULL,
+  `keterangan` text NOT NULL,
+  `tahun` int(4) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data untuk tabel `program`
+--
+
+INSERT INTO `program` (`id`, `id_klaster`, `program`, `keterangan`, `tahun`) VALUES
+(3, 2, 'sdfsdf', 'sfsdf', 2015),
+(5, 2, 'fsdfs', 'sdfsdf', 2015),
+(6, 2, 'dsfaasdfsa', 'sdfsdfsdfsa', 2015),
+(7, 2, 'sdfasdfasdfsaderg', 'gdcfarqaergar', 2015),
+(8, 3, 'sdfasdfds', 'gdcfardsagjhty', 2015),
+(9, 3, 'sdfasdtfhtjdfds', 'yetgtyjkytd', 2015),
+(10, 2, 'asdasdas', 'dasdas', 2014),
+(11, 2, 'sdasd', 'dasdassdasd', 2014),
+(12, 3, 'sdasd', 'dasdassdasd', 2014),
+(13, 3, 'asdasd', 'dasdassdasdsdasd', 2014),
+(14, 3, 'asdasdasdasda', 'dasdassdasdssasdadasd', 2014),
+(15, 3, 'asdasdas', 'dasdvdfsdfsdf', 2014),
+(16, 4, 'dgfdgds', 'sdsdfs', 2014);
 
 -- --------------------------------------------------------
 
@@ -1703,6 +1785,12 @@ ALTER TABLE `kegiatan`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `klaster`
+--
+ALTER TABLE `klaster`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
@@ -1719,6 +1807,12 @@ ALTER TABLE `pekerjaan`
 --
 ALTER TABLE `penduduk`
  ADD PRIMARY KEY (`nik`), ADD UNIQUE KEY `nik` (`nik`);
+
+--
+-- Indexes for table `program`
+--
+ALTER TABLE `program`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tiger_desa`
@@ -1770,6 +1864,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 ALTER TABLE `kegiatan`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
+-- AUTO_INCREMENT for table `klaster`
+--
+ALTER TABLE `klaster`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
@@ -1779,6 +1878,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 ALTER TABLE `pekerjaan`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `program`
+--
+ALTER TABLE `program`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tiger_kabupaten`
 --
