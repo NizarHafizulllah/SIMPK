@@ -150,7 +150,7 @@ else {
         		$x+1,
         		$row['klaster'],     		 
         		$row['program'],     		 
-        		$row['keterangan'],     		 
+        		substr($row['keterangan'], 0, 150).'...',     		 
         		$row['tahun'],     		 
         		$hapus
         	);
