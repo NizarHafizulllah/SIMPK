@@ -1,0 +1,51 @@
+1. sekdis dikbudpora. 
+- sulit informasi kemiskinan 
+- apakah hanya membangun sistemnya saja. pengumpulan data dari mana ? 
+
+2. Dinas Sosial. 
+- perbedaan data BPS dan sistem informasi ini. 
+- perlu ada pemetaan sosial. 
+informasi profile lebih rincin tentang potensi kemiskinan setiap wilayah/kecamatan/desa
+- Bid sosial tidak menggunakan data BPS. 
+- orang miskin dibantu jika punya kartu KPS. 
+
+ada pembeda. 
+
+3. BAPPEDA 
+- data dari pusat 
+- kita tetap memakai data berbasis NIK. 
+- indikator dari pusat, harus memiliki variabel sendiri, indikator sendiri khusus KSB. 
+- data bisa diprint datanya.
+- cetak data ke PDF. 
+
+============== 
+
+4. Bappeda
+BPDT 
+- jumlah detail per desa, per kecamatan, per rt, per rw 
+- tidak disandingkan dengan garis kemiskian . 
+
+penduduk miskin dan persentasi kemiskinan. 
+- master baru persentasi kemiskinan. 
+- P1 dan P2. P1 Index keparahan dan kedalaman kemiskinan. 
+
+5. pak ikraman. 
+Judul. 
+monitoring dan evaluasi.
+Gambar Peta. 
+-datamart tidak perlu ada. 
+- data 26 urusan ditampilkan. 
+
+
+6. Koperindagkop 
+- update data kemiskinan. 
+- 
+
+7. 
+-tambahan menu perubahan progress.  
+- sandingannya bukan dengan kabupaten lain. 
+- program - program per tahun per bidang. 
+
+
+
+

@@ -17,7 +17,7 @@ class export_penduduk extends  admin_controller {
 	}
 
 
-	function excel(){
+	function excel($kecamatan, $desa, $nik){
        // $data_desa = $this->cm->data_desa();
 
         $this->load->library('Excel');
@@ -26,29 +26,28 @@ class export_penduduk extends  admin_controller {
 
          $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
 
-        $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);        
-        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(18);  // nik 
-        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(31); // no kk  
+        $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);   // no     
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(31);  // nomor_kk 
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18); // nik
         $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(40);  // nama 
-        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(10); // umur
-        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(18);  // tgl lahir 
-        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);  // alamat 
-        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(40);  // rt 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(40); // tempat_lahir
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);  // tgl lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(40);  // alamat 
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(5);  // rt 
         $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(5); // rw
-        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(18);  // hubungan dalam kelurga 
-        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(18);  // Pendidikan
-        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(30);  
-        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(40);  
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(30);
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(30);
+        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(30);  // hubungan dalam kelurga 
+        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);  // Pekerjaan
 
 
 
          $baris = 1;
 
-        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':L'.$baris);
-        $this->excel->getActiveSheet()
-                ->setCellValue('A' . $baris, "DATA PENDUDUK ");
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
+        $this->excel->getActiveSheet()->setCellValue('A' . $baris, "DATA PENDUDUK ");
        
-       $this->format_center($arr_kolom,$baris);
+       // $this->format_center($arr_kolom,$baris);
  
 
         $baris++; 
@@ -59,10 +58,9 @@ class export_penduduk extends  admin_controller {
         
 
 
-        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':L'.$baris);
-         $this->excel->getActiveSheet()
-                ->setCellValue('A' . $baris, "KABUPATEN SUMBAWA BARAT" );
-        $this->format_center($arr_kolom,$baris);
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
+         $this->excel->getActiveSheet()->setCellValue('A' . $baris, "KABUPATEN SUMBAWA BARAT" );
+        // $this->format_center($arr_kolom,$baris);
 
         $baris +=2; 
 
@@ -78,46 +76,59 @@ class export_penduduk extends  admin_controller {
                 ->setCellValue('A' . $baris, "NO.")
                 ->setCellValue('B' . $baris, "NOMOR KK")
                 ->setCellValue('C' . $baris, "NIK")
-                ->setCellValue('D' . $baris, "NAMA")
-                ->setCellValue('E' . $baris, "UMUR")      
-                ->setCellValue('F' . $baris, "TEMPAT LAHIR")
-                ->setCellValue('G' . $baris, "TANGGAL LAHIR")
-                ->setCellValue('H' . $baris, "ALAMAT")
-                ->setCellValue('I' . $baris, "RT")
-                ->setCellValue('J' . $baris, "RW")
-                ->setCellValue('K' . $baris, "HUBUNGAN DLM. KELUARGA")
-                ->setCellValue('L' . $baris, "PENDIDIKAN")
+                ->setCellValue('D' . $baris, "NAMA")    
+                ->setCellValue('E' . $baris, "TEMPAT LAHIR")
+                ->setCellValue('F' . $baris, "TANGGAL LAHIR")
+                ->setCellValue('G' . $baris, "ALAMAT")
+                ->setCellValue('H' . $baris, "RT")
+                ->setCellValue('I' . $baris, "RW")
+                ->setCellValue('J' . $baris, "Desa/Kelurahan")
+                ->setCellValue('K' . $baris, "Kecamatan")
+                ->setCellValue('L' . $baris, "HUBUNGAN DLM. KELUARGA")
                 ->setCellValue('M' . $baris, "PEKERJAAN") ;    
-          $this->format_header($arr_kolom,$baris);
+          // $this->format_header($arr_kolom,$baris);
           $baris++;
 
            
            $this->db->select('*')->from('penduduk p')
+           ->order_by('nomor_kk')
             ->join('pekerjaan pk','pk.id = p.pekerjaan','left')
             ->join('tiger_desa desa','desa.id = p.id_desa','left')
             ->join('tiger_kecamatan kecamatan','kecamatan.id = p.id_kecamatan','left');
+
+            if($kecamatan!=null) {
+            $this->db->like("desa.id",$desa);
+         }
 
             $resx = $this->db->get();
             // echo $this->db->last_query(); exit;
             $xx = 0;
             foreach($resx->result() as  $rowx) : 
               $xx++;
+
+                $alamat = $rowx->alamat.' Desa/Kel. '.$rowx->desa.' Kecamatan '.$rowx->kecamatan;
+                    if ($rowx->hubungan_keluarga==1) {
+                        $hubungan_keluarga = 'Kepala Keluarga';
+                    }else{
+                        $hubungan_keluarga = 'Bukan Kepala Keluarga';
+                    }
+
                  $this->excel->getActiveSheet()
                 ->setCellValue('A' . $baris, $xx)
-                ->setCellValue('B' . $baris, "$rowx->no_kk")
-                ->setCellValue('C' . $baris, "$rowx->nik")
-                ->setCellValue('D' . $baris, $rowx->nama)
-                ->setCellValue('E' . $baris, $rowx->umur)      
-                ->setCellValue('F' . $baris, $rowx->tmp_lahir)
-                ->setCellValue('G' . $baris, $rowx->tgl_lahir)
-                ->setCellValue('H' . $baris, $rowx->alamat)
-                ->setCellValue('I' . $baris, $rowx->rt)
-                ->setCellValue('J' . $baris, $rowx->rw)
-                ->setCellValue('K' . $baris, $rowx->hubungan_dlm_keluarga)
-                ->setCellValue('L' . $baris, $rowx->pendidikan)
-                ->setCellValue('M' . $baris, $rowx->pekerjaan) ;  
+                ->setCellValue('B' . $baris, $rowx->nomor_kk)
+                ->setCellValue('C' . $baris, $rowx->nik)
+                ->setCellValue('D' . $baris, $rowx->nama)      
+                ->setCellValue('E' . $baris, $rowx->tempat_lahir)
+                ->setCellValue('F' . $baris, $rowx->tanggal_lahir)
+                ->setCellValue('G' . $baris, $rowx->alamat)
+                ->setCellValue('H' . $baris, $rowx->rt)
+                ->setCellValue('I' . $baris, $rowx->rw)
+                ->setCellValue('J' . $baris, $rowx->desa)
+                ->setCellValue('K' . $baris, $rowx->kecamatan)
+                ->setCellValue('L' . $baris, $hubungan_keluarga)
+                ->setCellValue('M' . $baris, $rowx->pekerjaan);  
 
-                $this->format_baris($arr_kolom,$baris);
+                // $this->format_baris($arr_kolom,$baris);
                 $baris++;
             endforeach;
 

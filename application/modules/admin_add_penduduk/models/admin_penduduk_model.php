@@ -22,14 +22,17 @@ class admin_penduduk_model extends CI_Model {
 		 					"nomor_kk",
 							"nama",
 							"alamat",
-							"desa"							 
+							"desa",
+							"kecamatan"							 
 		 	);
 
 
 		$this->db->select ( '*' ); 
     	$this->db->from ( 'penduduk p' );
     	$this->db->join ( 'tiger_desa desa', 'desa.id = p.id_desa' , 'left' );
+    	$this->db->join ( 'tiger_kecamatan kecamatan', 'kecamatan.id = p.id_kecamatan' , 'left' );
     	$this->db->join ( 'pekerjaan pk', 'pk.id = p.pekerjaan' , 'left' );
+
 
 		 // $this->db->select('p.*, pekerjaan.pekerjaan as pekerjaan desa.desa as desa')->from("penduduk p");
 		 // $this->db->join('tiger_desa desa','p.id_desa=desa.id');
@@ -42,6 +45,9 @@ class admin_penduduk_model extends CI_Model {
 
 		 if($desa!='null') {
 		 	$this->db->like("desa.id",$desa);
+		 }
+		 if($kecamatan!='null') {
+		 	$this->db->like("kecamatan.id",$kecamatan);
 		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');

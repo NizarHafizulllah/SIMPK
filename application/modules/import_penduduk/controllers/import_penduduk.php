@@ -34,10 +34,6 @@ class import_penduduk extends admin_controller{
 function index(){
 		$data_array=array();
 
-        
-
-        
-
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
 		$this->set_subtitle("Data Penduduk");
@@ -116,12 +112,7 @@ function import(){
 			// show_array($penduduk); exit;
 
 				$xdata = $penduduk;
-				// $arr =  array('xdata' => $xdata );
-				$this->session->set_userdata('hello', $penduduk);
-				// $tes = $this->session->userdata('xdata');
-		
-		 	// 	show_array($tes); exit;
-				// $arrdata['xdata'] = $arr;
+				$_SESSION['xdata'] = $xdata;
 				$arrdata['title'] = "IMPORT DATA PENDUDUK";
 		 		$arrdata['data'] = $xdata;
 		 		$arrdata['controller'] = "penduduk_import";
@@ -142,9 +133,9 @@ function import(){
 function save(){
 
 		
-		// $datalogin = $this->session->userdata("data");
+		$datalogin = $this->session->userdata("xdata");
 		// $tes = $this->session->userdata("hello");
-		// show_array($tes); exit;
+		show_array($datalogin); 
 
 		// session_start();
 		show_array($_POST['data']);exit();

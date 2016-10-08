@@ -1,6 +1,4 @@
-<?php $fb = $this->session->userdata('hello');
-  show_array($fb);
- ?>
+
 <section class="content">
           <div class="row">
             <div class="col-xs-12">

@@ -14,9 +14,9 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Penduduk</h3>
+              <h3 class="box-title">Data Program</h3>
               <div class="box-tools pull-right">
-              <a href="<?php echo site_url("$this->controller/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Penduduk</button></a>
+              <a href="<?php echo site_url("$this->controller/baru"); ?>"><button type="button" class="btn btn-primary form-control"><i class="fa fa fa-plus-circle "></i> Tambah Program</button></a>
               </div>
             </div>
             <div class="box-body">
@@ -25,23 +25,35 @@
 			<div class="row">
             
 
-            <form role="form" action="" id="btn-cari" name="form-data" method="post">
+            <form role="form" action="" id="btn-cari" >
             <div class="col-md-3">
               <div class="form-group">
-                <label for="nama">Nama</label>
-                <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama" style="border-radius: 8px;">
+                <label for="program">Klaster</label>
+				<select class="form-control input-style select2" name="klaster" id="klaster">
+					<option value=""> - Pilih Klaster - </option>
+					<?php foreach($arr_klaster as $row): ?>
+						<option value="<?php echo $row->klaster; ?>"> <?php echo $row->klaster; ?> </option>
+					<?php endforeach; ?>
+				</select>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <label for="nama">Kecamatan</label>
-                <?php echo form_dropdown("id_kecamatan",$arr_kecamatan,'','id="id_kecamatan" class="form-control input-style " style="border-radius: 8px;"'); ?>
+                <label for="program">Program</label>
+                <input id="program" name="program" type="text" class="form-control" placeholder="program" style="border-radius: 8px;">
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <label for="nama">Desa</label>
-                <?php echo form_dropdown("id_desa",array(),'','id="id_desa" class="form-control input-style" style="border-radius: 8px;"'); ?>
+                <label for="program">Tahun</label>
+				<select class="form-control input-style select2" name="tahun" id="tahun">
+					<option selected value="0"> - Tahun - </option>
+						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
+					
+						<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+					
+					<?php } ?>
+				</select>
               </div>
             </div>
             <div class="col-md-1">
@@ -56,21 +68,6 @@
                 <button type="reset" class="btn btn-danger form-control" id="btn_reset"><i class="fa">Reset</i></button>
               </div>
             </div>
-            <div class="col-md-1">
-              <div class="form-group">
-                <label></label>
-                  <div class="btn-group" role="group">
-                  <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Cetak
-                  <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a id="excel_print">Excel</a></li>
-                    <li><a id="pdf_print">PDF</a></li>
-                  </ul>
-                  </div>
-              </div>
-            </div>
             </form>
   </div>          
 <div class="col-md-12">
@@ -78,12 +75,13 @@
 <table width="100%" border="0" id="biro_jasa" class="table table-bordered table-hover dataTable" role="grid">
 <thead>
   <tr>
-        <th width="7%">NIK</th>
-        <th width="13%">Nama</th>        
-        <th width="30%">Alamat</th>
-        <th width="7%">Pekerjaan</th>
-        <th width="14%">#</th>
-    </tr>
+    <th width="2%">No</th>
+    <th width="7%">Klaster</th>
+    <th width="13%">Program</th> 
+    <th>Keterangan</th> 
+    <th width="7%">Tahun</th> 
+    <th width="15%">#</th>
+  </tr>
   
 </thead>
 </table>
@@ -95,5 +93,5 @@
 
 
 <?php 
-$this->load->view("admin_penduduk_view_js");
+$this->load->view($this->controller."_view_js");
 ?>

@@ -21,9 +21,7 @@ $(document).ready(function(){
 		 	  // alert('hello');
 		 	  
 
-		 	  dt.column(1).search($("#nama").val())
-        dt.column(2).search($("#id_desa").val())
-          dt.column(3).search($("#id_kecamatan").val())
+		 	  dt.column(1).search($("#klaster").val())
 				 .draw();
 
 				 return false;
@@ -31,13 +29,10 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#nama").val('');
+			$("#pekerjaan").val('');
       
       
-      delete rs;
-      $("#id_desa").val("");
-      
-
+ 
 
 			$("#btn_submit").click();
 		 });
@@ -45,36 +40,17 @@ $(document).ready(function(){
 
 });
 	
-$("#excel_print").click(function() {
-  
-
-  var nama;
-  var kecamatan;
-  var desa;
-
-  nama = $("#nama").val();
-  kecamatan = $("#id_kecamatan").val();
-  desa = $("#id_desa").val();
-  
-  // window.alert(desa);
-  
-  open('<?php echo site_url("$this->controller/excel?"); ?>'+'desa='+ desa +'&kecamatan='+kecamatan);
-
-});
-
-function print_excel(id_kecamatan, id_desa){}
-
 
  $(".select2").select2();
 
 
-function hapus(nik){
+function hapus(id){
 
 
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA PENDUDUK INI. ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA PENDUDUK',
+            message : 'ANDA AKAN MENGHAPUS DATA PEKERJAAN INI. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA PEKERJAAN',
             draggable: true,
             buttons : [
               {
@@ -89,7 +65,7 @@ BootstrapDialog.show({
                   $.ajax({
                   	url : '<?php echo site_url("$this->controller/hapusdata") ?>',
                   	type : 'post',
-                  	data : {nik : nik},
+                  	data : {id : id},
                   	dataType : 'json',
                   	success : function(obj) {
                   		$('#myPleaseWait').modal('hide'); 

@@ -1,4 +1,8 @@
-<h3>Grafik Data Penduduk Miskin dan Garis Kemiskinan</h3>
+<h3>Grafik 
+	<?php 
+		echo $this->uri->segment(3) == 1 ? 'Data Jumlah Penduduk Miskin' : 'Data Jumlah Garis Kemiskinan'; 
+	?>
+</h3>
 <hr>
 <script>
 $(function () {
@@ -16,7 +20,7 @@ $(function () {
 		$.ajax({
 			
 			url : '<?php echo site_url("beranda/get_grafik"); ?>',
-            data : 'tahun=' + nilai,
+            data : 'tahun=' + nilai + '&url=<?php echo $this->uri->segment(3); ?>',
             type : 'get', 
             success : function(result) {
                 $("#grafik").html(result);
