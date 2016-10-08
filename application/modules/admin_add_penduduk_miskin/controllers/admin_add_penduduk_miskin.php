@@ -358,7 +358,6 @@ function get_nama(){
         $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(30);  // hubungan dalam kelurga 
         $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);
         $this->excel->getActiveSheet()->getColumnDimension('N')->setWidth(10);  // Pekerjaan
-        $this->excel->getActiveSheet()->getColumnDimension('O')->setWidth(10);  // Pekerjaan
 
          $baris = 1;
 
@@ -426,8 +425,7 @@ function get_nama(){
                         ->setCellValue('K' . $baris, "Kecamatan")
                         ->setCellValue('L' . $baris, "HUBUNGAN DLM. KELUARGA")
                         ->setCellValue('M' . $baris, "PEKERJAAN")  
-                        ->setCellValue('N' . $baris, "UMUR")   
-                        ->setCellValue('O' . $baris, "TAHUN");    
+                        ->setCellValue('N' . $baris, "UMUR");   
                   // $this->format_header($arr_kolom,$baris);
                     $baris++;
                     $xx=1;
@@ -460,14 +458,15 @@ function get_nama(){
                 ->setCellValue('K' . $baris, $rowx->kecamatan)
                 ->setCellValue('L' . $baris, $hubungan_keluarga)
                 ->setCellValue('M' . $baris, $rowx->pekerjaan)
-                ->setCellValue('N' . $baris, $umur)
-                ->setCellValue('O' . $baris, $rowx->tahun);
+                ->setCellValue('N' . $baris, $umur);
 
                 $a = $rowx->tahun;
 
                 // $this->format_baris($arr_kolom,$baris);
                 // $baris++;
             endforeach;
+
+        $title = "";
 
         if(!empty($tahun)) {
             $title = $tahun;
