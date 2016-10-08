@@ -62,6 +62,21 @@
                 <button type="reset" class="btn btn-danger form-control" id="btn_reset"><i class="fa">Reset</i></button>
               </div>
             </div>
+            <div class="col-md-1">
+              <div class="form-group">
+                <label></label>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cetak
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a id="excel_print">Excel</a></li>
+                    <li><a id="pdf_print">PDF</a></li>
+                  </ul>
+                  </div>
+              </div>
+            </div>
             </form>
   </div>          
 <div class="col-md-12">
@@ -69,12 +84,11 @@
 <table width="100%" border="0" id="biro_jasa" class="table table-striped table-hover dataTable no-footer" role="grid">
 <thead>
   <tr>
-        <th width="10%">Tahun</th>        
+        <th width="7%">Tahun</th>        
         <th width="15%">NIK</th>        
         <th width="15%">Nama</th>        
         <th width="">Alamat</th>
-        <th width="15%">Pekerjaan</th>
-        <th width="15%">Desa</th>
+        <th width="10%">Pekerjaan</th>
         <th width="15%">#</th>
     </tr>
   

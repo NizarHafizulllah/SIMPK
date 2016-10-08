@@ -215,7 +215,7 @@ class Beranda extends master_controller  {
 				  FROM program p 
 				  LEFT JOIN klaster k 
 				  ON k.id = p.id_klaster 
-				  WHERE p.tahun = 2015";
+				  WHERE p.tahun = ".(date('Y')-1);
 
 		$data_array['klaster'] = $this->db->query($query)->result();
 

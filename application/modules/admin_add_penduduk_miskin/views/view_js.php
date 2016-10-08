@@ -23,6 +23,7 @@ $(document).ready(function(){
 
 				dt.column(1).search($("#id_desa").val())
 				dt.column(2).search($("#tahun").val())
+        dt.column(3).search($("#id_kecamatan").val())
 				.draw();
 
 				return false;
@@ -43,6 +44,23 @@ $(document).ready(function(){
 			$("#btn_submit").click();
 		 });
 
+
+});
+
+$("#excel_print").click(function() {
+  
+
+  var tahun;
+  var kecamatan;
+  var desa;
+
+  tahun = $("#tahun").val();
+  kecamatan = $("#id_kecamatan").val();
+  desa = $("#id_desa").val();
+  
+  // window.alert(desa);
+  
+  open('<?php echo site_url("$this->controller/excel?"); ?>'+ 'tahun=' + tahun + '&desa='+ desa +'&kecamatan='+kecamatan);
 
 });
 	

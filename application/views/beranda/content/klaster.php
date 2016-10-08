@@ -42,7 +42,7 @@ $(function () {
 </div>
 <br><br>
 <div id="klaster">
-<h3 align="center">Profil Program Tahun : 2015</h3><br>
+<h3 align="center">Profil Program Tahun : <?php echo date('Y') - 1; ?></h3><br>
 <table class="table table-striped">
 <?php 
 	if(!$klaster) { echo "<p align='center'><strong>- Data Masih Kosong -</strong></p>"; } else { 
