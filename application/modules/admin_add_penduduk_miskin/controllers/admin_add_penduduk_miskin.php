@@ -468,6 +468,8 @@ function get_nama(){
 
         $title = "";
 
+
+        //title
         if(!empty($tahun)) {
             $title = $tahun;
         }
