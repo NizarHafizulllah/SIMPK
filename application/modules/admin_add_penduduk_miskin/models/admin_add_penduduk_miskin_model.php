@@ -30,6 +30,7 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 		$this->db->select ( '*' ); 
     	$this->db->from ( 'data_kemiskinan dk' );
     	$this->db->join ( 'penduduk p', 'dk.nik=p.nik' , 'left' );
+    	$this->db->join ( 'tiger_kecamatan kecamatan', 'kecamatan.id = p.id_kecamatan' , 'left' );
     	$this->db->join ( 'tiger_desa desa', 'desa.id = p.id_desa' , 'left' );
     	$this->db->join ( 'pekerjaan pk', 'pk.id = p.pekerjaan' , 'left' );
 		
@@ -45,6 +46,11 @@ class Admin_add_penduduk_miskin_model extends CI_Model {
 
 		 if($tahun!='0') {
 		 	$this->db->like("dk.tahun", $tahun);
+
+		 }
+
+		 if($kecamatan!=null) {
+		 	$this->db->like("p.id_kecamatan", $kecamatan);
 
 		 }
 

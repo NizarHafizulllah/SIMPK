@@ -60,9 +60,9 @@
               <div class="form-group">
                 <label></label>
                   <div class="btn-group" role="group">
-                  <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Cetak
-                  <span class="caret"></span>
+                    <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cetak
+                    <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
                     <li><a id="excel_print">Excel</a></li>
