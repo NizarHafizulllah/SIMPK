@@ -239,30 +239,18 @@ class Beranda extends master_controller  {
 				  ON k.id = p.id_klaster 
 				  WHERE p.tahun = ".$data_array['tahun'];
 
-		// rupiah($row['jumlah_pagu']);
 
 		$data_array['klaster'] = $this->db->query($query)->result();
-		// extract($data_array);
-		// show_array($klaster);
-		
-		// exit();
 
-		$this->db->select_sum('jumlah_pagu', 'jumlah_total');
-		$this->db->select('jumlah_pagu');
-		$this->db->from('program');
-		$this->db->where('tahun', $data_array['tahun']);
+		// $this->db->select_sum('jumlah_pagu', 'jumlah_total');
+		// $this->db->select('jumlah_pagu');
+		// $this->db->from('program');
+		// $this->db->where('tahun', $data_array['tahun']);
 		
-		$rs['total'] = $this->db->get()->row_array();
-		// extract($rs);
-		$hasil = $rs['total'];
-		$data_array['total'] = rupiah($hasil['jumlah_total']);
-		
-		// echo $this->db->last_query();
-		// // show_array($data_array);
-		// exit();
-		
-		
-		// exit();
+		// $rs['total'] = $this->db->get()->row_array();
+
+		// $hasil = $rs['total'];
+		// $data_array['total'] = rupiah($hasil['jumlah_total']);
 		
 		$this->load->view($this->controller."/content/klaster_view",$data_array);		
 
