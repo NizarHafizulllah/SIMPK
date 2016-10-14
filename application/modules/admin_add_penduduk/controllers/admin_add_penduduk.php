@@ -362,7 +362,7 @@ else {
 
         $this->load->library('Excel');
         $this->excel->setActiveSheetIndex(0);
-        $this->excel->getActiveSheet()->setTitle('Data Penduduk ');
+        $this->excel->getActiveSheet()->setTitle('Data Penduduk');
 
          $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
 
@@ -386,9 +386,8 @@ else {
          $baris = 1;
 
         $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
-        $this->excel->getActiveSheet()->setCellValue('A' . $baris, "DATA PENDUDUK ");
-       
-       // $this->format_center($arr_kolom,$baris);
+        $this->excel->getActiveSheet()->setCellValue('A' . $baris, "DATA PENDUDUK KABUPATEN SUMBAWA BARAT");
+       $this->format_center($arr_kolom,$baris);
  
 
         $baris++; 
@@ -401,7 +400,7 @@ else {
 
         $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
          $this->excel->getActiveSheet()->setCellValue('A' . $baris, "KABUPATEN SUMBAWA BARAT" );
-        // $this->format_center($arr_kolom,$baris);
+        $this->format_center($arr_kolom,$baris);
 
         $baris +=2; 
 
@@ -435,6 +434,7 @@ else {
     
            $this->db->select('*')->from('penduduk p')
            ->order_by('nomor_kk')
+           ->order_by('hubungan_keluarga')
             ->join('pekerjaan pk','pk.id = p.pekerjaan','left')
             ->join('tiger_desa desa','desa.id = p.id_desa','left')
             ->join('tiger_kecamatan kecamatan','kecamatan.id = p.id_kecamatan','left');

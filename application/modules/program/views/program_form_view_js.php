@@ -2,6 +2,7 @@
 
 $(document).ready(function(){
 
+$(".rupiah").autoNumeric({aPad: 'true', aSep: '.', aSign: '', aDec: ',', vMax: '99999999999999999999999', vMin: '0'},'init'); 
  $(".select2").select2();
 $("#datemask").inputmask("dd-mm-yyyy", {"placeholder": "HH-BB-TTTT"});
 

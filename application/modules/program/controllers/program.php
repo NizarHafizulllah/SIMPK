@@ -7,6 +7,7 @@ class program extends admin_controller{
 		$this->controller = get_class($this);
 		$this->load->model('program_model','dm');
         $this->load->model("coremodel","cm");
+        $this->load->helper("tanggal");
 		
 		//$this->load->helper("serviceurl");
 		
@@ -35,12 +36,10 @@ function index(){
 function baru(){
         $data_array=array();
 
-		$this->db->order_by("id", "ASC");
-		$rs = $this->db->get("klaster")->result();
-		
-		$data_array['arr_klaster'] = $rs;
 
         $data_array['action'] = 'simpan';
+
+        $data_array['arr_klaster'] = $this->cm->arr_dropdown("klaster", "id", "klaster", "klaster");
        
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
@@ -70,6 +69,7 @@ function simpan(){
         
         $this->form_validation->set_error_delimiters('', '<br>');
 
+        $post['jumlah_pagu'] = bersih($post['jumlah_pagu']); 
        
         //show_array($data);
 
@@ -174,13 +174,11 @@ else {
     	 $id = $get['id'];
 
     	 $this->db->where('id',$id);
-    	 $rs = $this->db->get('program');
-    	 $data = $rs->row_array();
+    	 $rs = $this->db->get('program')->row_array();
+    	 $data = $rs;
 
-		$this->db->order_by("id", "ASC");
-		$rs = $this->db->get("klaster")->result();
 		
-		$data['arr_klaster'] = $rs;
+        $data['arr_klaster'] = $this->cm->arr_dropdown("klaster", "id", "klaster", "klaster");
          
 
         $data['action'] = 'update';
@@ -215,7 +213,8 @@ function update(){
         
         $this->form_validation->set_error_delimiters('', '<br>');
 
-     
+        
+        $post['jumlah_pagu'] = bersih($post['jumlah_pagu']); 
 
         //show_array($data);
 
