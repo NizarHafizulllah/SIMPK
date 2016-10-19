@@ -15,7 +15,7 @@ $(function () {
 			return false;
 		}
 		
-		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/images/35.gif'); ?>"></div>');
+		$('#grafik').html('<div style="text-align: center; padding-top: 70px;"><img src="<?php echo base_url('assets/image/35.gif'); ?>"></div>');
 		
 		$.ajax({
 			

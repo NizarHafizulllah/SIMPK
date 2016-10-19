@@ -347,8 +347,8 @@ function get_nama(){
         $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);   // no     
         $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(31);  // nomor_kk 
         $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18); // nik
-        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(40);  // nama 
-        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(40); // tempat_lahir
+        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(30);  // nama 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20); // tempat_lahir
         $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);  // tgl lahir 
         $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(40);  // alamat 
         $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(5);  // rt 
@@ -361,16 +361,38 @@ function get_nama(){
 
          $baris = 1;
 
-        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':n'.$baris);
         $this->excel->getActiveSheet()->setCellValue('A' . $baris, "DATA PENDUDUK MISKIN");
        
+       $styleArray = array(
+        'font' => array(
+            'bold' => true,
+            'color' => array('rgb' => '2F4F4F')
+        ),
+        'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        )
+    );
+
+        $this->excel->getActiveSheet()->getStyle('a'.$baris.':n'.$baris)->applyFromArray($styleArray);
        // $this->format_center($arr_kolom,$baris);
  
         $baris++; 
 
-        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':n'.$baris);
          $this->excel->getActiveSheet()->setCellValue('A' . $baris, "KABUPATEN SUMBAWA BARAT" );
         // $this->format_center($arr_kolom,$baris);
+         $styleArray = array(
+        'font' => array(
+            'bold' => true,
+            'color' => array('rgb' => '2F4F4F')
+        ),
+        'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        )
+    );
+
+        $this->excel->getActiveSheet()->getStyle('a'.$baris.':n'.$baris)->applyFromArray($styleArray);
 
             $this->db->select ( '*' ); 
             $this->db->from ( 'data_kemiskinan dk' )
@@ -403,8 +425,16 @@ function get_nama(){
                 if($rowx->tahun != $a) {
                 $baris++; 
 
-                $this->excel->getActiveSheet()->mergeCells('a'.$baris.':K'.$baris);
+                $this->excel->getActiveSheet()->mergeCells('a'.$baris.':N'.$baris);
                  $this->excel->getActiveSheet()->setCellValue('A' . $baris, "TAHUN : ".$rowx->tahun);
+                  $styleArray = array(
+        'font' => array(
+            'bold' => true,
+        ),
+    );
+
+
+        $this->excel->getActiveSheet()->getStyle('a'.$baris.':n'.$baris)->applyFromArray($styleArray);
                 // $this->format_center($arr_kolom,$baris);
 
                 $baris ++; 
@@ -427,6 +457,13 @@ function get_nama(){
                         ->setCellValue('M' . $baris, "PEKERJAAN")  
                         ->setCellValue('N' . $baris, "UMUR");   
                   // $this->format_header($arr_kolom,$baris);
+                $styleArray = array(
+        'font' => array(
+            'bold' => true,
+        ),
+    );
+
+        $this->excel->getActiveSheet()->getStyle('a'.$baris.':n'.$baris)->applyFromArray($styleArray);
                     $baris++;
                     $xx=1;
                 } else {
@@ -442,15 +479,22 @@ function get_nama(){
                     }
 
                     $umur = (date('Y') - date('Y',strtotime($rowx->tanggal_lahir)));
+
+                    $this->excel->getActiveSheet()->getStyle('B'.$baris.':C'.$baris)
+                    ->getNumberFormat()
+                    ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+                    $this->excel->getActiveSheet()->getStyle('F'.$baris)
+                    ->getNumberFormat()
+                    ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_XLSX14);
                     
 
                  $this->excel->getActiveSheet()
                 ->setCellValue('A' . $baris, $xx)
-                ->setCellValue('B' . $baris, $rowx->nomor_kk)
-                ->setCellValue('C' . $baris, $rowx->nik)
+                ->setCellValue('B' . $baris, ' '.$rowx->nomor_kk.'')
+                ->setCellValue('C' . $baris, ' '.$rowx->nik.'')
                 ->setCellValue('D' . $baris, $rowx->nama)      
                 ->setCellValue('E' . $baris, $rowx->tempat_lahir)
-                ->setCellValue('F' . $baris, $rowx->tanggal_lahir)
+                ->setCellValue('F' . $baris, flipdate($rowx->tanggal_lahir))
                 ->setCellValue('G' . $baris, $rowx->alamat)
                 ->setCellValue('H' . $baris, $rowx->rt)
                 ->setCellValue('I' . $baris, $rowx->rw)
@@ -500,6 +544,87 @@ function get_nama(){
 
 
 }
+
+    function pdf(){
+    $post = $this->input->get(); 
+    
+
+    $kecamatan = $post['kecamatan'];
+        $desa = $post['desa'];
+        $tahun = $post['tahun'];
+
+        $this->db->select ( '*' ); 
+            $this->db->from ( 'data_kemiskinan dk' )
+            ->order_by('dk.tahun', 'ASC')
+            ->join ( 'penduduk p', 'dk.nik=p.nik' , 'left' )
+            ->join ( 'tiger_kecamatan kecamatan', 'kecamatan.id = p.id_kecamatan' , 'left' )
+            ->join ( 'tiger_desa desa', 'desa.id = p.id_desa' , 'left' )
+            ->join ( 'pekerjaan pk', 'pk.id = p.pekerjaan' , 'left' );
+        
+         if(!empty($tahun)) {
+            $this->db->like("dk.tahun",$tahun);
+         }
+
+         if(!empty($kecamatan)) {
+            $this->db->like("kecamatan.id",$kecamatan);
+         }
+
+         if($desa!='null'||$desa!=0) {
+            $this->db->like("desa.id",$desa);
+         }
+
+            $resx = $this->db->get();
+
+        if (!empty($kecamatan)) {
+        $this->db->where('id', $kecamatan);
+        $data_kecamatan = $this->db->get('tiger_kecamatan')->row();
+        $data['kecamatan'] = $data_kecamatan->kecamatan;
+        // show_array($data_kecamatan);
+        // exit();
+    }
+    if (!empty($desa)) {
+        $this->db->where('id', $desa);
+        $data_kecamatan = $this->db->get('tiger_desa')->row();
+        $data['desa'] = $data_kecamatan->desa;
+        // show_array($data_kecamatan);
+        // exit();
+    }
+
+    
+
+    $data['controller'] = get_class($this);
+    $data['header'] = "data";
+    $data['query']  = $resx->result();
+    $data['title'] = $data['header'];
+    $this->load->library('Pdf');
+        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->SetTitle( $data['header']);
+        // $pdf->Orientation('L');
+        $pdf->SetMargins(10, 10, 10);
+        $pdf->SetHeaderMargin(10);
+        $pdf->SetFooterMargin(10);
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        $pdf->SetAutoPageBreak(true,10);
+        $pdf->SetAuthor('PKPD  taujago@gmail.com');
+         
+            
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(true);
+
+         // add a page
+        $pdf->AddPage('L');
+
+ 
+
+         $html = $this->load->view("pdf/pdf_penduduk_miskin",$data,true);
+         $pdf->writeHTML($html, true, false, true, false, '');
+
+ 
+         $pdf->Output($data['header']. $this->session->userdata("tahun") .'.pdf', 'FI');
+}
+
+
 }
 
 ?>

@@ -63,6 +63,24 @@ $("#excel_print").click(function() {
   open('<?php echo site_url("$this->controller/excel?"); ?>'+ 'tahun=' + tahun + '&desa='+ desa +'&kecamatan='+kecamatan);
 
 });
+
+
+$("#pdf_print").click(function() {
+  
+
+  var tahun;
+  var kecamatan;
+  var desa;
+
+  tahun = $("#tahun").val();
+  kecamatan = $("#id_kecamatan").val();
+  desa = $("#id_desa").val();
+  
+  // window.alert(desa);
+  
+  open('<?php echo site_url("$this->controller/pdf?"); ?>'+ 'tahun=' + tahun + '&desa='+ desa +'&kecamatan='+kecamatan);
+
+});
 	
 
  $(".select2").select2();

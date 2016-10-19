@@ -62,7 +62,24 @@ $("#excel_print").click(function() {
 
 });
 
-function print_excel(id_kecamatan, id_desa){}
+$("#pdf_print").click(function() {
+  
+
+  var nama;
+  var kecamatan;
+  var desa;
+
+  nama = $("#nama").val();
+  kecamatan = $("#id_kecamatan").val();
+  desa = $("#id_desa").val();
+  
+  // window.alert(desa);
+  
+  open('<?php echo site_url("$this->controller/pdf?"); ?>'+'desa='+ desa +'&kecamatan='+kecamatan);
+
+});
+
+
 
 
  $(".select2").select2();
