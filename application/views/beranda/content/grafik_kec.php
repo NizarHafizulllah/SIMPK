@@ -3,7 +3,21 @@
 <script>
 $(function () {
 
-   $("#id_kecamatan").change(function(){
+   $("#tahun").change(function(){
+
+    $.ajax({
+
+	            url : '<?php echo site_url("$this->controller/get_kecamatan") ?>',
+	            data : { id_kecamatan : $(this).val() },
+	            type : 'post', 
+	            success : function(result) {
+	                $("#id_kecamatan").html(result)
+	            }
+	      });
+
+    });
+
+	$("#id_kecamatan").change(function(){
 
     $.ajax({
 
@@ -62,7 +76,7 @@ $(function () {
 <div class="panel panel-default" style="background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);">
   <div class="panel-body">
 	<span class="col-md-12">
-	<div class="navbar-form" style="margin-top: -7px; margin-bottom: -7px; margin-left: -30px; margin-right: -30px;">
+	<div class="navbar-form" style="margin-top: -7px; margin-bottom: -7px; margin-left: -30px; margin-right: -30px; padding: 7px;">
 	<form method="post" id="form_data">
 		<select class="form-control" name="tahun" id="tahun">
 			<option value="">- Pilih Tahun -</option>

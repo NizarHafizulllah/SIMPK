@@ -196,7 +196,7 @@ class Beranda extends master_controller  {
 	function grafik_kec() {
 		$data_array = array();
 		
-        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", 'id_kota', '52_7');
+        $data_array['arr_kecamatan'] = array('' => '- Pilih Kecamatan -', );
 		$data_array['arr_desa'] 	 = array('' => '- Pilih Desa -', );
 		$data_array['arr_rw'] 		 = array('' => '- Pilih RW -', );
 
@@ -218,6 +218,7 @@ class Beranda extends master_controller  {
 				  ON k.id = p.id_klaster 
 				  WHERE p.tahun = ".(date('Y')-1);
 
+        $data_array['arr_klaster'] = $this->db->get('klaster')->result();
 		$data_array['klaster'] = $this->db->query($query)->result();
 
 		$content = $this->load->view($this->controller."/content/klaster",$data_array, true);
@@ -230,28 +231,33 @@ class Beranda extends master_controller  {
 
 	function get_klaster() {
 
-		$data_array['tahun'] = $this->input->get('tahun');
-
-		$data_array['title'] = "Profil Program Tahun : ".$data_array['tahun'];
-		$query = "SELECT p.*, k.klaster 
-				  FROM program p 
-				  LEFT JOIN klaster k 
-				  ON k.id = p.id_klaster 
-				  WHERE p.tahun = ".$data_array['tahun'];
-
-
-		$data_array['klaster'] = $this->db->query($query)->result();
-
-		// $this->db->select_sum('jumlah_pagu', 'jumlah_total');
-		// $this->db->select('jumlah_pagu');
-		// $this->db->from('program');
-		// $this->db->where('tahun', $data_array['tahun']);
+		$get = $this->input->get();
 		
-		// $rs['total'] = $this->db->get()->row_array();
-
-		// $hasil = $rs['total'];
-		// $data_array['total'] = rupiah($hasil['jumlah_total']);
+		$data_array['title'] = "Profil Program Tahun : ".$get['tahun'];
 		
+		$this->db->select ( '*' ); 
+    	$this->db->from ( 'program p' );
+    	$this->db->join ( 'klaster k', 'k.id=p.id_klaster' , 'left' );
+		
+		
+		// $query = "SELECT p.*, k.klaster 
+				  // FROM program p 
+				  // LEFT JOIN klaster k 
+				  // ON k.id = p.id_klaster 
+				  // WHERE p.tahun = ".$data_array['tahun'];
+		
+		if($get['tahun']!=null) {
+			$this->db->like("p.tahun",$get['tahun']);
+		 }
+		
+		if($get['klaster']!=0) {
+			$this->db->like("k.id", $get['klaster']);
+		}
+
+
+
+		$data_array['klaster'] = $this->db->get()->result();
+
 		$this->load->view($this->controller."/content/klaster_view",$data_array);		
 
 	}
@@ -414,6 +420,21 @@ class Beranda extends master_controller  {
 		$this->render();
 	}
 
+	function get_kecamatan() {
+
+	    $data = $this->input->post();
+	    $rs = array('' => 'Pilih Satu', );
+	    $id_kecamatan = $data['id_kecamatan'];
+	    $this->db->where("id_kota","52_7");
+	    $this->db->order_by("kecamatan");
+	    $rs = $this->db->get("tiger_kecamatan");
+	    echo "<option value='0' selected>Semua Kecamatan</option>";
+	    foreach($rs->result() as $row ) :
+	        echo "<option value=$row->id>$row->kecamatan </option>";
+	    endforeach;
+
+	}
+
 	function get_desa() {
 
 	    $data = $this->input->post();
@@ -422,7 +443,7 @@ class Beranda extends master_controller  {
 	    $this->db->where("id_kecamatan",$id_kecamatan);
 	    $this->db->order_by("desa");
 	    $rs = $this->db->get("tiger_desa");
-	    echo "<option value='0' selected>Pilih Desa</option>";
+	    echo "<option value='0' selected>Semua Desa</option>";
 	    foreach($rs->result() as $row ) :
 	        echo "<option value=$row->id>$row->desa </option>";
 	    endforeach;
@@ -432,7 +453,7 @@ class Beranda extends master_controller  {
 	function get_rw() {
 
 	    $data = $this->input->post();
-	    $rs = array('' => 'Pilih Satu', );
+	    $rs = array('' => ' Semua RW ', );
 	    $id_desa = $data['id_desa'];
 	    $query = "SELECT rw FROM penduduk 
 	    		  WHERE id_desa = '$id_desa' 
@@ -442,14 +463,13 @@ class Beranda extends master_controller  {
 
 	    $rs = $this->db->query($query)->result();
 
-	    echo "<option value='0' selected>Pilih RW</option>";
+	    echo "<option value='0' selected>Semua RW</option>";
 	    foreach($rs as $row ) :
 	        echo "<option value=$row->rw>$row->rw </option>";
 	    endforeach;
 
-
 	}
-
+	
 
 }
 ?> 

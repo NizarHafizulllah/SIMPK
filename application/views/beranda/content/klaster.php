@@ -3,6 +3,7 @@ $(function () {
 		
 	$('#cari').click(function() {
 		var nilai = $('#tahun').val();
+		var klaster = $('#klaster').val();
 		
 		if(!nilai) {
 			alert('Anda harus pilih tahun dulu');
@@ -12,10 +13,10 @@ $(function () {
 		$.ajax({
 			
 			url : '<?php echo site_url("beranda/get_klaster"); ?>',
-            data : 'tahun=' + nilai,
+            data : 'tahun=' + nilai +'&klaster=' + klaster ,
             type : 'get', 
             success : function(result) {
-                $("#klaster").html(result);
+                $("#view").html(result);
             }
 
 			
@@ -27,21 +28,31 @@ $(function () {
 </script>
 <h3>Profil Program</h3>
 <hr>
-<div class="col-md-4 col-md-offset-8">
-	<div class="input-group">
-		<select class="form-control" name="tahun" id="tahun">
-			<option value="">- Pilih Tahun -</option>
-			<?php for($x=date('Y'); $x>=2000; $x--) { ?>
-				<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
-			<?php } ?>
-		</select>
-		<span class="input-group-btn">
-			<button class="btn btn-default" id="cari">cari</button>
-		</span>
+<div class="panel panel-default" style="background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);">
+	<div class="panel-body" >
+		<div class="col-md-8 col-md-offset-5" >
+			<div class="navbar-form" style="margin-top: -7px; margin-bottom: -7px">
+				<div class="form-group">
+					<select class="form-control" name="tahun" id="tahun">
+						<option value="">- Pilih Tahun -</option>
+						<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+						<?php } ?>
+					</select>
+					<select class="form-control" name="klaster" id="klaster">
+						<option value="">- Semua Klaster -</option>
+						<?php foreach($arr_klaster as $row): ?>
+							<option value="<?php echo $row->id; ?>"><?php echo $row->klaster; ?></option>
+						<?php endforeach; ?>
+					</select>				
+				</div>
+				<button class="btn btn-default" id="cari">Cari</button>
+			</div>  
+		</div>
 	</div>
 </div>
 <br><br>
-<div id="klaster">
+<div id="view">
 <h3 align="center">Profil Program Tahun : <?php echo date('Y') - 1; ?></h3><br>
 <table class="table table-striped">
 <?php 
