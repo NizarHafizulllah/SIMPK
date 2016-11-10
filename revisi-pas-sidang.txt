@@ -48,4 +48,26 @@ Gambar Peta.
 
 
 
+gambar  - gambar 
+
+cart cluster dalam bentuk grafis. 
+berbasis peta, indikator warna 
+
+arsitektur sistem.   -- pak amir
+indikator 
+miskin karena apa ? indikator kemiskinan. 
+
+-- pengembangan selanjutnya. -- pak ary 
+geo spasial  (GIS)
+
+
+-- dari dikbudpora 
+tidak sekedar menampilkan data.
+menampilkan indikator 
+total indikator dalam bentuk grafis. 
+homepage -> program 
+import data dari excel.
+
+2 standard data 
+BPDT . PPLS 
 
