@@ -35,7 +35,7 @@ $(function () {
 				<div class="form-group">
 					<select class="form-control" name="tahun" id="tahun">
 						<option value="">- Pilih Tahun -</option>
-						<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+						<?php for($x=date('Y'); $x>=2014; $x--) { ?>
 							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 						<?php } ?>
 					</select>

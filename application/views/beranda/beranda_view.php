@@ -199,7 +199,7 @@ $(function () {
 		<div class="col-md-7 col-md-offset-6">
 			<select class="form-control" id="tahundonat">
 				<option value=""> - Pilih Tahun - </option>
-				<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+				<?php for($x=date('Y'); $x>=2014; $x--) { ?>
 					<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 				<?php } ?>
 			</select>

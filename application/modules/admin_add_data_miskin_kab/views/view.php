@@ -36,7 +36,7 @@
                 <label for="nama">Tahun</label>
 				<select class="form-control input-style select2" name="tahun" id="tahun">
 					<option selected value="0"> - Tahun - </option>
-						<?php for($x=date("Y"); $x>=2000; $x--) { ?>
+						<?php for($x=date("Y"); $x>=2014; $x--) { ?>
 					
 						<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 					

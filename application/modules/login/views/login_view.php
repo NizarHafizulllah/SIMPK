@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sistem Informasi Pengentasan Kemiskinan</title>
+        <title>Sistem Informasi Penanggulangan Kemiskinan</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -80,7 +80,7 @@
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>SIMPK </strong> Kab. Sumbawa Barat</h1>
                             <div class="description">
-                              <p>Sistem Informasi Manajemen Pengentasan Kemiskinan Kab. Sumbawa Barat</p>
+                              <p>Sistem Informasi Manajemen Penanggulangan Kemiskinan Kab. Sumbawa Barat</p>
                             </div>
                         </div>
                     </div>

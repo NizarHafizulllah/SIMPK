@@ -49,14 +49,14 @@ $(function () {
 				<div class="form-group">
 					<select class="form-control" name="tahun1" id="tahun1">
 						<option value="">- Pilih Tahun -</option>
-						<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+						<?php for($x=date('Y'); $x>=2014; $x--) { ?>
 							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 						<?php } ?>
 					</select>
 					Sampai
 					<select class="form-control" name="tahun2" id="tahun2">
 						<option value="">- Pilih Tahun -</option>
-						<?php for($x=date('Y'); $x>=2000; $x--) { ?>
+						<?php for($x=date('Y'); $x>=2014; $x--) { ?>
 							<option value="<?php echo $x; ?>"><?php echo $x; ?></option>
 						<?php } ?>
 					</select>
